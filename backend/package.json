@@ -1,0 +1,21 @@
+{
+  "name": "findkart-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "FindKart PostgreSQL Database & Backend Service",
+  "main": "index.ts",
+  "scripts": {
+    "db:init": "tsx init.ts",
+    "test:db": "tsx -e \"import('./db.ts').then(m => m.testConnection()).then(console.log)\""
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "pg": "^8.13.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@types/pg": "^8.11.11",
+    "tsx": "^4.21.0",
+    "typescript": "^7.0.2"
+  }
+}

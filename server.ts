@@ -22,6 +22,15 @@ import {
   getProductStock,
   searchProductsWithStock,
 } from './src/utils/stock.ts';
+import {
+  isPostgresConfigured,
+  testConnection,
+  initPostgresDatabase,
+  userRepo,
+  orderRepo,
+  supportRepo,
+  stockRepo,
+} from './backend/index.ts';
 
 dotenv.config();
 
@@ -60,6 +69,8 @@ const DB_PATH = path.resolve(DATA_DIR, 'findkart-db.json');
 if (!DB_PATH.startsWith(DATA_DIR + path.sep)) {
   throw new Error('Invalid database path configuration');
 }
+
+let isPgActive = false;
 
 const INITIAL_SUPPORT_TICKETS: SupportTicket[] = [
   {
@@ -202,9 +213,11 @@ function readDb(): DatabaseSchema {
         Array.isArray(parsed.supportTickets) && parsed.supportTickets.length > 0
           ? parsed.supportTickets
           : [...INITIAL_SUPPORT_TICKETS],
+      stockOverrides: parsed.stockOverrides || {},
+      stockNotifications: Array.isArray(parsed.stockNotifications) ? parsed.stockNotifications : [],
     };
   } catch {
-    return { users: [], supportTickets: [...INITIAL_SUPPORT_TICKETS] };
+    return { users: [], supportTickets: [...INITIAL_SUPPORT_TICKETS], stockOverrides: {}, stockNotifications: [] };
   }
 }
 
@@ -331,15 +344,28 @@ function verifyMutationHeader(req: Request, res: Response): boolean {
   return true;
 }
 
-function requireAuth(req: AuthenticatedRequest, res: Response, next: NextFunction): void {
+async function requireAuth(req: AuthenticatedRequest, res: Response, next: NextFunction): Promise<void> {
   const token = extractToken(req);
   const claims = token ? verifyToken(token) : null;
   if (!claims) {
     res.status(401).json({ message: 'Please sign in to continue.' });
     return;
   }
-  const db = readDb();
-  const user = db.users.find((u) => u.id === claims.uid);
+
+  let user: StoredUser | null | undefined = null;
+  if (isPgActive) {
+    try {
+      user = await userRepo.findUserById(claims.uid);
+    } catch (err) {
+      console.error('[PostgreSQL] Error in requireAuth user lookup:', err);
+    }
+  }
+
+  if (!user) {
+    const db = readDb();
+    user = db.users.find((u) => u.id === claims.uid);
+  }
+
   if (!user) {
     res.status(401).json({ message: 'Session expired. Please sign in again.' });
     return;
@@ -391,12 +417,49 @@ async function startServer() {
   app.set('trust proxy', 1);
   app.use(express.json({ limit: '256kb' }));
 
+  // Check and initialize PostgreSQL backend
+  if (isPostgresConfigured()) {
+    try {
+      const conn = await testConnection();
+      if (conn.connected) {
+        const initRes = await initPostgresDatabase();
+        if (initRes.success) {
+          isPgActive = true;
+          console.log(`[Database] PostgreSQL active and connected (${conn.latencyMs}ms).`);
+        } else {
+          console.warn(`[Database] PostgreSQL init warning: ${initRes.message}. Running in local JSON fallback mode.`);
+        }
+      } else {
+        console.warn(`[Database] PostgreSQL connection failed: ${conn.error}. Running in local JSON fallback mode.`);
+      }
+    } catch (err: unknown) {
+      console.warn('[Database] PostgreSQL startup error:', err);
+    }
+  } else {
+    console.log('[Database] PostgreSQL not configured (DATABASE_URL unset). Running in local JSON fallback mode.');
+  }
+
   app.get('/api/health', (_req: Request, res: Response) => {
-    res.json({ ok: true });
+    res.json({
+      ok: true,
+      database: isPgActive ? 'postgresql' : 'file-fallback',
+    });
+  });
+
+  // DB Status Endpoint
+  app.get('/api/db/status', async (_req: Request, res: Response) => {
+    const configured = isPostgresConfigured();
+    const conn = configured ? await testConnection() : { connected: false };
+    res.json({
+      configured,
+      active: isPgActive,
+      mode: isPgActive ? 'postgresql' : 'file-fallback',
+      connection: conn,
+    });
   });
 
   // Auth: Register
-  app.post('/api/auth/register', (req: Request, res: Response) => {
+  app.post('/api/auth/register', async (req: Request, res: Response) => {
     const body = (req.body || {}) as Record<string, unknown>;
     const name = typeof body.name === 'string' ? body.name.trim() : '';
     const email = typeof body.email === 'string' ? body.email.trim().toLowerCase() : '';
@@ -414,6 +477,37 @@ async function startServer() {
     }
     if (password.length < 8 || password.length > 128) {
       res.status(400).json({ message: 'Password must be between 8 and 128 characters.' });
+      return;
+    }
+
+    if (isPgActive) {
+      const existing = await userRepo.findUserByEmail(email);
+      if (existing) {
+        res.status(409).json({ message: 'An account with this email already exists. Try signing in.' });
+        return;
+      }
+
+      const { hash, salt } = hashPassword(password);
+      const newUser: StoredUser = {
+        id: `usr_${crypto.randomUUID()}`,
+        name,
+        email,
+        passwordHash: hash,
+        passwordSalt: salt,
+        createdAt: new Date().toISOString(),
+        location: { city: 'Bengaluru', pincode: '560001' },
+        cart: guestCart,
+        wishlist: guestWishlist,
+        orders: [],
+      };
+
+      await userRepo.createUser(newUser);
+      const token = signToken(newUser.id, newUser.email);
+      setSessionCookie(res, token);
+      res.status(201).json({
+        token,
+        user: sanitizeUser(newUser),
+      });
       return;
     }
 
@@ -449,7 +543,7 @@ async function startServer() {
   });
 
   // Auth: Login
-  app.post('/api/auth/login', (req: Request, res: Response) => {
+  app.post('/api/auth/login', async (req: Request, res: Response) => {
     const body = (req.body || {}) as Record<string, unknown>;
     const email = typeof body.email === 'string' ? body.email.trim().toLowerCase() : '';
     const password = typeof body.password === 'string' ? body.password : '';
@@ -458,6 +552,24 @@ async function startServer() {
 
     if (!isValidEmail(email) || password.length < 6) {
       res.status(400).json({ message: 'Enter a valid email address and password.' });
+      return;
+    }
+
+    if (isPgActive) {
+      const user = await userRepo.findUserByEmail(email);
+      if (!user || !verifyPassword(password, user.passwordHash, user.passwordSalt)) {
+        res.status(401).json({ message: 'Invalid email or password. Please check and try again.' });
+        return;
+      }
+      if (guestCart.length > 0 || guestWishlist.length > 0) {
+        await userRepo.mergeGuestData(user, guestCart, guestWishlist);
+      }
+      const token = signToken(user.id, user.email);
+      setSessionCookie(res, token);
+      res.json({
+        token,
+        user: sanitizeUser(user),
+      });
       return;
     }
 
@@ -503,13 +615,24 @@ async function startServer() {
   });
 
   // Auth: Me (Hydrate session)
-  app.get('/api/auth/me', (req: Request, res: Response) => {
+  app.get('/api/auth/me', async (req: Request, res: Response) => {
     const token = extractToken(req);
     const claims = token ? verifyToken(token) : null;
     if (!claims) {
       res.status(200).json({ user: null });
       return;
     }
+
+    if (isPgActive) {
+      const user = await userRepo.findUserById(claims.uid);
+      if (!user) {
+        res.status(200).json({ user: null });
+        return;
+      }
+      res.json({ user: sanitizeUser(user), token });
+      return;
+    }
+
     const db = readDb();
     const user = db.users.find((u) => u.id === claims.uid);
     if (!user) {
@@ -527,10 +650,17 @@ async function startServer() {
   });
 
   // User Cart Sync
-  app.put('/api/user/cart', requireAuth, (req: AuthenticatedRequest, res: Response) => {
+  app.put('/api/user/cart', requireAuth, async (req: AuthenticatedRequest, res: Response) => {
     if (!verifyMutationHeader(req, res)) return;
     const body = (req.body || {}) as Record<string, unknown>;
     const items = validateCartItems(body.cart);
+
+    if (isPgActive && req.authUser) {
+      const cart = await userRepo.updateUserCart(req.authUser.id, items);
+      res.json({ cart });
+      return;
+    }
+
     const db = readDb();
     const user = db.users.find((u) => u.id === req.authUser?.id);
     if (!user) {
@@ -543,10 +673,17 @@ async function startServer() {
   });
 
   // User Wishlist Sync
-  app.put('/api/user/wishlist', requireAuth, (req: AuthenticatedRequest, res: Response) => {
+  app.put('/api/user/wishlist', requireAuth, async (req: AuthenticatedRequest, res: Response) => {
     if (!verifyMutationHeader(req, res)) return;
     const body = (req.body || {}) as Record<string, unknown>;
     const wishlist = validateWishlistIds(body.wishlist);
+
+    if (isPgActive && req.authUser) {
+      const updatedWishlist = await userRepo.updateUserWishlist(req.authUser.id, wishlist);
+      res.json({ wishlist: updatedWishlist });
+      return;
+    }
+
     const db = readDb();
     const user = db.users.find((u) => u.id === req.authUser?.id);
     if (!user) {
@@ -559,7 +696,7 @@ async function startServer() {
   });
 
   // User Location Sync
-  app.put('/api/user/location', requireAuth, (req: AuthenticatedRequest, res: Response) => {
+  app.put('/api/user/location', requireAuth, async (req: AuthenticatedRequest, res: Response) => {
     if (!verifyMutationHeader(req, res)) return;
     const body = (req.body || {}) as Record<string, unknown>;
     const city = typeof body.city === 'string' ? body.city.trim().slice(0, 60) : '';
@@ -568,6 +705,13 @@ async function startServer() {
       res.status(400).json({ message: 'Enter a valid city and 6-digit Indian pin code.' });
       return;
     }
+
+    if (isPgActive && req.authUser) {
+      const location = await userRepo.updateUserLocation(req.authUser.id, { city, pincode });
+      res.json({ location });
+      return;
+    }
+
     const db = readDb();
     const user = db.users.find((u) => u.id === req.authUser?.id);
     if (!user) {
@@ -580,7 +724,7 @@ async function startServer() {
   });
 
   // Place Order (Works for both authenticated users and guest checkout, calculating totals server-side)
-  app.post('/api/orders', (req: Request, res: Response) => {
+  app.post('/api/orders', async (req: Request, res: Response) => {
     if (!verifyMutationHeader(req, res)) return;
     const body = (req.body || {}) as Record<string, unknown>;
     const validatedItems = validateCartItems(body.items);
@@ -666,6 +810,27 @@ async function startServer() {
       shipping,
     };
 
+    const token = extractToken(req);
+    const claims = token ? verifyToken(token) : null;
+
+    if (isPgActive) {
+      const overrides = await stockRepo.getStockOverrides();
+      const updates: Record<string, number> = {};
+      for (const item of orderItems) {
+        const prod = productMap.get(item.productId);
+        if (prod) {
+          const currentStock = getProductStock(prod, overrides);
+          const newStock = Math.max(0, currentStock - item.quantity);
+          overrides[prod.id] = newStock;
+          updates[prod.id] = newStock;
+        }
+      }
+      await stockRepo.batchUpdateStockOverrides(updates);
+      await orderRepo.createOrder(order, claims?.uid);
+      res.status(201).json({ order, stockOverrides: overrides });
+      return;
+    }
+
     const db = readDb();
     const overrides = { ...(db.stockOverrides || {}) };
     for (const item of orderItems) {
@@ -677,8 +842,6 @@ async function startServer() {
     }
     db.stockOverrides = overrides;
 
-    const token = extractToken(req);
-    const claims = token ? verifyToken(token) : null;
     if (claims) {
       const user = db.users.find((u) => u.id === claims.uid);
       if (user) {
@@ -693,12 +856,17 @@ async function startServer() {
   });
 
   // Get Orders for authenticated user
-  app.get('/api/orders', requireAuth, (req: AuthenticatedRequest, res: Response) => {
+  app.get('/api/orders', requireAuth, async (req: AuthenticatedRequest, res: Response) => {
+    if (isPgActive && req.authUser) {
+      const orders = await orderRepo.getOrdersByUserId(req.authUser.id);
+      res.json({ orders });
+      return;
+    }
     res.json({ orders: req.authUser?.orders || [] });
   });
 
   // Customer Care: List visible support tickets (user's own tickets + sample reference tickets)
-  app.get('/api/support/tickets', (req: Request, res: Response) => {
+  app.get('/api/support/tickets', async (req: Request, res: Response) => {
     const token = extractToken(req);
     const claims = token ? verifyToken(token) : null;
     const guestIdsParam = typeof req.query.ticketIds === 'string' ? req.query.ticketIds : '';
@@ -710,8 +878,19 @@ async function startServer() {
         .slice(0, 30)
     );
 
-    const db = readDb();
     const starterIds = new Set(INITIAL_SUPPORT_TICKETS.map((t) => t.ticketId));
+
+    if (isPgActive) {
+      const visibleTickets = await supportRepo.listVisibleTickets({
+        claimsUserId: claims?.uid,
+        guestTicketIds,
+        starterIds,
+      });
+      res.json({ tickets: visibleTickets });
+      return;
+    }
+
+    const db = readDb();
     const allTickets = db.supportTickets || [...INITIAL_SUPPORT_TICKETS];
 
     const visibleTickets = allTickets.filter((ticket) => {
@@ -725,7 +904,7 @@ async function startServer() {
   });
 
   // Customer Care: Submit new support complaint/ticket
-  app.post('/api/support/tickets', (req: Request, res: Response) => {
+  app.post('/api/support/tickets', async (req: Request, res: Response) => {
     if (!verifyMutationHeader(req, res)) return;
 
     const body = (req.body || {}) as Record<string, unknown>;
@@ -768,14 +947,7 @@ async function startServer() {
     const token = extractToken(req);
     const claims = token ? verifyToken(token) : null;
 
-    const db = readDb();
-    const allTickets = db.supportTickets || [...INITIAL_SUPPORT_TICKETS];
-
-    let ticketNumber = 4900 + Math.floor(Math.random() * 5000);
-    while (allTickets.some((t) => t.ticketId === `FK-SUP-${ticketNumber}`)) {
-      ticketNumber = 4900 + Math.floor(Math.random() * 5000);
-    }
-
+    const ticketNumber = 4900 + Math.floor(Math.random() * 5000);
     const now = new Date();
     const slaDue = new Date(now.getTime() + 6 * 60 * 60 * 1000);
     const specialist =
@@ -809,6 +981,14 @@ async function startServer() {
       ],
     };
 
+    if (isPgActive) {
+      await supportRepo.createTicket(newTicket);
+      res.status(201).json({ ticket: newTicket });
+      return;
+    }
+
+    const db = readDb();
+    const allTickets = db.supportTickets || [...INITIAL_SUPPORT_TICKETS];
     db.supportTickets = [newTicket, ...allTickets].slice(0, 200);
     writeDb(db);
 
@@ -816,7 +996,7 @@ async function startServer() {
   });
 
   // Customer Care: Add follow-up message or mark ticket resolved
-  app.post('/api/support/tickets/:ticketId/reply', (req: Request, res: Response) => {
+  app.post('/api/support/tickets/:ticketId/reply', async (req: Request, res: Response) => {
     if (!verifyMutationHeader(req, res)) return;
     const ticketId = typeof req.params.ticketId === 'string' ? req.params.ticketId.trim() : '';
     if (!/^FK-SUP-\d{4,6}$/.test(ticketId)) {
@@ -834,6 +1014,27 @@ async function startServer() {
 
     const token = extractToken(req);
     const claims = token ? verifyToken(token) : null;
+
+    if (isPgActive) {
+      const ticket = await supportRepo.findTicketById(ticketId);
+      if (!ticket) {
+        res.status(404).json({ message: 'Support ticket not found.' });
+        return;
+      }
+      if (ticket.userId && ticket.userId !== claims?.uid) {
+        res.status(403).json({ message: 'You do not have permission to update this ticket.' });
+        return;
+      }
+      const updated = await supportRepo.addReply(ticketId, {
+        id: `rep_${crypto.randomUUID().slice(0, 8)}`,
+        senderRole: 'customer',
+        senderName: senderName || ticket.customerName,
+        message,
+        createdAt: new Date().toISOString(),
+      });
+      res.json({ ticket: updated });
+      return;
+    }
 
     const db = readDb();
     const tickets = db.supportTickets || [...INITIAL_SUPPORT_TICKETS];
@@ -863,7 +1064,7 @@ async function startServer() {
     res.json({ ticket });
   });
 
-  app.patch('/api/support/tickets/:ticketId', (req: Request, res: Response) => {
+  app.patch('/api/support/tickets/:ticketId', async (req: Request, res: Response) => {
     if (!verifyMutationHeader(req, res)) return;
     const ticketId = typeof req.params.ticketId === 'string' ? req.params.ticketId.trim() : '';
     if (!/^FK-SUP-\d{4,6}$/.test(ticketId)) {
@@ -879,6 +1080,21 @@ async function startServer() {
 
     const token = extractToken(req);
     const claims = token ? verifyToken(token) : null;
+
+    if (isPgActive) {
+      const ticket = await supportRepo.findTicketById(ticketId);
+      if (!ticket) {
+        res.status(404).json({ message: 'Support ticket not found.' });
+        return;
+      }
+      if (ticket.userId && ticket.userId !== claims?.uid) {
+        res.status(403).json({ message: 'You do not have permission to update this ticket.' });
+        return;
+      }
+      const updated = await supportRepo.updateTicketStatus(ticketId, 'Resolved');
+      res.json({ ticket: updated });
+      return;
+    }
 
     const db = readDb();
     const tickets = db.supportTickets || [...INITIAL_SUPPORT_TICKETS];
@@ -899,18 +1115,39 @@ async function startServer() {
   });
 
   // Live Stock Inventory Overrides
-  app.get('/api/stock', (_req: Request, res: Response) => {
+  app.get('/api/stock', async (_req: Request, res: Response) => {
+    if (isPgActive) {
+      const stockOverrides = await stockRepo.getStockOverrides();
+      res.json({ stockOverrides });
+      return;
+    }
     const db = readDb();
     res.json({ stockOverrides: db.stockOverrides || {} });
   });
 
   // Product Restock Notification Subscriptions
-  app.get('/api/stock-notifications', (req: Request, res: Response) => {
-    const db = readDb();
-    const all = db.stockNotifications || [];
+  app.get('/api/stock-notifications', async (req: Request, res: Response) => {
     const emailQuery = typeof req.query.email === 'string' ? req.query.email.trim().toLowerCase() : '';
     const token = extractToken(req);
     const claims = token ? verifyToken(token) : null;
+
+    if (isPgActive) {
+      let targetEmail = emailQuery;
+      if (claims?.uid) {
+        const user = await userRepo.findUserById(claims.uid);
+        if (user) targetEmail = user.email;
+      }
+      if (!targetEmail) {
+        res.json({ notifications: [] });
+        return;
+      }
+      const notifications = await stockRepo.getNotificationsByEmail(targetEmail);
+      res.json({ notifications });
+      return;
+    }
+
+    const db = readDb();
+    const all = db.stockNotifications || [];
     const authUser = claims ? db.users.find((u) => u.id === claims.uid) : undefined;
     const targetEmail = authUser?.email || emailQuery;
 
@@ -923,7 +1160,7 @@ async function startServer() {
     res.json({ notifications: filtered });
   });
 
-  app.post('/api/stock-notifications', (req: Request, res: Response) => {
+  app.post('/api/stock-notifications', async (req: Request, res: Response) => {
     if (!verifyMutationHeader(req, res)) return;
     const body = (req.body || {}) as Record<string, unknown>;
     const productId = typeof body.productId === 'string' ? body.productId.trim() : '';
@@ -937,6 +1174,45 @@ async function startServer() {
 
     const token = extractToken(req);
     const claims = token ? verifyToken(token) : null;
+
+    if (isPgActive) {
+      let email = rawEmail;
+      if (!email && claims?.uid) {
+        const authUser = await userRepo.findUserById(claims.uid);
+        if (authUser) email = authUser.email;
+      }
+
+      if (!isValidEmail(email)) {
+        res.status(400).json({ message: 'Please enter a valid email address for restock notifications.' });
+        return;
+      }
+
+      const existing = await stockRepo.findNotification(product.id, email);
+      if (existing) {
+        res.json({
+          notification: existing,
+          message: `You are already subscribed for restock alerts on ${product.name} at ${email}.`,
+        });
+        return;
+      }
+
+      const entry: StockNotification = {
+        id: `notif_${crypto.randomUUID().slice(0, 8)}`,
+        productId: product.id,
+        productName: product.name,
+        email,
+        createdAt: new Date().toISOString(),
+        status: 'Subscribed',
+      };
+
+      await stockRepo.createNotification(entry);
+      res.status(201).json({
+        notification: entry,
+        message: `Notification registered! We will email ${email} as soon as ${product.name} is back in stock.`,
+      });
+      return;
+    }
+
     const db = readDb();
     const authUser = claims ? db.users.find((u) => u.id === claims.uid) : undefined;
     const email = rawEmail || authUser?.email || '';
@@ -987,8 +1263,10 @@ async function startServer() {
       return;
     }
 
-    const db = readDb();
-    const stockOverrides = db.stockOverrides || {};
+    const stockOverrides = isPgActive
+      ? await stockRepo.getStockOverrides()
+      : (readDb().stockOverrides || {});
+
     const deterministic = buildDeterministicStockReply(message, stockOverrides);
     const matches =
       deterministic.matches.length > 0
