@@ -35,6 +35,7 @@ export interface Product {
   concern?: ('Hydration' | 'Sun' | 'Hairfall')[];
   popularity: number;
   newest: number;
+  stock?: number;
   description: string;
   highlights: string[];
 }
@@ -141,3 +142,26 @@ export interface CourierShipment {
   supportEmail: string;
   checkpoints: { time: string; location: string; detail: string }[];
 }
+
+export interface StockNotification {
+  id: string;
+  productId: string;
+  productName: string;
+  email: string;
+  createdAt: string;
+  status: 'Subscribed' | 'Notified';
+}
+
+export interface ChatProductMatch {
+  id: string;
+  name: string;
+  brand: string;
+  category: string;
+  price: number;
+  originalPrice: number;
+  discountPercent: number;
+  imageUrl: string;
+  imageAlt: string;
+  stock: number;
+}
+

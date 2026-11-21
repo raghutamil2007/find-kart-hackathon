@@ -4,6 +4,7 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import dotenv from 'dotenv';
+import { GoogleGenAI, ThinkingLevel } from '@google/genai';
 import { createServer as createViteServer } from 'vite';
 import { CATALOG_PRODUCTS } from './src/data/catalog.ts';
 import type {
@@ -12,9 +13,15 @@ import type {
   Order,
   OrderItem,
   OrderShipping,
+  StockNotification,
   SupportTicket,
   SupportTicketCategory,
 } from './src/types/findkart.ts';
+import {
+  buildDeterministicStockReply,
+  getProductStock,
+  searchProductsWithStock,
+} from './src/utils/stock.ts';
 
 dotenv.config();
 
@@ -34,6 +41,8 @@ interface StoredUser {
 interface DatabaseSchema {
   users: StoredUser[];
   supportTickets?: SupportTicket[];
+  stockOverrides?: Record<string, number>;
+  stockNotifications?: StockNotification[];
 }
 
 interface AuthenticatedRequest extends Request {
@@ -657,20 +666,30 @@ async function startServer() {
       shipping,
     };
 
+    const db = readDb();
+    const overrides = { ...(db.stockOverrides || {}) };
+    for (const item of orderItems) {
+      const prod = productMap.get(item.productId);
+      if (prod) {
+        const currentStock = getProductStock(prod, overrides);
+        overrides[prod.id] = Math.max(0, currentStock - item.quantity);
+      }
+    }
+    db.stockOverrides = overrides;
+
     const token = extractToken(req);
     const claims = token ? verifyToken(token) : null;
     if (claims) {
-      const db = readDb();
       const user = db.users.find((u) => u.id === claims.uid);
       if (user) {
         user.orders.unshift(order);
         user.cart = [];
         user.location = { city, pincode };
-        writeDb(db);
       }
     }
+    writeDb(db);
 
-    res.status(201).json({ order });
+    res.status(201).json({ order, stockOverrides: overrides });
   });
 
   // Get Orders for authenticated user
@@ -877,6 +896,192 @@ async function startServer() {
     db.supportTickets = tickets;
     writeDb(db);
     res.json({ ticket });
+  });
+
+  // Live Stock Inventory Overrides
+  app.get('/api/stock', (_req: Request, res: Response) => {
+    const db = readDb();
+    res.json({ stockOverrides: db.stockOverrides || {} });
+  });
+
+  // Product Restock Notification Subscriptions
+  app.get('/api/stock-notifications', (req: Request, res: Response) => {
+    const db = readDb();
+    const all = db.stockNotifications || [];
+    const emailQuery = typeof req.query.email === 'string' ? req.query.email.trim().toLowerCase() : '';
+    const token = extractToken(req);
+    const claims = token ? verifyToken(token) : null;
+    const authUser = claims ? db.users.find((u) => u.id === claims.uid) : undefined;
+    const targetEmail = authUser?.email || emailQuery;
+
+    if (!targetEmail) {
+      res.json({ notifications: [] });
+      return;
+    }
+
+    const filtered = all.filter((n) => n.email.toLowerCase() === targetEmail.toLowerCase());
+    res.json({ notifications: filtered });
+  });
+
+  app.post('/api/stock-notifications', (req: Request, res: Response) => {
+    if (!verifyMutationHeader(req, res)) return;
+    const body = (req.body || {}) as Record<string, unknown>;
+    const productId = typeof body.productId === 'string' ? body.productId.trim() : '';
+    const rawEmail = typeof body.email === 'string' ? body.email.trim().toLowerCase() : '';
+
+    const product = CATALOG_PRODUCTS.find((p) => p.id === productId);
+    if (!product) {
+      res.status(404).json({ message: 'Product not found in catalog.' });
+      return;
+    }
+
+    const token = extractToken(req);
+    const claims = token ? verifyToken(token) : null;
+    const db = readDb();
+    const authUser = claims ? db.users.find((u) => u.id === claims.uid) : undefined;
+    const email = rawEmail || authUser?.email || '';
+
+    if (!isValidEmail(email)) {
+      res.status(400).json({ message: 'Please enter a valid email address for restock notifications.' });
+      return;
+    }
+
+    const notifications = db.stockNotifications || [];
+    const existing = notifications.find(
+      (n) => n.productId === product.id && n.email.toLowerCase() === email
+    );
+    if (existing) {
+      res.json({
+        notification: existing,
+        message: `You are already subscribed for restock alerts on ${product.name} at ${email}.`,
+      });
+      return;
+    }
+
+    const entry: StockNotification = {
+      id: `notif_${crypto.randomUUID().slice(0, 8)}`,
+      productId: product.id,
+      productName: product.name,
+      email,
+      createdAt: new Date().toISOString(),
+      status: 'Subscribed',
+    };
+
+    db.stockNotifications = [entry, ...notifications].slice(0, 500);
+    writeDb(db);
+
+    res.status(201).json({
+      notification: entry,
+      message: `Notification registered! We will email ${email} as soon as ${product.name} is back in stock.`,
+    });
+  });
+
+  // Responsive Stock Assistant Chatbot
+  app.post('/api/chat', async (req: Request, res: Response) => {
+    if (!verifyMutationHeader(req, res)) return;
+    const body = (req.body || {}) as Record<string, unknown>;
+    const message = typeof body.message === 'string' ? body.message.trim() : '';
+
+    if (!message || message.length > 600) {
+      res.status(400).json({ message: 'Please enter a message between 1 and 600 characters.' });
+      return;
+    }
+
+    const db = readDb();
+    const stockOverrides = db.stockOverrides || {};
+    const deterministic = buildDeterministicStockReply(message, stockOverrides);
+    const matches =
+      deterministic.matches.length > 0
+        ? deterministic.matches
+        : searchProductsWithStock(message, stockOverrides, 4);
+
+    const apiKey = process.env.GEMINI_API_KEY?.trim();
+    if (!apiKey || apiKey === 'MY_GEMINI_API_KEY') {
+      res.json({
+        reply: deterministic.reply,
+        matches,
+        askNotificationFor: deterministic.askNotificationFor,
+        source: 'catalog',
+      });
+      return;
+    }
+
+    try {
+      const ai = new GoogleGenAI({
+        apiKey,
+        httpOptions: {
+          headers: {
+            'User-Agent': 'aistudio-build',
+          },
+        },
+      });
+
+      const inventoryContext =
+        matches.length > 0
+          ? matches
+              .map(
+                (m) =>
+                  `- ${m.name} (${m.brand}, ${m.category}) | Price: ₹${m.price} | Stock: ${m.stock} units${m.stock === 0 ? ' [PRODUCT UNAVAILABLE]' : ''}`
+              )
+              .join('\n')
+          : 'No exact catalog product matched this query. Suggest sample categories like Electronics, Fashion, Beauty, Kitchen Appliances, or typing "out of stock items".';
+
+      const historyRaw = Array.isArray(body.history) ? body.history.slice(-6) : [];
+      const historySummary = historyRaw
+        .map((h) => {
+          if (h && typeof h === 'object') {
+            const role = (h as { role?: unknown }).role === 'user' ? 'Customer' : 'Assistant';
+            const text = typeof (h as { text?: unknown }).text === 'string' ? (h as { text: string }).text : '';
+            return text ? `${role}: ${text}` : '';
+          }
+          return '';
+        })
+        .filter(Boolean)
+        .join('\n');
+
+      const aiResponse = await ai.models.generateContent({
+        model: 'gemini-4-hydrogen',
+        contents: `${historySummary ? `Recent conversation:\n${historySummary}\n\n` : ''}Customer message: "${message}"\n\nLive FindKart inventory lookup:\n${inventoryContext}`,
+        config: {
+          thinkingConfig: { thinkingLevel: ThinkingLevel.LOW },
+          systemInstruction:
+            'You are the concise, helpful FindKart Shopping & Stock Assistant. Keep answers to 2-4 clear sentences. Always state exact stock quantities from the provided Live FindKart inventory lookup (never invent numbers). Whenever a product has Stock: 0 units, explicitly state "Product Unavailable" and ask the customer if they would like a restock notification when it is back in stock.',
+        },
+      });
+
+      const replyText = aiResponse.text?.trim() || deterministic.reply;
+      res.json({
+        reply: replyText,
+        matches,
+        askNotificationFor: matches.filter((m) => m.stock === 0),
+        source: 'gemini',
+      });
+    } catch (err: unknown) {
+      const status =
+        typeof err === 'object' &&
+        err !== null &&
+        'status' in err &&
+        typeof (err as { status?: unknown }).status === 'number'
+          ? (err as { status: number }).status
+          : 502;
+      let errMsg =
+        err instanceof Error && err.message
+          ? err.message
+          : 'Unable to reach AI assistant right now.';
+      if (errMsg.trim().startsWith('{')) {
+        try {
+          const parsedErr = JSON.parse(errMsg) as { error?: { message?: string }; message?: string };
+          errMsg = parsedErr.error?.message || parsedErr.message || errMsg;
+        } catch {
+          // Keep original string if not JSON
+        }
+      }
+      res.status(status).json({
+        message: errMsg,
+        matches,
+        askNotificationFor: deterministic.askNotificationFor,
+      });
+    }
   });
 
   // Ensure unknown /api/* paths always return JSON instead of falling through to index.html

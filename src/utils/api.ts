@@ -5,6 +5,7 @@ import type {
   Order,
   OrderItem,
   OrderShipping,
+  StockNotification,
   SupportTicket,
   SupportTicketCategory,
   UserProfile,
@@ -71,6 +72,8 @@ export async function safeParseApiResponse<T>(res: Response): Promise<ParsedApiR
 // Local fallback store used ONLY when the app is served as a static SPA without Express API routes
 const LOCAL_ACCOUNTS_KEY = 'findkart_static_accounts';
 const LOCAL_TICKETS_KEY = 'findkart_static_support_tickets';
+const LOCAL_STOCK_OVERRIDES_KEY = 'findkart_static_stock_overrides';
+const LOCAL_STOCK_NOTIFICATIONS_KEY = 'findkart_static_stock_notifications';
 
 interface LocalAccountRecord {
   id: string;
@@ -411,3 +414,66 @@ export function fallbackCreateTicket(payload: {
   writeFallbackTickets([ticket, ...existing]);
   return ticket;
 }
+
+export function readFallbackStockOverrides(): Record<string, number> {
+  try {
+    const raw = localStorage.getItem(LOCAL_STOCK_OVERRIDES_KEY);
+    if (!raw) return {};
+    const parsed = JSON.parse(raw);
+    return parsed && typeof parsed === 'object' ? (parsed as Record<string, number>) : {};
+  } catch {
+    return {};
+  }
+}
+
+export function writeFallbackStockOverrides(overrides: Record<string, number>): void {
+  try {
+    localStorage.setItem(LOCAL_STOCK_OVERRIDES_KEY, JSON.stringify(overrides));
+  } catch {
+    // Ignore storage limits
+  }
+}
+
+export function readFallbackStockNotifications(): StockNotification[] {
+  try {
+    const raw = localStorage.getItem(LOCAL_STOCK_NOTIFICATIONS_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? (parsed as StockNotification[]) : [];
+  } catch {
+    return [];
+  }
+}
+
+export function writeFallbackStockNotifications(notifications: StockNotification[]): void {
+  try {
+    localStorage.setItem(LOCAL_STOCK_NOTIFICATIONS_KEY, JSON.stringify(notifications));
+  } catch {
+    // Ignore storage limits
+  }
+}
+
+export function fallbackSubscribeStockNotification(params: {
+  productId: string;
+  productName: string;
+  email: string;
+}): StockNotification {
+  const existing = readFallbackStockNotifications();
+  const normalizedEmail = params.email.trim().toLowerCase();
+  const duplicate = existing.find(
+    (n) => n.productId === params.productId && n.email.toLowerCase() === normalizedEmail
+  );
+  if (duplicate) return duplicate;
+
+  const entry: StockNotification = {
+    id: `notif_${Date.now().toString(36)}`,
+    productId: params.productId,
+    productName: params.productName,
+    email: normalizedEmail,
+    createdAt: new Date().toISOString(),
+    status: 'Subscribed',
+  };
+  writeFallbackStockNotifications([entry, ...existing].slice(0, 100));
+  return entry;
+}
+

@@ -13,7 +13,7 @@ interface CartDrawerProps {
   authToken: string | null;
   onUpdateQty: (index: number, delta: number) => void;
   onRemoveItem: (index: number) => void;
-  onOrderPlaced: (order: Order) => void;
+  onOrderPlaced: (order: Order, stockOverrides?: Record<string, number>) => void;
   onOpenAuth: () => void;
 }
 
@@ -121,18 +121,20 @@ export function CartDrawer({
         headers,
         body: JSON.stringify({ items: cart, shipping }),
       });
-      const parsed = await safeParseApiResponse<{ order: Order }>(res);
+      const parsed = await safeParseApiResponse<{ order: Order; stockOverrides?: Record<string, number> }>(res);
       let placedOrder: Order;
+      let nextOverrides: Record<string, number> | undefined;
       if (parsed.isHtmlFallback) {
         placedOrder = fallbackPlaceOrder(cart, shipping);
       } else if (!parsed.ok || !parsed.data?.order) {
         throw new Error(parsed.errorMessage || 'Unable to place order.');
       } else {
         placedOrder = parsed.data.order;
+        nextOverrides = parsed.data.stockOverrides;
       }
       setConfirmedOrder(placedOrder);
       setStep('confirmed');
-      onOrderPlaced(placedOrder);
+      onOrderPlaced(placedOrder, nextOverrides);
     } catch (err) {
       setFormError(err instanceof Error ? err.message : 'Unable to reach order service.');
     } finally {

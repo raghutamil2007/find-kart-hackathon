@@ -4,6 +4,7 @@ import { AuthView } from './components/AuthView.tsx';
 import { BeautyView } from './components/BeautyView.tsx';
 import { CartDrawer } from './components/CartDrawer.tsx';
 import { CategoryView } from './components/CategoryView.tsx';
+import { ChatbotWidget } from './components/ChatbotWidget.tsx';
 import { CustomerCareView } from './components/CustomerCareView.tsx';
 import { FashionView } from './components/FashionView.tsx';
 import { Footer } from './components/Footer.tsx';
@@ -13,8 +14,24 @@ import { LocationModal } from './components/LocationModal.tsx';
 import { OrdersModal } from './components/OrdersModal.tsx';
 import { ProductModal } from './components/ProductModal.tsx';
 import { WishlistDrawer } from './components/WishlistDrawer.tsx';
-import type { CartItem, DeliveryLocation, Order, Product, StoreView, UserProfile } from './types/findkart.ts';
-import { safeParseApiResponse, type AuthResponsePayload } from './utils/api.ts';
+import type {
+  CartItem,
+  DeliveryLocation,
+  Order,
+  Product,
+  StockNotification,
+  StoreView,
+  UserProfile,
+} from './types/findkart.ts';
+import {
+  fallbackSubscribeStockNotification,
+  readFallbackStockNotifications,
+  readFallbackStockOverrides,
+  safeParseApiResponse,
+  writeFallbackStockOverrides,
+  type AuthResponsePayload,
+} from './utils/api.ts';
+import { getProductStock } from './utils/stock.ts';
 
 const GUEST_CART_KEY = 'findkart_guest_cart';
 const GUEST_WISHLIST_KEY = 'findkart_guest_wishlist';
@@ -58,6 +75,12 @@ export default function App() {
     readStorageJson<DeliveryLocation>(GUEST_LOCATION_KEY, { city: 'Bengaluru', pincode: '560001' })
   );
   const [orders, setOrders] = useState<Order[]>(() => readStorageJson<Order[]>(GUEST_ORDERS_KEY, []));
+  const [stockOverrides, setStockOverrides] = useState<Record<string, number>>(() =>
+    readFallbackStockOverrides()
+  );
+  const [stockNotifications, setStockNotifications] = useState<StockNotification[]>(() =>
+    readFallbackStockNotifications()
+  );
 
   // Overlays & Modals
   const [cartOpen, setCartOpen] = useState(false);
@@ -128,10 +151,50 @@ export default function App() {
       .catch(() => {
         // Stay in guest mode cleanly
       });
+
+    fetch('/api/stock')
+      .then((res) => safeParseApiResponse<{ stockOverrides: Record<string, number> }>(res))
+      .then((parsed) => {
+        if (!cancelled && parsed.ok && parsed.data?.stockOverrides) {
+          setStockOverrides(parsed.data.stockOverrides);
+        }
+      })
+      .catch(() => {
+        // Keep local stock overrides
+      });
+
     return () => {
       cancelled = true;
     };
   }, []);
+
+  // Load user's restock notifications when authenticated
+  useEffect(() => {
+    if (!user?.email) return;
+    let cancelled = false;
+    const headers: Record<string, string> = {};
+    if (authToken) headers.Authorization = `Bearer ${authToken}`;
+    fetch(`/api/stock-notifications?email=${encodeURIComponent(user.email)}`, { headers })
+      .then((res) => safeParseApiResponse<{ notifications: StockNotification[] }>(res))
+      .then((parsed) => {
+        if (!cancelled && parsed.ok && Array.isArray(parsed.data?.notifications)) {
+          setStockNotifications((prev) => {
+            const seen = new Set(parsed.data!.notifications.map((n) => `${n.productId}:${n.email}`));
+            const merged = [...parsed.data!.notifications];
+            for (const item of prev) {
+              if (!seen.has(`${item.productId}:${item.email}`)) merged.push(item);
+            }
+            return merged;
+          });
+        }
+      })
+      .catch(() => {
+        // Keep local fallback notifications
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [user?.email, authToken]);
 
   // Sync guest preferences locally when signed out
   useEffect(() => {
@@ -219,6 +282,12 @@ export default function App() {
   };
 
   const handleAddToCart = (product: Product, size?: string, color?: string) => {
+    const liveStock = getProductStock(product, stockOverrides);
+    if (liveStock === 0) {
+      setSelectedProduct(product);
+      showToast(`${product.name} is unavailable (0 in stock) — tap Notify Me for restock alerts`);
+      return;
+    }
     const chosenSize = size ?? product.sizes?.[0];
     const chosenColor = color ?? product.colors?.[0];
     setCart((prev) => {
@@ -284,11 +353,69 @@ export default function App() {
     showToast(`Delivery location updated to ${loc.city} ${loc.pincode}`);
   };
 
-  const handleOrderPlaced = (order: Order) => {
+  const handleOrderPlaced = (order: Order, nextStockOverrides?: Record<string, number>) => {
     setOrders((prev) => [order, ...prev]);
     setCart([]);
     void syncCartToServer([]);
+    if (nextStockOverrides) {
+      setStockOverrides(nextStockOverrides);
+      writeFallbackStockOverrides(nextStockOverrides);
+    } else {
+      setStockOverrides((prev) => {
+        const updated = { ...prev };
+        for (const item of order.items) {
+          const current =
+            typeof updated[item.productId] === 'number'
+              ? updated[item.productId]
+              : getProductStock({ id: item.productId }, updated);
+          updated[item.productId] = Math.max(0, current - item.quantity);
+        }
+        writeFallbackStockOverrides(updated);
+        return updated;
+      });
+    }
     showToast(`Order #${order.orderId} confirmed!`);
+  };
+
+  const handleNotificationCreated = (notification: StockNotification) => {
+    setStockNotifications((prev) => {
+      const exists = prev.some(
+        (n) => n.productId === notification.productId && n.email === notification.email
+      );
+      return exists ? prev : [notification, ...prev];
+    });
+  };
+
+  const handleSubscribeRestockFromModal = async (product: Product, email: string) => {
+    try {
+      const headers: Record<string, string> = {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'FindKart',
+      };
+      if (authToken) headers.Authorization = `Bearer ${authToken}`;
+      const res = await fetch('/api/stock-notifications', {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({ productId: product.id, email }),
+      });
+      const parsed = await safeParseApiResponse<{ notification?: StockNotification; message?: string }>(res);
+      let entry: StockNotification;
+      if (parsed.isHtmlFallback) {
+        entry = fallbackSubscribeStockNotification({
+          productId: product.id,
+          productName: product.name,
+          email,
+        });
+      } else if (!parsed.ok || !parsed.data?.notification) {
+        throw new Error(parsed.errorMessage || 'Could not save restock alert.');
+      } else {
+        entry = parsed.data.notification;
+      }
+      handleNotificationCreated(entry);
+      showToast(`We will notify ${entry.email} when ${product.name} is back in stock`);
+    } catch (err) {
+      showToast(err instanceof Error ? err.message : 'Unable to register restock notification');
+    }
   };
 
   const handleSignOut = async () => {
@@ -465,6 +592,14 @@ export default function App() {
         product={selectedProduct}
         isWishlisted={selectedProduct ? wishlistIds.includes(selectedProduct.id) : false}
         location={location}
+        stockOverrides={stockOverrides}
+        userEmail={user?.email || ''}
+        isNotified={
+          selectedProduct
+            ? stockNotifications.some((n) => n.productId === selectedProduct.id)
+            : false
+        }
+        onNotifyRestock={handleSubscribeRestockFromModal}
         onClose={() => setSelectedProduct(null)}
         onAddToCart={handleAddToCart}
         onToggleWishlist={handleToggleWishlist}
@@ -525,11 +660,24 @@ export default function App() {
         </div>
       )}
 
+      {/* Responsive Stock Assistant Chatbot */}
+      <ChatbotWidget
+        user={user}
+        authToken={authToken}
+        stockOverrides={stockOverrides}
+        notifications={stockNotifications}
+        onAddToCart={(p) => handleAddToCart(p)}
+        onSelectProduct={setSelectedProduct}
+        onNotificationCreated={handleNotificationCreated}
+        onShowToast={showToast}
+        hidden={hasActiveOverlay}
+      />
+
       {/* Toast Notification */}
       {toastMessage && (
         <div
           role="status"
-          className="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:max-w-sm z-40 px-gutter-md py-3 rounded bg-light-inverse-surface text-light-inverse-on-surface shadow-md flex items-center gap-gutter-sm"
+          className="fixed bottom-20 left-4 right-4 sm:left-6 sm:right-auto sm:bottom-6 sm:max-w-sm z-50 px-gutter-md py-3 rounded bg-light-inverse-surface text-light-inverse-on-surface shadow-md flex items-center gap-gutter-sm"
         >
           <span className="material-symbols-outlined text-[18px] text-accent-yellow shrink-0" aria-hidden="true">
             check_circle

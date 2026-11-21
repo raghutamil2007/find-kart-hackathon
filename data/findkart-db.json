@@ -93,5 +93,15 @@
         }
       ]
     }
+  ],
+  "stockNotifications": [
+    {
+      "id": "notif_98282634",
+      "productId": "home-classic-jacket",
+      "productName": "Classic Navy Cotton Casual Jacket",
+      "email": "test-alert@findkart.in",
+      "createdAt": "2026-11-21T14:49:59.013Z",
+      "status": "Subscribed"
+    }
   ]
 }

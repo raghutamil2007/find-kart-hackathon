@@ -1,11 +1,16 @@
 import { useEffect, useState } from 'react';
 import type { DeliveryLocation, Product } from '../types/findkart.ts';
+import { getProductStock } from '../utils/stock.ts';
 import { ProductImage } from './ProductImage.tsx';
 
 interface ProductModalProps {
   product: Product | null;
   isWishlisted: boolean;
   location: DeliveryLocation;
+  stockOverrides?: Record<string, number>;
+  userEmail?: string;
+  isNotified?: boolean;
+  onNotifyRestock?: (product: Product, email: string) => Promise<void> | void;
   onClose: () => void;
   onAddToCart: (product: Product, size?: string, color?: string) => void;
   onToggleWishlist: (productId: string) => void;
@@ -15,6 +20,10 @@ export function ProductModal({
   product,
   isWishlisted,
   location,
+  stockOverrides,
+  userEmail = '',
+  isNotified = false,
+  onNotifyRestock,
   onClose,
   onAddToCart,
   onToggleWishlist,
@@ -22,21 +31,46 @@ export function ProductModal({
   const [selectedSize, setSelectedSize] = useState<string | undefined>(undefined);
   const [selectedColor, setSelectedColor] = useState<string | undefined>(undefined);
   const [added, setAdded] = useState(false);
+  const [notifyEmail, setNotifyEmail] = useState(userEmail);
+  const [showEmailPrompt, setShowEmailPrompt] = useState(false);
+  const [notifying, setNotifying] = useState(false);
 
   useEffect(() => {
     if (product) {
       setSelectedSize(product.sizes?.[0]);
       setSelectedColor(product.colors?.[0]);
       setAdded(false);
+      setShowEmailPrompt(false);
+      setNotifyEmail(userEmail);
     }
-  }, [product]);
+  }, [product, userEmail]);
 
   if (!product) return null;
 
+  const liveStock = getProductStock(product, stockOverrides);
+  const isOutOfStock = liveStock === 0;
+
   const handleAdd = () => {
+    if (isOutOfStock) return;
     onAddToCart(product, selectedSize, selectedColor);
     setAdded(true);
     window.setTimeout(() => setAdded(false), 1200);
+  };
+
+  const handleNotifySubmit = async () => {
+    if (!onNotifyRestock) return;
+    const targetEmail = (notifyEmail || userEmail).trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(targetEmail)) {
+      setShowEmailPrompt(true);
+      return;
+    }
+    setNotifying(true);
+    try {
+      await onNotifyRestock(product, targetEmail);
+      setShowEmailPrompt(false);
+    } finally {
+      setNotifying(false);
+    }
   };
 
   return (
@@ -107,6 +141,31 @@ export function ProductModal({
               <span className="font-label text-label-md text-success tabular-nums">
                 {product.discountPercent}% off
               </span>
+            </div>
+
+            <div>
+              {isOutOfStock ? (
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-sm bg-light-error-container text-light-error font-label text-label-md">
+                  <span className="material-symbols-outlined text-[16px]" aria-hidden="true">
+                    cancel
+                  </span>
+                  Product Unavailable · 0 in stock
+                </span>
+              ) : liveStock <= 5 ? (
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-sm bg-accent-yellow/25 text-light-on-surface font-label text-label-md tabular-nums">
+                  <span className="material-symbols-outlined text-[16px]" aria-hidden="true">
+                    inventory_2
+                  </span>
+                  Low Stock · Only {liveStock} units left
+                </span>
+              ) : (
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-sm bg-success/15 text-success font-label text-label-md tabular-nums">
+                  <span className="material-symbols-outlined text-[16px]" aria-hidden="true">
+                    check_circle
+                  </span>
+                  In Stock · {liveStock} units available
+                </span>
+              )}
             </div>
 
             <p className="font-body text-body-md text-light-on-surface-variant">{product.description}</p>
@@ -182,18 +241,70 @@ export function ProductModal({
             </div>
           </div>
 
-          <div className="flex items-center gap-gutter-sm pt-2">
-            <button
-              type="button"
-              onClick={handleAdd}
-              className={`flex-1 py-3 px-gutter-lg rounded font-label text-label-lg transition-colors cursor-pointer ${
-                added
-                  ? 'bg-success text-on-success'
-                  : 'bg-accent-yellow text-on-accent-yellow hover:bg-light-secondary-container'
-              }`}
-            >
-              {added ? 'Added to Cart' : 'Add to Cart'}
-            </button>
+          <div className="flex flex-col gap-2 pt-2">
+            {isOutOfStock && showEmailPrompt && !isNotified && (
+              <div className="flex items-center gap-2">
+                <input
+                  type="email"
+                  value={notifyEmail}
+                  onChange={(e) => setNotifyEmail(e.target.value)}
+                  placeholder="Enter your email for restock notification"
+                  aria-label="Restock notification email"
+                  className="flex-1 min-w-0 h-10 px-3 rounded border border-light-outline-variant bg-light-surface-container-low font-body text-base sm:text-body-md text-light-on-surface focus:outline-none focus:ring-2 focus:ring-light-primary"
+                />
+                <button
+                  type="button"
+                  disabled={notifying}
+                  onClick={() => void handleNotifySubmit()}
+                  className="h-10 px-4 rounded bg-light-primary text-light-on-primary font-label text-label-md cursor-pointer shrink-0"
+                >
+                  {notifying ? 'Saving...' : 'Confirm'}
+                </button>
+              </div>
+            )}
+
+            <div className="flex items-center gap-gutter-sm">
+              {isOutOfStock ? (
+                <button
+                  type="button"
+                  disabled={isNotified || notifying}
+                  onClick={() => {
+                    if (userEmail) {
+                      void handleNotifySubmit();
+                    } else {
+                      setShowEmailPrompt(true);
+                    }
+                  }}
+                  className={`flex-1 py-3 px-gutter-lg rounded font-label text-label-lg inline-flex items-center justify-center gap-2 transition-colors ${
+                    isNotified
+                      ? 'bg-success/15 text-success cursor-default'
+                      : 'bg-accent-yellow text-on-accent-yellow hover:bg-light-secondary-container cursor-pointer'
+                  }`}
+                >
+                  <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
+                    {isNotified ? 'notifications_active' : 'notifications'}
+                  </span>
+                  <span>
+                    {isNotified
+                      ? 'Restock Alert Active'
+                      : notifying
+                        ? 'Subscribing...'
+                        : 'Notify Me When Available'}
+                  </span>
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={handleAdd}
+                  className={`flex-1 py-3 px-gutter-lg rounded font-label text-label-lg transition-colors cursor-pointer ${
+                    added
+                      ? 'bg-success text-on-success'
+                      : 'bg-accent-yellow text-on-accent-yellow hover:bg-light-secondary-container'
+                  }`}
+                >
+                  {added ? 'Added to Cart' : 'Add to Cart'}
+                </button>
+              )}
 
             <button
               type="button"
@@ -214,6 +325,7 @@ export function ProductModal({
               </span>
               <span className="hidden sm:inline">{isWishlisted ? 'Saved' : 'Wishlist'}</span>
             </button>
+            </div>
           </div>
         </div>
       </div>
