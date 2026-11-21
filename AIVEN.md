@@ -1,6 +1,8 @@
-# FindKart — Powered by Aiven Open Source PostgreSQL
+# FindKart — Powered by Aiven Open Source Services
 
-FindKart's backend is powered by **Aiven for PostgreSQL**, a fully-managed cloud database service built on 100% open-source PostgreSQL.
+FindKart's backend is powered by **Aiven Open Source Services**:
+1. **Aiven for PostgreSQL** — Managed relational database for transactional consistency (users, orders, support tickets, inventory overrides).
+2. **Aiven for OpenSearch** — Managed search and telemetry engine with strict TLS/HTTPS encryption.
 
 ---
 
@@ -9,28 +11,39 @@ FindKart's backend is powered by **Aiven for PostgreSQL**, a fully-managed cloud
 ```mermaid
 graph TD
     Client["React 19 + Vite Frontend"] -->|"REST APIs / JSON"| Express["Express Backend (server.ts)"]
-    Express -->|"Connection Pooling (pg.Pool)"| Aiven["Aiven for PostgreSQL (Open Source)"]
     
-    subgraph Aiven Cloud Service
-        Aiven --> T1["users Table"]
-        Aiven --> T2["orders Table"]
-        Aiven --> T3["support_tickets Table"]
-        Aiven --> T4["stock_overrides Table"]
-        Aiven --> T5["stock_notifications Table"]
+    subgraph Aiven Open Source Cloud Services
+        Express -->|"Connection Pooling (pg.Pool)"| AivenPG["Aiven for PostgreSQL"]
+        Express -->|"HTTPS TLS Client"| AivenOS["Aiven for OpenSearch"]
+        
+        AivenPG --> T1["users Table"]
+        AivenPG --> T2["orders Table"]
+        AivenPG --> T3["support_tickets Table"]
+        AivenPG --> T4["stock_overrides Table"]
+        AivenPG --> T5["stock_notifications Table"]
+        
+        AivenOS --> OS1["Cluster Health (GREEN)"]
+        AivenOS --> OS2["Node & Shard Telemetry"]
     end
     
-    Express -->|"Live Metrics & Diagnostics"| Diagnostics["GET /api/aiven/status"]
+    Express -->|"Diagnostics Endpoint"| D1["GET /api/aiven/status"]
+    Express -->|"OpenSearch Endpoint"| D2["GET /api/opensearch/status"]
 ```
 
 ---
 
 ## 2. Aiven Service Details
 
-- **Service Type:** Aiven for PostgreSQL (Open Source)
-- **Host:** `pg-1502d993-findcart10.c.aivencloud.com:10969`
+### A. Aiven for PostgreSQL (Open Source)
+- **Engine Version:** PostgreSQL 18.7
 - **Database:** `defaultdb`
-- **SSL Security:** TLS 1.3 encrypted with automated CA chain handling
+- **Security:** TLS 1.3 encrypted connection
 - **Connection Management:** `pg.Pool` connection pool with auto-reconnect and idle eviction
+
+### B. Aiven for OpenSearch (Open Source)
+- **Cluster Health:** GREEN
+- **Security:** Strict HTTPS TLS certificate verification (`rejectUnauthorized: true`)
+- **Telemetry:** Live cluster health, latency, node counts, and shard metrics
 
 ---
 
@@ -48,33 +61,33 @@ All tables and indexes are defined in [`backend/schema.sql`](file:///c:/Users/je
 
 ---
 
-## 4. Live Aiven Diagnostics API
+## 4. Live Diagnostics Endpoints
 
-FindKart exposes a live diagnostics endpoint that queries Aiven PostgreSQL system catalogs in real-time:
-
-### `GET /api/aiven/status`
-
-**Live Sample Response:**
+### 1. `GET /api/aiven/status` (PostgreSQL Status)
+Returns real-time PostgreSQL health, database sizing, active connections, and table metrics:
 ```json
 {
   "service": "Aiven for PostgreSQL (Open Source)",
   "provider": "Aiven",
   "connected": true,
   "latencyMs": 246,
-  "host": "pg-1502d993-findcart10.c.aivencloud.com",
   "database": "defaultdb",
   "version": "PostgreSQL 18.7",
   "databaseSize": "8318 kB",
-  "databaseBytes": 8517311,
-  "activeConnections": 2,
-  "tables": [
-    { "tableName": "orders", "rowCount": 0, "totalSize": "32 kB" },
-    { "tableName": "stock_notifications", "rowCount": 1, "totalSize": "64 kB" },
-    { "tableName": "stock_overrides", "rowCount": 0, "totalSize": "8192 bytes" },
-    { "tableName": "support_tickets", "rowCount": 4, "totalSize": "80 kB" },
-    { "tableName": "users", "rowCount": 0, "totalSize": "32 kB" }
-  ],
-  "serverTime": "2026-11-21T18:22:46.761Z"
+  "activeConnections": 2
+}
+```
+
+### 2. `GET /api/opensearch/status` (OpenSearch Status)
+Returns live OpenSearch cluster health, latency, node counts, and shard status:
+```json
+{
+  "status": "connected",
+  "connected": true,
+  "clusterHealth": "green",
+  "latencyMs": 689,
+  "numberOfNodes": 1,
+  "activeShards": 4
 }
 ```
 
@@ -82,9 +95,14 @@ FindKart exposes a live diagnostics endpoint that queries Aiven PostgreSQL syste
 
 ## 5. Verification Commands
 
-### Initialize Schema & Test Aiven Connection:
+### Test PostgreSQL Connection & Migrations:
 ```bash
 npm run db:init
+```
+
+### Test OpenSearch Cluster Health:
+```bash
+npm run opensearch:status
 ```
 
 ### Start Development Server:
@@ -92,6 +110,7 @@ npm run db:init
 npm run dev
 ```
 
-### Live Browser Checks:
+### Live Browser Endpoints:
 - Health check: `http://localhost:3000/api/health`
-- Aiven diagnostics: `http://localhost:3000/api/aiven/status`
+- Aiven PostgreSQL status: `http://localhost:3000/api/aiven/status`
+- Aiven OpenSearch status: `http://localhost:3000/api/opensearch/status`

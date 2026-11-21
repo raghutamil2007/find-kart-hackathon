@@ -1,20 +1,15 @@
-# FindKart — Aiven Open Source PostgreSQL Backend
+# FindKart — Aiven Open Source Backend Services
 
-This directory houses the backend database integration with **Aiven for PostgreSQL**.
-
-## Files Overview
-
-- **`aiven.ts`**: Aiven diagnostics engine. Queries database sizing, active connections, table sizes, and service health.
-- **`db.ts`**: Connection pool manager. Features automated SSL URL cleaning for Aiven cloud certificates (`{ rejectUnauthorized: false }`).
+This directory houses the backend integrations with **Aiven Open Source Services**:
+- **`db.ts`**: PostgreSQL connection pool manager with cloud SSL handling.
+- **`opensearch.ts`**: OpenSearch HTTPS client with strict CA certificate verification and health telemetry.
+- **`aiven.ts`**: Live Aiven PostgreSQL diagnostics engine (database size, table sizes, connections).
 - **`schema.sql`**: Full DDL with indexes for all 5 business entities.
-- **`init.ts`**: Auto-migration runner.
-- **`repositories/`**: Clean data-access methods:
-  - `userRepository.ts`
-  - `orderRepository.ts`
-  - `supportRepository.ts`
-  - `stockRepository.ts`
+- **`init.ts`**: Auto-migration and database initial seed runner.
+- **`repositories/`**: Clean, type-safe data access layer for users, orders, support tickets, and inventory.
 
-## Aiven Endpoints
+## Verification Commands
 
-- `GET /api/aiven/status` — Returns live service health, PostgreSQL version, database size, active connections, and table metrics.
-- `GET /api/db/status` — General database connection health check.
+- `npm run db:init` — Verifies Aiven PostgreSQL tables and runs migrations.
+- `npm run opensearch:status` — Verifies Aiven OpenSearch cluster health (`GREEN`).
+- `npm run status` — Prints PostgreSQL telemetry report.
