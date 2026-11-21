@@ -1,60 +1,33 @@
 import type { DeliveryLocation, Product } from '../types/findkart.ts';
 
 export const STITCH_IMAGES = {
-  heroElectronicsSale:
-    'https://lh3.googleusercontent.com/aida/ALJJyrCdi1MS9bP6m5MwWAD2hfs3LhCxck6IT3NU4SswVCowWHXVDJ9eXB2BYpxqxijpaP-zHgAlQJcrhAmmRTJXCzDnoNGsE84L_NRLzS-YcMOBpuo6LRgr3WZjYsbDoGN3J99QbpXDnUjRs6nFCQrmz0W5hVgaE6pGBYEJSTHgZdKgwpHFomSkVCmwK8gy4NqOIog2IgRkZdyWm74JWEEAHq6esCO_kgZgpT0D81BjA5n9EU6DRtMxnLaBqLZXjkWL6A',
-  prodHeadphones:
-    'https://lh3.googleusercontent.com/aida/ALJJyrCjJzAkdwkIbrzMDatIrgNVl5YoCmiK8R9pKLytK2rvPILD6TomrVPikLheRu9kpNnqIdVFl0lotMed0a1UjROJT-7zZFJPwINngxlvse4H1g0ml5G4hhzVYDnU_U8Bfwf7_u8H1XOG6AwYpsVfEt3GfwxaFBOa1W8JSRskhl5QCC2ZiY4cNvwLSTFzg0JwMTIGPks5Jy3vDOC2NYJzWPBkbqwWldpy3G9Riy93RETmru1y-bjImdL01RE',
-  prodSmartwatch:
-    'https://lh3.googleusercontent.com/aida/ALJJyrCdlo-it_NLTrCnrmpr8D6e-wbQnY5q8BvlgBBRERoSSug7U4ECRZ0vhmKQNyOkC3ZKxSX-3uny-IiZWEiPMAV3UQanPBCYXLy-wXjcO_QLgP9z5VIo5qhoxUZpEs_96YE9GICyRvR2ss_93CpYAWE1oUbToI9F_zLF6-VqFsvg5cTp_hTky9hZSGE-D_pDDbBXDgEq_MM1_cKEh8cb8KFZiiZcgcitwdXuD9ttx6RC1xGItycXj5gW_g',
-  prodSneakers:
-    'https://lh3.googleusercontent.com/aida/ALJJyrCHmiyN7RvfohJiuik2NVg_fHl-w_oaGW1WEZbipfdB7ti7ojqepCeTxNnzJRTXDHBuNfm0Jlw_jqQlt3oRKUhSw-bZnim9pX1v0XFmqBUEHBV4yLBXI0bfCEt80z-QXaH591mETgMrXhtRPVpatn1KHxA9iYlPN3HduqahpNnLcEml3wRDIg_R9b9kkNDOsVAOYAVVw8Csd7eVQb10o_rMpNDT3FMDSJCTQbxTokTXGKtO7i_VeZk',
-  prodEarbuds:
-    'https://lh3.googleusercontent.com/aida/ALJJyrBNozDO7AYyKFwmNxoz6w1NrABBgNFLWBIhpiyePCMWQByTpTQKkEsxrJQXzpvJ40dJYZ_bdgCwamR2zEIZxwSDXO50N44tccyXaViy91s5beu0V2ekTh4zfU51wYxtvO9z91ZVFxvJqIujQV39BW_fy06UJ89j7Kej7jzIYugjN2gC_gorl6fY7bZtI6HZGtSkMd6GX5I4k6CUOypUjUiPySdyXsYn6eonIZEV76KKiTf9YNq9Mw',
-  prodKettle:
-    'https://lh3.googleusercontent.com/aida/ALJJyrAUWTkZeqfL0GkU2LYiypCJSjs8PZXA232dQmO8qOTYNQ0BmGL_KFhhzxVEU1uL-HAvcSSxobRx84U90ApRE2hh2NiUaTP1wXfYZp4wnguSFIJsPQqud8G5vBcLCWBOsgIIUKvS6klEs9Bp0LW6npN51vkMGCukvtmF2Wj4FjqV4-7Bm6F2nWz8QGUipa5GE0YvMjA5VoPdMcrq-El8FwIUmrmdAT8o5msTuMVbDYOfPGLzBsnT',
-  prodBackpack:
-    'https://lh3.googleusercontent.com/aida/ALJJyrDmJpKtvwm3vVdhV8b5Fm3GJisqqrvYdQQUn_QMCX4tK7nP7oWZ3FdXqEgA1q9dc2EgPuqbinVj6vD9SdeeSUUcqleBNijIA3ZH5O_m0AUiISXxRI2ASebLu_Fa33gifvTZKK3E9uGk43L-f7dwe_NX4PwYmkPuRUJ7BqPpkzZevucAChuNflkJY4GeJSU50extiUua_PyLMJK4TS8dK8thv7oaWiRK7tYLEqgpxMQjgDBFxNm1n1M',
-  prodJacket:
-    'https://lh3.googleusercontent.com/aida/ALJJyrDSRmvfPChsySURbdpmnfA92yRgS9hQ7BDsyIeXX6mCWnGc12ngMGXYfPpEXeJyYaLzxna85OvBsMQ_P3BqWPcUDSzNfwUQxWgpI_ruwfju7YIKnlrDt1vHOuGs_1vPipiBQWA9-hTwpflhs3XcOzE9mFjN3s0mwYSv8CG7uOsVI_sgiysTVsNl1qJovv01vmtK-wNdO8Q8Q2V-pUuMf1KKrgfNF_NlnsjxYy60BVw9ItQwz3B4',
-  prodSkincare:
-    'https://lh3.googleusercontent.com/aida/ALJJyrBJi868HAGft_Sa01s-o5FWkikuBQT_K34SS4wWScsRL00joYBOUpXJE4shZgkXQt2iogVDjJuKykcreIqzkiUEN18K658iG8-Eo9fSUQagk_izwJyAwq5y9fwXVKsYYawgbgZGcpBJM-uTXQH4q2DhM-RUXHIh-bbhlJ2adhzhuActafmTXpXpZtw4b1KKh12imryF5fESNoCbrEEjDiUpwO8nZ8BP07FPI2hMfg3XKHDyO23T2tL1',
-  bannerFashionMinimal:
-    'https://lh3.googleusercontent.com/aida/ALJJyrDKoFcgDfZCxd3nBxRrk9FVFubRqY6j9yhDMcCgEoshLNkg5tT5AmxeAxKrryptJj24i69vHSJbg1AzClfeNRAnxFEI8KObJroNiaofpewrvd_pkjvGdlyURUmCCP8_T6aGushmm0alkc3Pt3nBxMFYDcFq4sYIF-BYA8DJSXHjjMNGpUK-cKCC03TEnFuDEfEuMYHsD7VvQgwnKIb_h1twFfV0SGfpw-kmyfM0vY2uar_MH8GGCP8KJ-Rg_qhdvcVk',
-  fashionTshirt:
-    'https://lh3.googleusercontent.com/aida/ALJJyrAoZWBcAifVo5TyyuaagK3vx9IvQydQZuQv9CPEBXW5Y8WFvu8vpcI8vuzaV8T72ILrFdNT24AQkd_9gVS61dZDj7RFSBhaJTwJ3ENYlrJqCfu7i1aUbdXoNvTAS8HQoDgGiOKA-f3iteJ5xpbdvad71YL3XXoRPQUa7taeORsJOMNFsb9ihia_hXzCVz0wgaeJ-uWvKvL0LxQ-J8gS-Z39C4F7sJZOFUHvML-6oPFokCEe-kE4MmfBPg',
-  fashionShirt:
-    'https://lh3.googleusercontent.com/aida/ALJJyrD95-8CkoZi-e54uo434Y8eqzaUPdpARKA2wO1ooY770KipmrAQHhvRkRpDXypUy2xVhlXEEaJvEN6Mt2lkXcY1jhm_bfbU4OAreo7mVB6jUc32vl2QimKrfcxqFPUZX0U2vUZ60QAdOT_nfvbll0nV7_OyOFny0PXA3AQ4476q0hMt__5CZiWxcgtyEm_P4hBZ5nRgRgfdKU1589Dd9aJIAO7NmpIxi6U4lHGqOphW8cbB4Bcd2GIG',
-  fashionJeans:
-    'https://lh3.googleusercontent.com/aida/ALJJyrC2KDXnbGZhg16wQriDwsNk62V05t3qhRuqPlWdXrBa1qK7A6tmT0OZ0SLrQrGh3HRJFQMKoGYXVyPV7piz-KO3NTEC6eMvgSQAx0h9qr7cMvfHF1iQw5OjSvOQyupBcVhshjOFxixGmIj6w_eU4I3EOm16BrLDtDVeyndRZ0v8fqEqZ7BbAsLXZJJ2q0VB6v2BYEZbjMy2QKLLyMzm-_E2PZG0CWfs5KNxASzZCD0-_HS_nWo6wPKG',
-  fashionDress:
-    'https://lh3.googleusercontent.com/aida/ALJJyrCEHlFkOCSkEUhjNfqPSJw1b4NgVuIcsk5U7M5tw6kqpZaPMZDWnX-5riuXSYvloERB1Oi-Svf_kH6Kxa6BcZEon-mEZNT4wV17YYRZhIIwHjNeDP1EY0qbdSw0XEYlDEdURcVerOUvIwBVWaE4bVQM2bsBzDw6vB_64P7fnx04XLD4ZI99s0YkGq95luGdtljQ_z-Y7h3cXsTm5CZtb19gBie6gfNSy_aZHx9BT27ReOOH9Jjhf09q',
-  fashionKurta:
-    'https://lh3.googleusercontent.com/aida/ALJJyrCe1l4JpFNOAKtHbAUPBwwvcLmRrOlSxeQmkceSJR_OthoT3T47qSVBTO8GoJQnhSUH7A0_TffGY2x0vscMx1HbqeYbJakwh0WSTzFMbaof0je2PStkbfkZUDdATFk6Qs1YVr-L28rO0zJHPqy6jmbWJOjDa0AtFf5VipiS7OXRM5cf3iW9xaQTP7Hg-VVTzg0azcxIi7WIIdeIFo2ebh_FM7g6j6sG8-xdKaXWiWIEXi3ve0tCWqCZ',
-  fashionHandbag:
-    'https://lh3.googleusercontent.com/aida/ALJJyrCWlTVrrJw97CNvtSg1lNIguJX1S0Eh1hG-LRWdzvKbG_DrUfY8YWm6ffWFR7UVAKaeKICJT10IsXgJTZ8Ho-Pi3I94UBoKa7d-0Bm2L83LCcKmVlzD9Xi5xmNnENERwncPjHXnrDHXP55gQHa2rqTljqBwGFsL48WBhVMD-j7Gg-tUV0BNnZKNY1ok19XaTg1uJU-acQYbk2Rm9YndQfV2sc3dyU178ZNZGVSXpbKXsnLtniSTmmdJeK0',
-  fashionWatch:
-    'https://lh3.googleusercontent.com/aida/ALJJyrA3IIsJtdIvCXLH7VO5zIfJQqKGil1NVHmiGgDzvfjN66JMUkDjlG_58ZgmYRleM1auIqyFbgB9fUWfjnvTcRd2YFc7z5HFlVFnSo0Mjk-SgVY7FKOPKgJnJnh-IlW74WXNXZP2sTbLIpbik11UQFGByr3akzlGeXRSoXLfQsWR5egpUpz60HxmuSfRNw8Oa-6Jv7U78-B-vXPDATfaIA6DDjqkMiYXeeGQTaDRrIfDvyVdLT92eJTy',
-  bannerBeautyMinimal:
-    'https://lh3.googleusercontent.com/aida/ALJJyrBhNNjvIcJybAoDG842UieGxOIIT-B-Ms1Z1wgie0YOHbwIWiMlwqsFDjpjb_7LX7dBmLFVHyUtMjkC86oKm7QRdOzDat7k6dQhdaR4AINnOqzkeWHt8yN64kieiUbDCz14zQngW8I6_p1A4fF6Wq_NAE1SFddoZxTonVDymyj7lPpkIhTSZvZa6yFf5n6gKYZKnVoakBvBJZleDlUOVPDSarUZCGnCtdc5eHZFo4psdc-2Fonf5YCwYd0zCkMghBE',
-  beautyFacewash:
-    'https://lh3.googleusercontent.com/aida/ALJJyrAbgzz0Fva8_jUqSSsfmrrDV3chWYK8yBSpCnBexnKNVFFFlZs-zIApB2RNOO-sinUbvezIvFLGZsghWvqQBgW_QsEzQbLkVEsENZnsmHwkAyWC_SgFgiI2gA1UC65bLkTANWPqNDwGR4s1VnzZXdtN1m5DtDlPtVV-OYm1ukXDxGMeSPfgWQqx5oUsn1D_BwiV6OPx-iRpOvbvDHT7Lcw77PsGcIHurdkOAp9VQpXEDK2PE52SRk2K1h4',
-  beautySunscreen:
-    'https://lh3.googleusercontent.com/aida/ALJJyrAzQDEAFY09bhjrOQ7NrUOSIs2LLm4ah6aLEmb3frEGHHkr_R9dgGwLLf9HIx7yiAcbhPyns7xG3EllR_insljXJM6HD08Ye5SFVws01xtvLJ8MkIuk6fusdr3N3Nw6Zr21ZTJ-dp1UvaCzahB4Yu3cZQdIk8_h6SL1yxMMJgZlxzYBVewm6plEuVDFliIpPuDGghaHk6Hfb-TnlI6FE9jjfultlOuO19WDwd63u_eQJcDAiuBJrmj3OKXn',
-  beautyMoisturizer:
-    'https://lh3.googleusercontent.com/aida/ALJJyrAOzGWkFadS6IyfinuLL6JbCo9j_SsVEMDeA6xT55ZQC67aipV8Usd4Q8zss-QF9gIVwr1d13mKgTgtoJQS263FjBZ1vAzlAuIog1h7hcpW7l3xs-Z5VSz_HNt4GSPwykcccRBZjX7dMJor1Jdxa43CjFKNAiYmxIvATzbABsfX6dXHc84Ums9PKj1jHlzBJtr-lm8CVM62HLkgRuZzZY68Y_hPxe70LR19rxNDh95-CMGkzJPlZZwX8Eak3-M',
-  beautyLipstick:
-    'https://lh3.googleusercontent.com/aida/ALJJyrCmrJS3qaa4zIFV5yrqMV2B-4HvCWu-HIjVfCBmOKcjYb4DG7N54mCQ1-QQIouD4nBhGpvK4DA84kgkILV0vILUx48vJIF9eKVBihuCF1CjYoiKJ7BrQkvUtPdksT0yoQUnoMXZVNVZSD-aYjhl86FK1QvJVvqXQE4dfrF31JT8mUe-9HkGVsh18PYoHrS1mFZ10cNy_Nh_3mtfFfHBOiyjtb7VRSfu52M_qTZEZt05ZZE2Ss6KqlfMgA',
-  beautyMakeupKit:
-    'https://lh3.googleusercontent.com/aida/ALJJyrBIvvUHrD21huXy3e-USiW28YGQ_mkvDfo3oXPP_X2BV2J3pJpMcV6PMoEuUC9nQa78LUOSq78YWJg4X-OKZET_w0jkBV62D3FWygh2o5y_YOl4EObaGaVGgZjAXKujcdQOESFVXF-y6AF_h5lp87teymDszUELivDFHwaHQuvAIQ_Z7AzcVdx-Kn8ajp2239893gxmGUq14rcsay_PgugwRlgsneX6osOEfspbtBgfG2cQpCxl8qFIWdvT',
-  beautyShampoo:
-    'https://lh3.googleusercontent.com/aida/ALJJyrCGDDcg9GF0UFAEAkvRi_btoxWyghLyzg83ijCVgMHmliQt7-wtB0nbJfswVjIKiCgbj4_k1BkATOwhIlxPSR9NphTFwPZTPqPR5yER2HZmJCXN5-9BCxDMC-iHz1J4quBiHQ4cwn58eXhA-sUAkXB9j5F84g-oP1pQIfof7SvQF-yGyDsuzGNZBefpTt3gwXxOZ5m7xhuUvhfYoEm03JQTMVr-juqoSBBesH_kjOEf0-krHiGd2QjOyg',
-  beautyConditioner:
-    'https://lh3.googleusercontent.com/aida/ALJJyrA5BOkkGwqMNFUf5p1kZ5fGSimqonOpsChDOby82AnlnMnp8ChpTIbnCqlq2Hsl8aSd-oApBnSUtK6eLpwH_d3KSV-Y2TaUEEU0jXQN3RyVzvkFptIdUOq0D7fcp9THAlxIoV1B4KEkPH3MY1sfVqqQvf4m7ubSF98dRP-FUMUWzeSyD0GbjVvhTyPweuG9u7R3OlzK7GKehQ17YlydSnacdGjNucAqnfcIKzUnxUbl3TC1Zdq9FGftJCTbun4',
-  beautyPerfume:
-    'https://lh3.googleusercontent.com/aida/ALJJyrC0jc3FcDxA8-DzB3s-ppikpKr3bmgHVu8uufzGN5bQ40nC2xcJi_ukD4VDMY5Y4Q_22-fOAS9_mp0F-4NghRYf9s3vrWK4ahQIpZn81JqQxbgldCzXZMQ7hYj8KqGoUxiO6Km7mH-PDD4p62tGiqSy1OEy7QwX4LDYQjEtx_lD2ZPQ1RPGlwsYTux-CMU31GkpxKoqBllIZ5JFiHj6AuAMbj_qb7CqGQg-YFxZUpd0_4-yhURTNcc-Nw',
-  authShowcase:
-    'https://lh3.googleusercontent.com/aida/ALJJyrDeBj9xwXEaVjh_cy5o2q-xjMBl6PaPvWYe6uDb_-kgpynN_tor27inbTP6iJc3-61vaN0INklVLUbZIBEqqKFjF7IK5qDGs81u107invSDsLX2_ZUCtXi-XRxZVjaxCCwgpAoilwgMevag_9MKOcoOothjkyyUACEiGsWMJKZcGzttXocJhDU0MARX_EberdI2M4FNFhTBg2TtdQtkvTr2GUe1uKmP6lnmWwtRbN2ajESlb8jNVKoojc9KMoZfXQM',
+  heroElectronicsSale: '/src/assets/images/hero_electronics_sale_1795266689552.jpg',
+  prodHeadphones: '/src/assets/images/prod_anc_headphones_1795266689961.jpg',
+  prodSmartwatch: '/src/assets/images/prod_amoled_smartwatch_1795266690081.jpg',
+  prodSneakers: '/src/assets/images/men_running_shoes_1795260279053.jpg',
+  prodEarbuds: '/src/assets/images/prod_wireless_earbuds_1795266690435.jpg',
+  prodKettle: '/src/assets/images/prod_kitchen_appliance_1795257806571.jpg',
+  prodBackpack: '/src/assets/images/men_laptop_backpack_1795260438074.jpg',
+  prodJacket: '/src/assets/images/prod_bomber_jacket_1795266690551.jpg',
+  prodSkincare: '/src/assets/images/banner_beauty_minimal_1795266689918.jpg',
+  bannerFashionMinimal: '/src/assets/images/women_linen_blazer_1795259833948.jpg',
+  fashionTshirt: '/src/assets/images/fashion_polo_stripes_1795258511915.jpg',
+  fashionShirt: '/src/assets/images/men_nehru_jacket_1795260279395.jpg',
+  fashionJeans: '/src/assets/images/women_wideleg_jeans_1795259834449.jpg',
+  fashionDress: '/src/assets/images/women_floral_top_1795259834253.jpg',
+  fashionKurta: '/src/assets/images/fashion_pastel_kurti_1795266690652.jpg',
+  fashionHandbag: '/src/assets/images/fashion_sling_quilted_1795258510238.jpg',
+  fashionWatch: '/src/assets/images/men_chronograph_watch_1795260354589.jpg',
+  bannerBeautyMinimal: '/src/assets/images/banner_beauty_minimal_1795266689918.jpg',
+  beautyFacewash: '/src/assets/images/beauty_repair_conditioner_1795266690289.jpg',
+  beautySunscreen: '/src/assets/images/beauty_repair_conditioner_1795266690289.jpg',
+  beautyMoisturizer: '/src/assets/images/banner_beauty_minimal_1795266689918.jpg',
+  beautyLipstick: '/src/assets/images/banner_beauty_minimal_1795266689918.jpg',
+  beautyMakeupKit: '/src/assets/images/banner_beauty_minimal_1795266689918.jpg',
+  beautyShampoo: '/src/assets/images/beauty_keratin_shampoo_1795266690760.jpg',
+  beautyConditioner: '/src/assets/images/beauty_repair_conditioner_1795266690289.jpg',
+  beautyPerfume: '/src/assets/images/banner_beauty_minimal_1795266689918.jpg',
+  authShowcase: '/src/assets/images/hero_electronics_sale_1795266689552.jpg',
   prodBooksStationery: '/src/assets/images/prod_books_stationery_1795257806952.jpg',
   prodToysStem: '/src/assets/images/prod_toys_stem_1795257806446.jpg',
   prodSportsGear: '/src/assets/images/prod_sports_gear_1795257806244.jpg',

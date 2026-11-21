@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface ProductImageProps {
   src: string;
@@ -14,6 +14,10 @@ export function ProductImage({
   fallbackIcon = 'shopping_bag',
 }: ProductImageProps) {
   const [hasError, setHasError] = useState(false);
+
+  useEffect(() => {
+    setHasError(false);
+  }, [src]);
 
   if (hasError || !src) {
     return (
