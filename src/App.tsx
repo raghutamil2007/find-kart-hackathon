@@ -334,7 +334,6 @@ export default function App() {
             setCurrentView('home');
             showToast(`Welcome, ${payload.user.name.split(' ')[0]}!`);
           }}
-          onBackToStore={() => setCurrentView('home')}
         />
       </MotionConfig>
     );

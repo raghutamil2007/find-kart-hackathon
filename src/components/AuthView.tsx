@@ -17,14 +17,12 @@ interface AuthViewProps {
   guestCart: CartItem[];
   guestWishlist: string[];
   onAuthSuccess: (payload: AuthSuccessPayload) => void;
-  onBackToStore: () => void;
 }
 
 export function AuthView({
   guestCart,
   guestWishlist,
   onAuthSuccess,
-  onBackToStore,
 }: AuthViewProps) {
   const [mode, setMode] = useState<'signin' | 'register'>('signin');
   const [alertState, setAlertState] = useState<{
@@ -175,11 +173,7 @@ export function AuthView({
       {/* Compact Mobile Brand Header */}
       <header className="lg:hidden bg-light-primary text-light-on-primary px-gutter-md sm:px-page-margin py-gutter-md sm:py-gutter-lg flex flex-col gap-gutter-md">
         <div className="flex items-center justify-between gap-2">
-          <button
-            type="button"
-            onClick={onBackToStore}
-            className="inline-flex items-center gap-gutter-sm text-left min-w-0 cursor-pointer"
-          >
+          <div className="inline-flex items-center gap-gutter-sm text-left min-w-0">
             <div className="w-9 h-9 rounded bg-accent-yellow text-on-accent-yellow flex items-center justify-center shadow-sm shrink-0">
               <span className="material-symbols-outlined text-[20px]" aria-hidden="true">
                 shopping_bag
@@ -189,14 +183,7 @@ export function AuthView({
               <span className="font-headline text-title-lg text-light-on-primary leading-none">FindKart</span>
               <span className="font-label text-label-sm text-accent-yellow truncate">INDIA&apos;S TRUSTED STORE</span>
             </div>
-          </button>
-          <button
-            type="button"
-            onClick={onBackToStore}
-            className="font-label text-label-sm px-2.5 py-1.5 rounded bg-light-primary-container text-light-on-primary shrink-0 cursor-pointer"
-          >
-            Back to Store
-          </button>
+          </div>
         </div>
 
         <div className="flex flex-col gap-1">
@@ -213,11 +200,7 @@ export function AuthView({
       <aside className="hidden lg:flex lg:col-span-5 bg-light-primary text-light-on-primary flex-col justify-between p-section">
         <div className="flex flex-col gap-gutter-lg">
           <div className="flex items-center justify-between">
-            <button
-              type="button"
-              onClick={onBackToStore}
-              className="inline-flex items-center gap-gutter-sm w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-yellow rounded text-left cursor-pointer"
-            >
+            <div className="inline-flex items-center gap-gutter-sm w-fit rounded text-left">
               <div className="w-10 h-10 rounded bg-accent-yellow text-on-accent-yellow flex items-center justify-center shadow-sm">
                 <span className="material-symbols-outlined text-[24px]" aria-hidden="true">
                   shopping_bag
@@ -231,18 +214,7 @@ export function AuthView({
                   INDIA&apos;S TRUSTED STORE
                 </span>
               </div>
-            </button>
-
-            <button
-              type="button"
-              onClick={onBackToStore}
-              className="inline-flex items-center gap-1 px-3 py-1.5 rounded bg-light-primary-container text-light-on-primary hover:bg-light-primary-container/80 font-label text-label-sm cursor-pointer"
-            >
-              <span className="material-symbols-outlined text-[16px]" aria-hidden="true">
-                arrow_back
-              </span>
-              <span>Back to Store</span>
-            </button>
+            </div>
           </div>
 
           <div className="flex flex-col gap-gutter-sm pt-gutter-md">
