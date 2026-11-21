@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { CATALOG_PRODUCTS } from '../data/catalog.ts';
 import type { CartItem, DeliveryLocation, Order, OrderShipping, UserProfile } from '../types/findkart.ts';
+import { fallbackPlaceOrder, safeParseApiResponse } from '../utils/api.ts';
 import { ProductImage } from './ProductImage.tsx';
 
 interface CartDrawerProps {
@@ -120,13 +121,18 @@ export function CartDrawer({
         headers,
         body: JSON.stringify({ items: cart, shipping }),
       });
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.message || 'Unable to place order.');
+      const parsed = await safeParseApiResponse<{ order: Order }>(res);
+      let placedOrder: Order;
+      if (parsed.isHtmlFallback) {
+        placedOrder = fallbackPlaceOrder(cart, shipping);
+      } else if (!parsed.ok || !parsed.data?.order) {
+        throw new Error(parsed.errorMessage || 'Unable to place order.');
+      } else {
+        placedOrder = parsed.data.order;
       }
-      setConfirmedOrder(data.order);
+      setConfirmedOrder(placedOrder);
       setStep('confirmed');
-      onOrderPlaced(data.order);
+      onOrderPlaced(placedOrder);
     } catch (err) {
       setFormError(err instanceof Error ? err.message : 'Unable to reach order service.');
     } finally {

@@ -7,6 +7,12 @@ import type {
   SupportTicketCategory,
   UserProfile,
 } from '../types/findkart.ts';
+import {
+  fallbackCreateTicket,
+  readFallbackTickets,
+  safeParseApiResponse,
+  writeFallbackTickets,
+} from '../utils/api.ts';
 import { ScrollReveal } from './ScrollReveal.tsx';
 
 interface CustomerCareViewProps {
@@ -308,15 +314,17 @@ export function CustomerCareView({
     if (authToken) headers.Authorization = `Bearer ${authToken}`;
 
     fetch(`/api/support/tickets${query}`, { headers })
-      .then((res) => res.json())
-      .then((data) => {
+      .then((res) => safeParseApiResponse<{ tickets: SupportTicket[] }>(res))
+      .then((parsed) => {
         if (cancelled) return;
-        if (Array.isArray(data?.tickets)) {
-          setTickets(data.tickets);
+        if (parsed.isHtmlFallback) {
+          setTickets(readFallbackTickets());
+        } else if (parsed.ok && Array.isArray(parsed.data?.tickets)) {
+          setTickets(parsed.data.tickets);
         }
       })
       .catch(() => {
-        // Keep empty list gracefully on error
+        if (!cancelled) setTickets(readFallbackTickets());
       })
       .finally(() => {
         if (!cancelled) setLoadingTickets(false);
@@ -392,12 +400,25 @@ export function CustomerCareView({
           attachmentType: attachment?.type,
         }),
       });
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.message || 'Unable to submit support email.');
+      const parsed = await safeParseApiResponse<{ ticket: SupportTicket }>(res);
+      let created: SupportTicket;
+      if (parsed.isHtmlFallback) {
+        created = fallbackCreateTicket({
+          customerName: customerName.trim(),
+          email: email.trim(),
+          orderId: orderIdInput.trim(),
+          category,
+          subject: subject.trim(),
+          message: message.trim(),
+          attachmentName: attachment?.name,
+          attachmentType: attachment?.type,
+        });
+      } else if (!parsed.ok || !parsed.data?.ticket) {
+        throw new Error(parsed.errorMessage || 'Unable to submit support email.');
+      } else {
+        created = parsed.data.ticket;
       }
 
-      const created: SupportTicket = data.ticket;
       if (!user) {
         saveGuestTicketId(created.ticketId);
       }
@@ -451,11 +472,29 @@ export function CustomerCareView({
           senderName: user?.name || customerName.trim() || activeTicket.customerName,
         }),
       });
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.message || 'Could not post follow-up.');
+      const parsed = await safeParseApiResponse<{ ticket: SupportTicket }>(res);
+      let updated: SupportTicket;
+      if (parsed.isHtmlFallback) {
+        updated = {
+          ...activeTicket,
+          status: activeTicket.status === 'Resolved' ? 'Under Review' : activeTicket.status,
+          replies: [
+            ...activeTicket.replies,
+            {
+              id: `rep_${Date.now().toString(36)}`,
+              senderRole: 'customer',
+              senderName: user?.name || customerName.trim() || activeTicket.customerName,
+              message: followUpText.trim(),
+              createdAt: new Date().toISOString(),
+            },
+          ],
+        };
+        writeFallbackTickets(tickets.map((t) => (t.ticketId === updated.ticketId ? updated : t)));
+      } else if (!parsed.ok || !parsed.data?.ticket) {
+        throw new Error(parsed.errorMessage || 'Could not post follow-up.');
+      } else {
+        updated = parsed.data.ticket;
       }
-      const updated: SupportTicket = data.ticket;
       setTickets((prev) => prev.map((t) => (t.ticketId === updated.ticketId ? updated : t)));
       setActiveTicket(updated);
       setFollowUpText('');
@@ -481,11 +520,16 @@ export function CustomerCareView({
         headers,
         body: JSON.stringify({ status: 'Resolved' }),
       });
-      const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.message || 'Could not update ticket.');
+      const parsed = await safeParseApiResponse<{ ticket: SupportTicket }>(res);
+      let updated: SupportTicket;
+      if (parsed.isHtmlFallback && activeTicket) {
+        updated = { ...activeTicket, status: 'Resolved' };
+        writeFallbackTickets(tickets.map((t) => (t.ticketId === updated.ticketId ? updated : t)));
+      } else if (!parsed.ok || !parsed.data?.ticket) {
+        throw new Error(parsed.errorMessage || 'Could not update ticket.');
+      } else {
+        updated = parsed.data.ticket;
       }
-      const updated: SupportTicket = data.ticket;
       setTickets((prev) => prev.map((t) => (t.ticketId === updated.ticketId ? updated : t)));
       setActiveTicket(updated);
       onShowToast(`Ticket ${updated.ticketId} marked as Resolved`);

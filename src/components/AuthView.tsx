@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { STITCH_IMAGES } from '../data/catalog.ts';
 import type { CartItem, DeliveryLocation, Order, UserProfile } from '../types/findkart.ts';
+import {
+  fallbackLogin,
+  fallbackRegister,
+  safeParseApiResponse,
+  type AuthResponsePayload,
+} from '../utils/api.ts';
 import { ProductImage } from './ProductImage.tsx';
 
 interface AuthSuccessPayload {
@@ -93,13 +99,24 @@ export function AuthView({
           guestWishlist,
         }),
       });
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.message || 'Unable to sign in. Please check your credentials.');
+      const parsed = await safeParseApiResponse<AuthResponsePayload>(response);
+      let authPayload: AuthResponsePayload;
+      if (parsed.isHtmlFallback) {
+        authPayload = await fallbackLogin({
+          email: emailTrimmed,
+          password: loginPassword,
+          guestCart,
+          guestWishlist,
+        });
+      } else if (!parsed.ok || !parsed.data) {
+        throw new Error(parsed.errorMessage || 'Unable to sign in. Please check your credentials.');
+      } else {
+        authPayload = parsed.data;
       }
+
       setAlertState({ type: 'success', message: 'Signed in successfully. Opening FindKart...' });
       window.setTimeout(() => {
-        onAuthSuccess(data);
+        onAuthSuccess(authPayload);
       }, 450);
     } catch (err) {
       setAlertState({
@@ -150,13 +167,25 @@ export function AuthView({
           guestWishlist,
         }),
       });
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.message || 'Unable to create account. Please try again.');
+      const parsed = await safeParseApiResponse<AuthResponsePayload>(response);
+      let authPayload: AuthResponsePayload;
+      if (parsed.isHtmlFallback) {
+        authPayload = await fallbackRegister({
+          name: nameTrimmed,
+          email: emailTrimmed,
+          password: regPassword,
+          guestCart,
+          guestWishlist,
+        });
+      } else if (!parsed.ok || !parsed.data) {
+        throw new Error(parsed.errorMessage || 'Unable to create account. Please try again.');
+      } else {
+        authPayload = parsed.data;
       }
+
       setAlertState({ type: 'success', message: 'Account created! Welcome to FindKart.' });
       window.setTimeout(() => {
-        onAuthSuccess(data);
+        onAuthSuccess(authPayload);
       }, 450);
     } catch (err) {
       setAlertState({

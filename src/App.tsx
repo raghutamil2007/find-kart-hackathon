@@ -14,6 +14,7 @@ import { OrdersModal } from './components/OrdersModal.tsx';
 import { ProductModal } from './components/ProductModal.tsx';
 import { WishlistDrawer } from './components/WishlistDrawer.tsx';
 import type { CartItem, DeliveryLocation, Order, Product, StoreView, UserProfile } from './types/findkart.ts';
+import { safeParseApiResponse, type AuthResponsePayload } from './utils/api.ts';
 
 const GUEST_CART_KEY = 'findkart_guest_cart';
 const GUEST_WISHLIST_KEY = 'findkart_guest_wishlist';
@@ -108,9 +109,10 @@ export default function App() {
   useEffect(() => {
     let cancelled = false;
     fetch('/api/auth/me')
-      .then((res) => res.json())
-      .then((data) => {
-        if (cancelled || !data?.user) return;
+      .then((res) => safeParseApiResponse<{ user: AuthResponsePayload['user'] | null; token?: string }>(res))
+      .then((parsed) => {
+        const data = parsed.data;
+        if (cancelled || !parsed.ok || !data?.user) return;
         setUser({
           id: data.user.id,
           name: data.user.name,

@@ -382,6 +382,10 @@ async function startServer() {
   app.set('trust proxy', 1);
   app.use(express.json({ limit: '256kb' }));
 
+  app.get('/api/health', (_req: Request, res: Response) => {
+    res.json({ ok: true });
+  });
+
   // Auth: Register
   app.post('/api/auth/register', (req: Request, res: Response) => {
     const body = (req.body || {}) as Record<string, unknown>;
@@ -873,6 +877,37 @@ async function startServer() {
     db.supportTickets = tickets;
     writeDb(db);
     res.json({ ticket });
+  });
+
+  // Ensure unknown /api/* paths always return JSON instead of falling through to index.html
+  app.use('/api', (_req: Request, res: Response) => {
+    res.status(404).json({ message: 'API route not found.' });
+  });
+
+  // Ensure JSON middleware/parse errors always return JSON instead of Express HTML error pages
+  app.use((err: unknown, req: Request, res: Response, next: NextFunction) => {
+    if (res.headersSent) {
+      next(err);
+      return;
+    }
+    if (req.path.startsWith('/api')) {
+      const status =
+        typeof err === 'object' &&
+        err !== null &&
+        'status' in err &&
+        typeof (err as { status?: unknown }).status === 'number'
+          ? (err as { status: number }).status
+          : 400;
+      const message =
+        status === 413
+          ? 'Request payload is too large.'
+          : err instanceof SyntaxError
+            ? 'Invalid JSON request payload.'
+            : 'Unable to process request.';
+      res.status(status).json({ message });
+      return;
+    }
+    next(err);
   });
 
   // Vite middleware in dev, static dist in production
