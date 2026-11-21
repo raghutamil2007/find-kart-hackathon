@@ -119,7 +119,7 @@ export function Footer({ onNavigate, onOpenOrders, onShowInfo }: FooterProps) {
           © 2026 FindKart. All rights reserved.
         </span>
         <span className="font-label text-label-sm text-accent-yellow">
-          Cash on Delivery • Verified Sellers
+          Cash on Delivery • Verified Sellers • Powered by Aiven PostgreSQL
         </span>
       </div>
     </footer>

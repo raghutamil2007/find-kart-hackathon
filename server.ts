@@ -37,6 +37,7 @@ import {
   orderRepo,
   supportRepo,
   stockRepo,
+  aivenService,
 } from './backend/index.ts';
 
 dotenv.config();
@@ -463,6 +464,17 @@ async function startServer() {
       mode: isPgActive ? 'postgresql' : 'file-fallback',
       connection: conn,
     });
+  });
+
+  // Aiven Open Source Service Diagnostics & Metrics Endpoint
+  app.get('/api/aiven/status', async (_req: Request, res: Response) => {
+    try {
+      const status = await aivenService.getAivenServiceStatus();
+      res.json(status);
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : String(err);
+      res.status(500).json({ error: message });
+    }
   });
 
   // Auth: Register
