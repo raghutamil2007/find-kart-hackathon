@@ -38,6 +38,7 @@ import {
   supportRepo,
   stockRepo,
   aivenService,
+  opensearchService,
 } from './backend/index.ts';
 
 dotenv.config();
@@ -474,6 +475,18 @@ async function startServer() {
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : String(err);
       res.status(500).json({ error: message });
+    }
+  });
+
+  // Aiven OpenSearch Cluster Health & Status Endpoint
+  app.get('/api/opensearch/status', async (_req: Request, res: Response) => {
+    try {
+      const health = await opensearchService.getOpenSearchHealth();
+      const httpCode = health.connected ? 200 : health.status === 'unconfigured' ? 404 : 503;
+      res.status(httpCode).json(health);
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : String(err);
+      res.status(500).json({ status: 'error', error: message });
     }
   });
 

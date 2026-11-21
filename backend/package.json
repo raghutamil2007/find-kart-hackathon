@@ -8,9 +8,11 @@
     "dev": "tsx ../server.ts",
     "db:init": "tsx init.ts",
     "test:db": "tsx -e \"import('./db.ts').then(m => m.testConnection()).then(console.log)\"",
-    "status": "tsx -e \"import('./aiven.ts').then(m => m.getAivenServiceStatus()).then(r => console.log(JSON.stringify(r, null, 2)))\""
+    "status": "tsx -e \"import('./aiven.ts').then(m => m.getAivenServiceStatus()).then(r => console.log(JSON.stringify(r, null, 2)))\"",
+    "opensearch:status": "tsx opensearch.ts"
   },
   "dependencies": {
+    "@opensearch-project/opensearch": "^3.10.0",
     "dotenv": "^17.2.3",
     "pg": "^8.13.3"
   },
