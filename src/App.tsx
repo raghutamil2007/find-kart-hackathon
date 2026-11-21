@@ -39,7 +39,7 @@ function writeStorageJson(key: string, value: unknown): void {
 }
 
 export default function App() {
-  const [currentView, setCurrentView] = useState<StoreView>('home');
+  const [currentView, setCurrentView] = useState<StoreView>('auth');
   const [searchQuery, setSearchQuery] = useState('');
   const [fashionSubNav, setFashionSubNav] = useState('All');
   const [beautySubNav, setBeautySubNav] = useState('All');
@@ -305,6 +305,7 @@ export default function App() {
     writeStorageJson(GUEST_CART_KEY, []);
     writeStorageJson(GUEST_WISHLIST_KEY, []);
     writeStorageJson(GUEST_ORDERS_KEY, []);
+    setCurrentView('auth');
     showToast('Signed out of FindKart');
   };
 
