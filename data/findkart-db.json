@@ -1,0 +1,97 @@
+{
+  "users": [],
+  "supportTickets": [
+    {
+      "ticketId": "FK-SUP-4892",
+      "customerName": "FindKart Member",
+      "email": "care@findkart.in",
+      "orderId": "FK-2026-88412",
+      "category": "Delivery & Shipping",
+      "subject": "Package delayed at Bengaluru hub",
+      "message": "My SoundCore ANC Headphones shipment has been showing at Bengaluru Peenya hub since yesterday evening. Could you check the dispatch status?",
+      "status": "Responded",
+      "createdAt": "2026-11-19T09:15:00.000Z",
+      "slaDueAt": "2026-11-19T15:15:00.000Z",
+      "assignedSpecialist": "Priya Nair · Senior Delivery Specialist",
+      "replies": [
+        {
+          "id": "rep_4892_1",
+          "senderRole": "specialist",
+          "senderName": "Priya Nair",
+          "senderTitle": "Senior Delivery Specialist · Bengaluru Support Desk",
+          "message": "Hi! I personally checked with our BlueDart Express hub coordinator in Peenya. Your parcel cleared line-haul sorting this morning and is scheduled for doorstep delivery tomorrow between 10:00 AM and 2:00 PM. We have flagged your pin code for priority dispatch.",
+          "createdAt": "2026-11-19T11:42:00.000Z"
+        }
+      ]
+    },
+    {
+      "ticketId": "FK-SUP-4886",
+      "customerName": "FindKart Member",
+      "email": "care@findkart.in",
+      "orderId": "FK-2026-87904",
+      "category": "Returns & Refunds",
+      "subject": "Size exchange request for Linen Shirt",
+      "message": "I ordered size L in the UrbanWeave Linen Shirt, and would like to exchange it for size M. Tags and original pouch are intact.",
+      "status": "Under Review",
+      "createdAt": "2026-11-18T14:20:00.000Z",
+      "slaDueAt": "2026-11-18T20:20:00.000Z",
+      "assignedSpecialist": "Rohan Deshmukh · Apparel Care Desk",
+      "replies": [
+        {
+          "id": "rep_4886_1",
+          "senderRole": "specialist",
+          "senderName": "Rohan Deshmukh",
+          "senderTitle": "Apparel Care Specialist · Human Review Desk",
+          "message": "Your exchange request is currently under review by our inventory team to reserve size M at our nearest fulfillment center. You will receive your pickup slot confirmation shortly.",
+          "createdAt": "2026-11-18T16:05:00.000Z"
+        }
+      ]
+    },
+    {
+      "ticketId": "FK-SUP-4879",
+      "customerName": "FindKart Member",
+      "email": "care@findkart.in",
+      "orderId": "FK-2026-86219",
+      "category": "Payment & Billing",
+      "subject": "GST invoice copy needed for order",
+      "message": "Could you please share the itemized GST tax invoice PDF for my recent electronics accessories order?",
+      "status": "Resolved",
+      "createdAt": "2026-11-17T08:10:00.000Z",
+      "slaDueAt": "2026-11-17T14:10:00.000Z",
+      "assignedSpecialist": "Ananya Verma · Billing & GST Desk",
+      "replies": [
+        {
+          "id": "rep_4879_1",
+          "senderRole": "specialist",
+          "senderName": "Ananya Verma",
+          "senderTitle": "Billing & GST Specialist",
+          "message": "We have generated and dispatched your signed GST tax invoice (#INV-FK-86219) to your registered email address with HSN codes and CGST/SGST split included.",
+          "createdAt": "2026-11-17T10:25:00.000Z"
+        }
+      ]
+    },
+    {
+      "ticketId": "FK-SUP-3994",
+      "customerName": "FindKart Member",
+      "email": "care@findkart.in",
+      "orderId": "FK-2026-81105",
+      "category": "Returns & Refunds",
+      "subject": "Refund confirmation for returned kettle",
+      "message": "The delivery partner picked up my returned electric kettle on Monday. Please confirm when the refund will be credited.",
+      "status": "Resolved",
+      "createdAt": "2026-11-12T10:30:00.000Z",
+      "slaDueAt": "2026-11-12T16:30:00.000Z",
+      "assignedSpecialist": "Karthik Rao · Refunds Resolution Team",
+      "replies": [
+        {
+          "id": "rep_3994_1",
+          "senderRole": "specialist",
+          "senderName": "Karthik Rao",
+          "senderTitle": "Refunds Resolution Specialist",
+          "message": "Good news — your returned BrewMaster Electric Kettle passed quality inspection at our warehouse, and your full refund has been processed back to your original payment method (Ref #RFND-992041).",
+          "createdAt": "2026-11-12T13:12:00.000Z"
+        }
+      ]
+    }
+  ]
+}

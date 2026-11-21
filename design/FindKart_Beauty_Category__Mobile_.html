@@ -1,0 +1,314 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FindKart Beauty (Mobile)</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config" data-stitch-original-src="3b80301eec075f3d===../../tailwind.config.js">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'accent-yellow': '#F9BD00',
+        'on-accent-yellow': '#251A00',
+        'success': '#15803D',
+        'on-success': '#FFFFFF',
+        'success-container': '#DCFCE7',
+        'on-success-container': '#14532D',
+        'warning': '#B45309',
+        'on-warning': '#FFFFFF',
+        'warning-container': '#FEF3C7',
+        'on-warning-container': '#78350F',
+        'light-primary': '#00389B',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#164EC4',
+        'light-on-primary-container': '#FFFFFF',
+        'light-secondary': '#785A00',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#F9BD00',
+        'light-on-secondary-container': '#251A00',
+        'light-tertiary': '#752600',
+        'light-on-tertiary': '#FFFFFF',
+        'light-tertiary-container': '#9C3500',
+        'light-on-tertiary-container': '#FFFFFF',
+        'light-error': '#BA1A1A',
+        'light-on-error': '#FFFFFF',
+        'light-error-container': '#FFDAD6',
+        'light-on-error-container': '#93000A',
+        'light-background': '#F3F3FD',
+        'light-on-background': '#191B22',
+        'light-surface': '#FAF8FF',
+        'light-surface-dim': '#D9D9E3',
+        'light-surface-bright': '#FFFFFF',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F3F3FD',
+        'light-surface-container': '#EDEDF7',
+        'light-surface-container-high': '#E8E7F2',
+        'light-surface-container-highest': '#E2E2EC',
+        'light-on-surface': '#191B22',
+        'light-surface-variant': '#E0E1F2',
+        'light-on-surface-variant': '#434654',
+        'light-outline': '#747685',
+        'light-outline-variant': '#C3C6D6',
+        'light-inverse-surface': '#2E3038',
+        'light-inverse-on-surface': '#F0F0FA',
+        'light-inverse-primary': '#B4C5FF',
+        'dark-primary': '#B4C5FF',
+        'dark-on-primary': '#002A78',
+        'dark-primary-container': '#164EC4',
+        'dark-on-primary-container': '#FFFFFF',
+        'dark-secondary': '#FFE5B3',
+        'dark-on-secondary': '#3F2E00',
+        'dark-secondary-container': '#FFC312',
+        'dark-on-secondary-container': '#251A00',
+        'dark-tertiary': '#FFB59A',
+        'dark-on-tertiary': '#5A1B00',
+        'dark-tertiary-container': '#9C3500',
+        'dark-on-tertiary-container': '#FFFFFF',
+        'dark-error': '#FFB4AB',
+        'dark-on-error': '#690005',
+        'dark-error-container': '#93000A',
+        'dark-on-error-container': '#FFDAD6',
+        'dark-background': '#11131A',
+        'dark-on-background': '#E2E2EC',
+        'dark-surface': '#11131A',
+        'dark-surface-dim': '#11131A',
+        'dark-surface-bright': '#373941',
+        'dark-surface-container-lowest': '#0C0E15',
+        'dark-surface-container-low': '#191B22',
+        'dark-surface-container': '#1E1F27',
+        'dark-surface-container-high': '#282A31',
+        'dark-surface-container-highest': '#33343C',
+        'dark-on-surface': '#E2E2EC',
+        'dark-surface-variant': '#434654',
+        'dark-on-surface-variant': '#C3C6D6',
+        'dark-outline': '#8D909F',
+        'dark-outline-variant': '#434654',
+        'dark-inverse-surface': '#E2E2EC',
+        'dark-inverse-on-surface': '#2E3038',
+        'dark-inverse-primary': '#2256CB',
+      },
+      borderRadius: {
+        'sm': '4px',
+        'DEFAULT': '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '20px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '48px',
+        'page-margin': '20px',
+      },
+      fontFamily: {
+        'display': ['"Mulish"', 'sans-serif'],
+        'headline': ['"Mulish"', 'sans-serif'],
+        'title': ['"Radio Canada Big"', 'sans-serif'],
+        'body': ['"Radio Canada Big"', 'sans-serif'],
+        'label': ['"Radio Canada Big"', 'sans-serif'],
+        'mono': ['"Spline Sans Mono"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['40px', { lineHeight: '46px', letterSpacing: '-0.5px', fontWeight: '800' }],
+        'display-lg-mobile': ['28px', { lineHeight: '34px', letterSpacing: '-0.25px', fontWeight: '800' }],
+        'headline-lg': ['32px', { lineHeight: '38px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg-mobile': ['24px', { lineHeight: '30px', letterSpacing: '-0.2px', fontWeight: '700' }],
+        'headline-md': ['24px', { lineHeight: '30px', letterSpacing: '-0.15px', fontWeight: '700' }],
+        'headline-sm': ['20px', { lineHeight: '26px', letterSpacing: '0px', fontWeight: '700' }],
+        'title-lg': ['18px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.1px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0.1px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.2px', fontWeight: '600' }],
+        'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.25px', fontWeight: '600' }],
+        'mono-md': ['13px', { lineHeight: '18px', letterSpacing: '0px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '200ms',
+        'surface-exit': '150ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@600;700;800&amp;family=Radio+Canada+Big:wght@400;500;600;700&amp;family=Spline+Sans+Mono:wght@500&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="bg-light-surface-container-low text-light-on-surface font-body antialiased">
+
+  <div class="min-h-screen flex flex-col">
+
+    <!-- Mobile Sticky Header -->
+    <header class="sticky top-0 z-30 bg-light-primary text-light-on-primary shadow-sm">
+      <div class="px-gutter-md py-3 flex flex-col gap-2.5">
+        <div class="flex items-center justify-between gap-gutter-sm">
+          <a href="#top" class="inline-flex items-center gap-gutter-sm">
+            <div class="w-8 h-8 rounded bg-accent-yellow text-on-accent-yellow flex items-center justify-center">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">shopping_bag</span>
+            </div>
+            <span data-design-text-token="title-lg" class="font-headline text-title-lg text-light-on-primary">FindKart</span>
+          </a>
+          <div class="flex items-center gap-gutter-xs">
+            <a href="#profile" aria-label="Profile" class="inline-flex items-center justify-center w-9 h-9 rounded text-light-on-primary">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">person</span>
+            </a>
+            <button type="button" aria-label="Wishlist" class="inline-flex items-center justify-center w-9 h-9 rounded text-light-on-primary">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">favorite</span>
+            </button>
+            <button type="button" aria-label="Cart" class="relative inline-flex items-center justify-center w-9 h-9 rounded text-light-on-primary">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">shopping_cart</span>
+              <span id="m-cart-count" class="absolute top-0.5 right-0.5 min-w-4 h-4 px-1 rounded-full bg-accent-yellow text-on-accent-yellow font-label text-label-sm flex items-center justify-center tabular-nums">0</span>
+            </button>
+          </div>
+        </div>
+
+        <form role="search" class="relative flex items-center">
+          <span class="material-symbols-outlined text-[18px] text-light-outline absolute left-3 pointer-events-none" aria-hidden="true">search</span>
+          <input type="search" placeholder="Search beauty products..." aria-label="Search beauty products" class="w-full h-10 pl-10 pr-3 rounded bg-light-surface-container-lowest text-light-on-surface placeholder:text-light-outline font-body text-body-md border-0 focus:ring-2 focus:ring-accent-yellow focus:outline-none">
+        </form>
+      </div>
+
+      <!-- Beauty Horizontal Sub-Nav -->
+      <nav aria-label="Beauty categories" class="bg-light-surface-container-lowest text-light-on-surface border-b border-light-outline-variant/60 px-gutter-md py-2 flex items-center gap-2 overflow-x-auto">
+        <span class="px-2.5 py-1 rounded-sm bg-light-primary text-light-on-primary font-label text-label-sm shrink-0">All</span>
+        <span class="px-2.5 py-1 rounded-sm text-light-on-surface font-label text-label-sm shrink-0">Skincare</span>
+        <span class="px-2.5 py-1 rounded-sm text-light-on-surface font-label text-label-sm shrink-0">Makeup</span>
+        <span class="px-2.5 py-1 rounded-sm text-light-on-surface font-label text-label-sm shrink-0">Haircare</span>
+        <span class="px-2.5 py-1 rounded-sm text-light-on-surface font-label text-label-sm shrink-0">Fragrances</span>
+        <span class="px-2.5 py-1 rounded-sm text-light-on-surface font-label text-label-sm shrink-0">Bath &amp; Body</span>
+        <span class="px-2.5 py-1 rounded-sm text-light-on-surface font-label text-label-sm shrink-0">Grooming</span>
+        <span class="px-2.5 py-1 rounded-sm text-light-on-surface font-label text-label-sm shrink-0">SPF</span>
+      </nav>
+    </header>
+
+    <!-- Main Mobile Content -->
+    <main class="flex-1 px-gutter-md py-gutter-md flex flex-col gap-gutter-md">
+
+      <!-- Minimal Beauty Banner -->
+      <section class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 overflow-hidden shadow-sm">
+        <img src="https://lh3.googleusercontent.com/aida/ALJJyrBhNNjvIcJybAoDG842UieGxOIIT-B-Ms1Z1wgie0YOHbwIWiMlwqsFDjpjb_7LX7dBmLFVHyUtMjkC86oKm7QRdOzDat7k6dQhdaR4AINnOqzkeWHt8yN64kieiUbDCz14zQngW8I6_p1A4fF6Wq_NAE1SFddoZxTonVDymyj7lPpkIhTSZvZa6yFf5n6gKYZKnVoakBvBJZleDlUOVPDSarUZCGnCtdc5eHZFo4psdc-2Fonf5YCwYd0zCkMghBE" alt="Minimalist Beauty Collection" class="w-full h-36 object-cover" data-stitch-original-src="ca882f5ad6bc25a5===../../images/banner_beauty_minimal.jpg">
+        <div class="p-gutter-md flex flex-col gap-1.5">
+          <span data-design-text-token="label-sm" class="inline-flex w-fit px-2 py-0.5 rounded-sm bg-accent-yellow text-on-accent-yellow font-label text-label-sm">SKINCARE &amp; BEAUTY</span>
+          <h1 data-design-text-token="headline-lg-mobile" class="font-headline text-headline-lg-mobile text-light-on-surface">Clean Daily Rituals</h1>
+          <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant">Serums, SPF, makeup &amp; haircare from ₹249.</p>
+        </div>
+      </section>
+
+      <!-- Mobile Sort & Filter Bar -->
+      <div class="grid grid-cols-2 gap-gutter-sm">
+        <select aria-label="Sort beauty products" class="w-full rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-on-surface font-label text-label-sm py-2 px-3">
+          <option>Sort: Popularity</option>
+          <option>Price: Low to High</option>
+          <option>Price: High to Low</option>
+          <option>Newest First</option>
+        </select>
+        <button type="button" class="w-full rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-on-surface font-label text-label-sm py-2 px-3 inline-flex items-center justify-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px]" aria-hidden="true">tune</span>
+          <span>Filters</span>
+        </button>
+      </div>
+
+      <!-- 2-Column Beauty Product Grid -->
+      <div class="grid grid-cols-2 gap-gutter-sm items-stretch">
+        <article class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-3 flex flex-col justify-between gap-2 shadow-sm h-full">
+          <div class="flex flex-col gap-1">
+            <img src="https://lh3.googleusercontent.com/aida/ALJJyrBJi868HAGft_Sa01s-o5FWkikuBQT_K34SS4wWScsRL00joYBOUpXJE4shZgkXQt2iogVDjJuKykcreIqzkiUEN18K658iG8-Eo9fSUQagk_izwJyAwq5y9fwXVKsYYawgbgZGcpBJM-uTXQH4q2DhM-RUXHIh-bbhlJ2adhzhuActafmTXpXpZtw4b1KKh12imryF5fESNoCbrEEjDiUpwO8nZ8BP07FPI2hMfg3XKHDyO23T2tL1" alt="Vitamin C Serum" class="w-full h-28 object-contain" data-stitch-original-src="28bfc0d37e9fd299===../../images/prod_skincare.jpg">
+            <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant uppercase">Plum</span>
+            <h3 data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface">Vitamin C Serum</h3>
+            <div class="flex items-baseline gap-1.5 flex-wrap">
+              <span data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface tabular-nums">₹549</span>
+              <span data-design-text-token="label-sm" class="font-label text-label-sm text-success">31% off</span>
+            </div>
+          </div>
+          <button type="button" data-m-add-cart class="w-full py-2 rounded bg-light-primary text-light-on-primary font-label text-label-sm">Add to Cart</button>
+        </article>
+
+        <article class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-3 flex flex-col justify-between gap-2 shadow-sm h-full">
+          <div class="flex flex-col gap-1">
+            <img src="https://lh3.googleusercontent.com/aida/ALJJyrAzQDEAFY09bhjrOQ7NrUOSIs2LLm4ah6aLEmb3frEGHHkr_R9dgGwLLf9HIx7yiAcbhPyns7xG3EllR_insljXJM6HD08Ye5SFVws01xtvLJ8MkIuk6fusdr3N3Nw6Zr21ZTJ-dp1UvaCzahB4Yu3cZQdIk8_h6SL1yxMMJgZlxzYBVewm6plEuVDFliIpPuDGghaHk6Hfb-TnlI6FE9jjfultlOuO19WDwd63u_eQJcDAiuBJrmj3OKXn" alt="SPF 50 Sunscreen" class="w-full h-28 object-contain" data-stitch-original-src="bb18183e66f80d99===../../images/beauty_sunscreen.jpg">
+            <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant uppercase">Minimalist</span>
+            <h3 data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface">SPF 50 Sunscreen</h3>
+            <div class="flex items-baseline gap-1.5 flex-wrap">
+              <span data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface tabular-nums">₹379</span>
+              <span data-design-text-token="label-sm" class="font-label text-label-sm text-success">24% off</span>
+            </div>
+          </div>
+          <button type="button" data-m-add-cart class="w-full py-2 rounded bg-light-primary text-light-on-primary font-label text-label-sm">Add to Cart</button>
+        </article>
+
+        <article class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-3 flex flex-col justify-between gap-2 shadow-sm h-full">
+          <div class="flex flex-col gap-1">
+            <img src="https://lh3.googleusercontent.com/aida/ALJJyrCmrJS3qaa4zIFV5yrqMV2B-4HvCWu-HIjVfCBmOKcjYb4DG7N54mCQ1-QQIouD4nBhGpvK4DA84kgkILV0vILUx48vJIF9eKVBihuCF1CjYoiKJ7BrQkvUtPdksT0yoQUnoMXZVNVZSD-aYjhl86FK1QvJVvqXQE4dfrF31JT8mUe-9HkGVsh18PYoHrS1mFZ10cNy_Nh_3mtfFfHBOiyjtb7VRSfu52M_qTZEZt05ZZE2Ss6KqlfMgA" alt="Velvet Matte Lipstick" class="w-full h-28 object-contain" data-stitch-original-src="d3dc94f2dbcc72e8===../../images/beauty_lipstick.jpg">
+            <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant uppercase">Lakme</span>
+            <h3 data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface">Matte Lipstick</h3>
+            <div class="flex items-baseline gap-1.5 flex-wrap">
+              <span data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface tabular-nums">₹499</span>
+              <span data-design-text-token="label-sm" class="font-label text-label-sm text-success">38% off</span>
+            </div>
+          </div>
+          <button type="button" data-m-add-cart class="w-full py-2 rounded bg-light-primary text-light-on-primary font-label text-label-sm">Add to Cart</button>
+        </article>
+
+        <article class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-3 flex flex-col justify-between gap-2 shadow-sm h-full">
+          <div class="flex flex-col gap-1">
+            <img src="https://lh3.googleusercontent.com/aida/ALJJyrC0jc3FcDxA8-DzB3s-ppikpKr3bmgHVu8uufzGN5bQ40nC2xcJi_ukD4VDMY5Y4Q_22-fOAS9_mp0F-4NghRYf9s3vrWK4ahQIpZn81JqQxbgldCzXZMQ7hYj8KqGoUxiO6Km7mH-PDD4p62tGiqSy1OEy7QwX4LDYQjEtx_lD2ZPQ1RPGlwsYTux-CMU31GkpxKoqBllIZ5JFiHj6AuAMbj_qb7CqGQg-YFxZUpd0_4-yhURTNcc-Nw" alt="Fresh Citrus Parfum" class="w-full h-28 object-contain" data-stitch-original-src="f3cdccdb9a0104c2===../../images/beauty_perfume.jpg">
+            <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant uppercase">Plum</span>
+            <h3 data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface">Citrus Parfum</h3>
+            <div class="flex items-baseline gap-1.5 flex-wrap">
+              <span data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface tabular-nums">₹1,299</span>
+              <span data-design-text-token="label-sm" class="font-label text-label-sm text-success">42% off</span>
+            </div>
+          </div>
+          <button type="button" data-m-add-cart class="w-full py-2 rounded bg-light-primary text-light-on-primary font-label text-label-sm">Add to Cart</button>
+        </article>
+      </div>
+
+    </main>
+
+    <!-- Mobile Footer -->
+    <footer class="bg-light-inverse-surface text-light-inverse-on-surface px-gutter-md py-gutter-lg flex flex-col gap-2">
+      <span data-design-text-token="title-md" class="font-headline text-title-md text-light-on-primary">FindKart Beauty</span>
+      <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-outline-variant">support@findkart.in • Cash on Delivery</span>
+    </footer>
+
+  </div>
+
+  <script>
+    (function () {
+      let count = 0;
+      const badge = document.getElementById('m-cart-count');
+      document.querySelectorAll('[data-m-add-cart]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          count += 1;
+          badge.textContent = String(count);
+          const orig = btn.textContent;
+          btn.textContent = 'Added!';
+          setTimeout(function () { btn.textContent = orig; }, 900);
+        });
+      });
+    })();
+  </script>
+
+
+</body></html>

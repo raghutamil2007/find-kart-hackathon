@@ -1,0 +1,748 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FindKart Fashion — Men, Women, Kids, Footwear &amp; Accessories</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config" data-stitch-original-src="3b80301eec075f3d===../../tailwind.config.js">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'accent-yellow': '#F9BD00',
+        'on-accent-yellow': '#251A00',
+        'success': '#15803D',
+        'on-success': '#FFFFFF',
+        'success-container': '#DCFCE7',
+        'on-success-container': '#14532D',
+        'warning': '#B45309',
+        'on-warning': '#FFFFFF',
+        'warning-container': '#FEF3C7',
+        'on-warning-container': '#78350F',
+        'light-primary': '#00389B',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#164EC4',
+        'light-on-primary-container': '#FFFFFF',
+        'light-secondary': '#785A00',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#F9BD00',
+        'light-on-secondary-container': '#251A00',
+        'light-tertiary': '#752600',
+        'light-on-tertiary': '#FFFFFF',
+        'light-tertiary-container': '#9C3500',
+        'light-on-tertiary-container': '#FFFFFF',
+        'light-error': '#BA1A1A',
+        'light-on-error': '#FFFFFF',
+        'light-error-container': '#FFDAD6',
+        'light-on-error-container': '#93000A',
+        'light-background': '#F3F3FD',
+        'light-on-background': '#191B22',
+        'light-surface': '#FAF8FF',
+        'light-surface-dim': '#D9D9E3',
+        'light-surface-bright': '#FFFFFF',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F3F3FD',
+        'light-surface-container': '#EDEDF7',
+        'light-surface-container-high': '#E8E7F2',
+        'light-surface-container-highest': '#E2E2EC',
+        'light-on-surface': '#191B22',
+        'light-surface-variant': '#E0E1F2',
+        'light-on-surface-variant': '#434654',
+        'light-outline': '#747685',
+        'light-outline-variant': '#C3C6D6',
+        'light-inverse-surface': '#2E3038',
+        'light-inverse-on-surface': '#F0F0FA',
+        'light-inverse-primary': '#B4C5FF',
+        'dark-primary': '#B4C5FF',
+        'dark-on-primary': '#002A78',
+        'dark-primary-container': '#164EC4',
+        'dark-on-primary-container': '#FFFFFF',
+        'dark-secondary': '#FFE5B3',
+        'dark-on-secondary': '#3F2E00',
+        'dark-secondary-container': '#FFC312',
+        'dark-on-secondary-container': '#251A00',
+        'dark-tertiary': '#FFB59A',
+        'dark-on-tertiary': '#5A1B00',
+        'dark-tertiary-container': '#9C3500',
+        'dark-on-tertiary-container': '#FFFFFF',
+        'dark-error': '#FFB4AB',
+        'dark-on-error': '#690005',
+        'dark-error-container': '#93000A',
+        'dark-on-error-container': '#FFDAD6',
+        'dark-background': '#11131A',
+        'dark-on-background': '#E2E2EC',
+        'dark-surface': '#11131A',
+        'dark-surface-dim': '#11131A',
+        'dark-surface-bright': '#373941',
+        'dark-surface-container-lowest': '#0C0E15',
+        'dark-surface-container-low': '#191B22',
+        'dark-surface-container': '#1E1F27',
+        'dark-surface-container-high': '#282A31',
+        'dark-surface-container-highest': '#33343C',
+        'dark-on-surface': '#E2E2EC',
+        'dark-surface-variant': '#434654',
+        'dark-on-surface-variant': '#C3C6D6',
+        'dark-outline': '#8D909F',
+        'dark-outline-variant': '#434654',
+        'dark-inverse-surface': '#E2E2EC',
+        'dark-inverse-on-surface': '#2E3038',
+        'dark-inverse-primary': '#2256CB',
+      },
+      borderRadius: {
+        'sm': '4px',
+        'DEFAULT': '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '20px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '48px',
+        'page-margin': '20px',
+      },
+      fontFamily: {
+        'display': ['"Mulish"', 'sans-serif'],
+        'headline': ['"Mulish"', 'sans-serif'],
+        'title': ['"Radio Canada Big"', 'sans-serif'],
+        'body': ['"Radio Canada Big"', 'sans-serif'],
+        'label': ['"Radio Canada Big"', 'sans-serif'],
+        'mono': ['"Spline Sans Mono"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['40px', { lineHeight: '46px', letterSpacing: '-0.5px', fontWeight: '800' }],
+        'display-lg-mobile': ['28px', { lineHeight: '34px', letterSpacing: '-0.25px', fontWeight: '800' }],
+        'headline-lg': ['32px', { lineHeight: '38px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg-mobile': ['24px', { lineHeight: '30px', letterSpacing: '-0.2px', fontWeight: '700' }],
+        'headline-md': ['24px', { lineHeight: '30px', letterSpacing: '-0.15px', fontWeight: '700' }],
+        'headline-sm': ['20px', { lineHeight: '26px', letterSpacing: '0px', fontWeight: '700' }],
+        'title-lg': ['18px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.1px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0.1px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.2px', fontWeight: '600' }],
+        'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.25px', fontWeight: '600' }],
+        'mono-md': ['13px', { lineHeight: '18px', letterSpacing: '0px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '200ms',
+        'surface-exit': '150ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@600;700;800&amp;family=Radio+Canada+Big:wght@400;500;600;700&amp;family=Spline+Sans+Mono:wght@500&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="bg-light-surface-container-lowest text-light-on-surface font-body antialiased">
+
+  <div class="min-h-screen flex flex-col">
+
+    <!-- Consistent FindKart Header -->
+    <header class="sticky top-0 z-30 bg-light-primary text-light-on-primary border-b border-light-primary-container shadow-sm">
+      <div class="max-w-7xl mx-auto px-gutter-lg h-16 flex items-center justify-between gap-gutter-lg">
+
+        <!-- Brand Logo + Location -->
+        <div class="flex items-center gap-gutter-lg shrink-0">
+          <a href="#top" class="inline-flex items-center gap-gutter-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-yellow rounded">
+            <div class="w-9 h-9 rounded bg-accent-yellow text-on-accent-yellow flex items-center justify-center">
+              <span class="material-symbols-outlined text-[22px]" aria-hidden="true">shopping_bag</span>
+            </div>
+            <div class="flex flex-col">
+              <span data-design-text-token="title-lg" class="font-headline text-title-lg text-light-on-primary leading-none">FindKart</span>
+              <span data-design-text-token="label-sm" class="font-label text-label-sm text-accent-yellow">FASHION STORE</span>
+            </div>
+          </a>
+
+          <button type="button" class="hidden xl:flex items-center gap-1.5 px-2.5 py-1.5 rounded hover:bg-light-primary-container transition-colors duration-state-change text-left">
+            <span class="material-symbols-outlined text-[18px] text-accent-yellow" aria-hidden="true">location_on</span>
+            <div class="flex flex-col">
+              <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-inverse-primary leading-none">Deliver to</span>
+              <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-primary leading-tight">Bengaluru 560001</span>
+            </div>
+          </button>
+        </div>
+
+        <!-- Fashion Search Bar -->
+        <form id="fashion-search-form" class="flex-1 max-w-2xl" role="search">
+          <div class="relative flex items-center">
+            <span class="material-symbols-outlined text-[20px] text-light-outline absolute left-3.5 pointer-events-none" aria-hidden="true">search</span>
+            <input id="fashion-search-input" type="search" placeholder="Search fashion products..." aria-label="Search fashion products" class="w-full h-10 pl-11 pr-24 rounded bg-light-surface-container-lowest text-light-on-surface placeholder:text-light-outline font-body text-body-md border-0 focus:ring-2 focus:ring-accent-yellow focus:outline-none">
+            <button type="submit" class="absolute right-1 h-8 px-gutter-md rounded-sm bg-accent-yellow text-on-accent-yellow hover:bg-light-secondary-container font-label text-label-md transition-colors duration-state-change">
+              <span data-design-text-token="label-md">Search</span>
+            </button>
+          </div>
+        </form>
+
+        <!-- Account, Wishlist, Cart Actions -->
+        <nav aria-label="Customer actions" class="flex items-center gap-gutter-sm shrink-0">
+          <a href="#profile" class="inline-flex items-center gap-1.5 px-3 py-2 rounded bg-light-surface-container-lowest text-light-primary hover:bg-light-surface-container transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">person</span>
+            <span data-design-text-token="label-md" class="font-label text-label-md">Profile</span>
+          </a>
+
+          <button type="button" id="wishlist-btn" aria-label="Wishlist" class="relative inline-flex items-center gap-1.5 px-3 py-2 rounded hover:bg-light-primary-container text-light-on-primary transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">favorite</span>
+            <span data-design-text-token="label-md" class="hidden md:inline font-label text-label-md">Wishlist</span>
+            <span id="wishlist-count" class="hidden min-w-5 h-5 px-1 rounded-full bg-accent-yellow text-on-accent-yellow font-label text-label-sm items-center justify-center tabular-nums">0</span>
+          </button>
+
+          <button type="button" id="cart-btn" aria-label="Shopping cart" class="relative inline-flex items-center gap-1.5 px-3 py-2 rounded hover:bg-light-primary-container text-light-on-primary transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">shopping_cart</span>
+            <span data-design-text-token="label-md" class="hidden md:inline font-label text-label-md">Cart</span>
+            <span id="cart-count" class="inline-flex min-w-5 h-5 px-1 rounded-full bg-accent-yellow text-on-accent-yellow font-label text-label-sm items-center justify-center tabular-nums">0</span>
+          </button>
+        </nav>
+
+      </div>
+
+      <!-- Fashion Sub-Navigation Bar -->
+      <div class="bg-light-surface-container-lowest text-light-on-surface border-b border-light-outline-variant/60">
+        <nav aria-label="Fashion categories" class="max-w-7xl mx-auto px-gutter-lg py-2.5 flex items-center justify-between gap-gutter-sm overflow-x-auto">
+          <button type="button" data-nav-filter="All" class="px-3 py-1 rounded-sm bg-light-primary text-light-on-primary font-label text-label-md shrink-0">All Fashion</button>
+          <button type="button" data-nav-filter="Men" class="px-3 py-1 rounded-sm text-light-on-surface hover:bg-light-surface-container-low hover:text-light-primary font-label text-label-md shrink-0 transition-colors">Men</button>
+          <button type="button" data-nav-filter="Women" class="px-3 py-1 rounded-sm text-light-on-surface hover:bg-light-surface-container-low hover:text-light-primary font-label text-label-md shrink-0 transition-colors">Women</button>
+          <button type="button" data-nav-filter="Kids" class="px-3 py-1 rounded-sm text-light-on-surface hover:bg-light-surface-container-low hover:text-light-primary font-label text-label-md shrink-0 transition-colors">Kids</button>
+          <button type="button" data-nav-filter="Footwear" class="px-3 py-1 rounded-sm text-light-on-surface hover:bg-light-surface-container-low hover:text-light-primary font-label text-label-md shrink-0 transition-colors">Footwear</button>
+          <button type="button" data-nav-filter="Watches" class="px-3 py-1 rounded-sm text-light-on-surface hover:bg-light-surface-container-low hover:text-light-primary font-label text-label-md shrink-0 transition-colors">Watches</button>
+          <button type="button" data-nav-filter="Bags" class="px-3 py-1 rounded-sm text-light-on-surface hover:bg-light-surface-container-low hover:text-light-primary font-label text-label-md shrink-0 transition-colors">Bags</button>
+          <button type="button" data-nav-filter="Accessories" class="px-3 py-1 rounded-sm text-light-on-surface hover:bg-light-surface-container-low hover:text-light-primary font-label text-label-md shrink-0 transition-colors">Accessories</button>
+          <button type="button" data-nav-filter="Ethnic Wear" class="px-3 py-1 rounded-sm text-light-on-surface hover:bg-light-surface-container-low hover:text-light-primary font-label text-label-md shrink-0 transition-colors">Ethnic Wear</button>
+          <button type="button" data-nav-filter="Western Wear" class="px-3 py-1 rounded-sm text-light-on-surface hover:bg-light-surface-container-low hover:text-light-primary font-label text-label-md shrink-0 transition-colors">Western Wear</button>
+          <button type="button" data-nav-filter="Sportswear" class="px-3 py-1 rounded-sm text-light-on-surface hover:bg-light-surface-container-low hover:text-light-primary font-label text-label-md shrink-0 transition-colors">Sportswear</button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Fashion Storefront -->
+    <main class="flex-1 bg-light-surface-container-low">
+      <div class="max-w-7xl mx-auto px-gutter-lg py-gutter-lg flex flex-col gap-gutter-lg">
+
+        <!-- Compact Fashion Promotional Banner -->
+        <section aria-label="Fashion promotion" class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 overflow-hidden shadow-sm grid grid-cols-1 lg:grid-cols-12 items-center">
+          <div class="lg:col-span-7 p-gutter-xl flex flex-col gap-gutter-sm">
+            <span data-design-text-token="label-sm" class="inline-flex w-fit px-2.5 py-0.5 rounded-sm bg-accent-yellow text-on-accent-yellow font-label text-label-sm">
+              NEW SEASON COLLECTION
+            </span>
+            <h1 data-design-text-token="headline-lg" class="font-headline text-headline-lg text-light-on-surface text-balance">
+              Effortless everyday fashion, curated for India
+            </h1>
+            <p data-design-text-token="body-md" class="font-body text-body-md text-light-on-surface-variant max-w-xl">
+              Discover breathable cottons, ethnic kurtas, denim, footwear, and everyday accessories starting at ₹499.
+            </p>
+            <div class="pt-gutter-xs">
+              <a href="#fashion-catalog" class="inline-flex items-center gap-gutter-sm px-gutter-lg py-2.5 rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container font-label text-label-md transition-colors shadow-sm">
+                <span data-design-text-token="label-md">Shop Now</span>
+                <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+          <div class="lg:col-span-5 h-full">
+            <img src="https://lh3.googleusercontent.com/aida/ALJJyrDKoFcgDfZCxd3nBxRrk9FVFubRqY6j9yhDMcCgEoshLNkg5tT5AmxeAxKrryptJj24i69vHSJbg1AzClfeNRAnxFEI8KObJroNiaofpewrvd_pkjvGdlyURUmCCP8_T6aGushmm0alkc3Pt3nBxMFYDcFq4sYIF-BYA8DJSXHjjMNGpUK-cKCC03TEnFuDEfEuMYHsD7VvQgwnKIb_h1twFfV0SGfpw-kmyfM0vY2uar_MH8GGCP8KJ-Rg_qhdvcVk" alt="Minimalist FindKart fashion collection featuring denim, cotton shirt, and sneakers" class="w-full h-56 lg:h-60 object-cover" data-stitch-original-src="947105ba057622bb===../../images/banner_fashion_minimal.jpg">
+          </div>
+        </section>
+
+        <!-- Catalog Layout: Filter Sidebar + Product Grid -->
+        <section id="fashion-catalog" class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-start">
+
+          <!-- Left Filters Panel -->
+          <aside aria-label="Fashion filters" class="lg:col-span-3 bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex flex-col gap-gutter-md shadow-sm">
+            <div class="flex items-center justify-between pb-gutter-sm border-b border-light-outline-variant/60">
+              <h2 data-design-text-token="title-md" class="font-headline text-title-md text-light-on-surface">Filters</h2>
+              <button type="button" id="clear-filters-btn" data-design-text-token="label-sm" class="font-label text-label-sm text-light-primary hover:underline">Clear all</button>
+            </div>
+
+            <!-- Gender -->
+            <div class="flex flex-col gap-2">
+              <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface">Gender</span>
+              <div class="flex flex-col gap-1.5">
+                <label class="inline-flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" name="gender" value="Men" class="w-4 h-4 rounded-sm border-light-outline-variant text-light-primary focus:ring-light-primary">
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface">Men</span>
+                </label>
+                <label class="inline-flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" name="gender" value="Women" class="w-4 h-4 rounded-sm border-light-outline-variant text-light-primary focus:ring-light-primary">
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface">Women</span>
+                </label>
+                <label class="inline-flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" name="gender" value="Kids" class="w-4 h-4 rounded-sm border-light-outline-variant text-light-primary focus:ring-light-primary">
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface">Kids</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Category -->
+            <div class="flex flex-col gap-2 pt-gutter-sm border-t border-light-outline-variant/40">
+              <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface">Category</span>
+              <div class="flex flex-col gap-1.5">
+                <label class="inline-flex items-center gap-2 cursor-pointer"><input type="checkbox" name="category" value="T-shirts" class="w-4 h-4 rounded-sm border-light-outline-variant text-light-primary focus:ring-light-primary"><span class="font-body text-body-sm text-light-on-surface">T-shirts &amp; Shirts</span></label>
+                <label class="inline-flex items-center gap-2 cursor-pointer"><input type="checkbox" name="category" value="Jeans" class="w-4 h-4 rounded-sm border-light-outline-variant text-light-primary focus:ring-light-primary"><span class="font-body text-body-sm text-light-on-surface">Jeans &amp; Trousers</span></label>
+                <label class="inline-flex items-center gap-2 cursor-pointer"><input type="checkbox" name="category" value="Ethnic" class="w-4 h-4 rounded-sm border-light-outline-variant text-light-primary focus:ring-light-primary"><span class="font-body text-body-sm text-light-on-surface">Dresses &amp; Kurtas</span></label>
+                <label class="inline-flex items-center gap-2 cursor-pointer"><input type="checkbox" name="category" value="Footwear" class="w-4 h-4 rounded-sm border-light-outline-variant text-light-primary focus:ring-light-primary"><span class="font-body text-body-sm text-light-on-surface">Shoes &amp; Sneakers</span></label>
+                <label class="inline-flex items-center gap-2 cursor-pointer"><input type="checkbox" name="category" value="Accessories" class="w-4 h-4 rounded-sm border-light-outline-variant text-light-primary focus:ring-light-primary"><span class="font-body text-body-sm text-light-on-surface">Handbags &amp; Watches</span></label>
+              </div>
+            </div>
+
+            <!-- Brand -->
+            <div class="flex flex-col gap-2 pt-gutter-sm border-t border-light-outline-variant/40">
+              <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface">Brand</span>
+              <div class="flex flex-col gap-1.5">
+                <label class="inline-flex items-center gap-2 cursor-pointer"><input type="checkbox" name="brand" value="Roadster" class="w-4 h-4 rounded-sm border-light-outline-variant text-light-primary focus:ring-light-primary"><span class="font-body text-body-sm text-light-on-surface">Roadster</span></label>
+                <label class="inline-flex items-center gap-2 cursor-pointer"><input type="checkbox" name="brand" value="Allen Solly" class="w-4 h-4 rounded-sm border-light-outline-variant text-light-primary focus:ring-light-primary"><span class="font-body text-body-sm text-light-on-surface">Allen Solly</span></label>
+                <label class="inline-flex items-center gap-2 cursor-pointer"><input type="checkbox" name="brand" value="Fabindia" class="w-4 h-4 rounded-sm border-light-outline-variant text-light-primary focus:ring-light-primary"><span class="font-body text-body-sm text-light-on-surface">Fabindia</span></label>
+                <label class="inline-flex items-center gap-2 cursor-pointer"><input type="checkbox" name="brand" value="Lavie" class="w-4 h-4 rounded-sm border-light-outline-variant text-light-primary focus:ring-light-primary"><span class="font-body text-body-sm text-light-on-surface">Lavie</span></label>
+                <label class="inline-flex items-center gap-2 cursor-pointer"><input type="checkbox" name="brand" value="Fossil" class="w-4 h-4 rounded-sm border-light-outline-variant text-light-primary focus:ring-light-primary"><span class="font-body text-body-sm text-light-on-surface">Fossil</span></label>
+              </div>
+            </div>
+
+            <!-- Price Range -->
+            <div class="flex flex-col gap-2 pt-gutter-sm border-t border-light-outline-variant/40">
+              <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface">Price Range</span>
+              <div class="flex flex-col gap-1.5">
+                <label class="inline-flex items-center gap-2 cursor-pointer"><input type="radio" name="price" value="all" checked class="w-4 h-4 border-light-outline-variant text-light-primary focus:ring-light-primary"><span class="font-body text-body-sm text-light-on-surface">All Prices</span></label>
+                <label class="inline-flex items-center gap-2 cursor-pointer"><input type="radio" name="price" value="under1000" class="w-4 h-4 border-light-outline-variant text-light-primary focus:ring-light-primary"><span class="font-body text-body-sm text-light-on-surface">Under ₹1,000</span></label>
+                <label class="inline-flex items-center gap-2 cursor-pointer"><input type="radio" name="price" value="1000to2500" class="w-4 h-4 border-light-outline-variant text-light-primary focus:ring-light-primary"><span class="font-body text-body-sm text-light-on-surface">₹1,000 – ₹2,500</span></label>
+                <label class="inline-flex items-center gap-2 cursor-pointer"><input type="radio" name="price" value="above2500" class="w-4 h-4 border-light-outline-variant text-light-primary focus:ring-light-primary"><span class="font-body text-body-sm text-light-on-surface">Above ₹2,500</span></label>
+              </div>
+            </div>
+
+            <!-- Size -->
+            <div class="flex flex-col gap-2 pt-gutter-sm border-t border-light-outline-variant/40">
+              <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface">Size</span>
+              <div class="flex flex-wrap gap-1.5">
+                <button type="button" data-size-chip="S" class="px-2.5 py-1 rounded-sm border border-light-outline-variant text-light-on-surface hover:border-light-primary font-label text-label-sm">S</button>
+                <button type="button" data-size-chip="M" class="px-2.5 py-1 rounded-sm border border-light-outline-variant text-light-on-surface hover:border-light-primary font-label text-label-sm">M</button>
+                <button type="button" data-size-chip="L" class="px-2.5 py-1 rounded-sm border border-light-outline-variant text-light-on-surface hover:border-light-primary font-label text-label-sm">L</button>
+                <button type="button" data-size-chip="XL" class="px-2.5 py-1 rounded-sm border border-light-outline-variant text-light-on-surface hover:border-light-primary font-label text-label-sm">XL</button>
+                <button type="button" data-size-chip="Free" class="px-2.5 py-1 rounded-sm border border-light-outline-variant text-light-on-surface hover:border-light-primary font-label text-label-sm">Free</button>
+              </div>
+            </div>
+
+            <!-- Colour -->
+            <div class="flex flex-col gap-2 pt-gutter-sm border-t border-light-outline-variant/40">
+              <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface">Colour</span>
+              <div class="flex flex-wrap gap-2">
+                <button type="button" data-color-chip="Blue" class="px-2.5 py-1 rounded-sm border border-light-outline-variant font-body text-body-sm text-light-on-surface hover:border-light-primary">Blue</button>
+                <button type="button" data-color-chip="Yellow" class="px-2.5 py-1 rounded-sm border border-light-outline-variant font-body text-body-sm text-light-on-surface hover:border-light-primary">Yellow</button>
+                <button type="button" data-color-chip="Tan" class="px-2.5 py-1 rounded-sm border border-light-outline-variant font-body text-body-sm text-light-on-surface hover:border-light-primary">Tan</button>
+                <button type="button" data-color-chip="Navy" class="px-2.5 py-1 rounded-sm border border-light-outline-variant font-body text-body-sm text-light-on-surface hover:border-light-primary">Navy</button>
+              </div>
+            </div>
+
+            <!-- Discount -->
+            <div class="flex flex-col gap-2 pt-gutter-sm border-t border-light-outline-variant/40">
+              <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface">Discount</span>
+              <div class="flex flex-col gap-1.5">
+                <label class="inline-flex items-center gap-2 cursor-pointer"><input type="radio" name="discount" value="0" checked class="w-4 h-4 border-light-outline-variant text-light-primary focus:ring-light-primary"><span class="font-body text-body-sm text-light-on-surface">All Discounts</span></label>
+                <label class="inline-flex items-center gap-2 cursor-pointer"><input type="radio" name="discount" value="30" class="w-4 h-4 border-light-outline-variant text-light-primary focus:ring-light-primary"><span class="font-body text-body-sm text-light-on-surface">30% or more</span></label>
+                <label class="inline-flex items-center gap-2 cursor-pointer"><input type="radio" name="discount" value="40" class="w-4 h-4 border-light-outline-variant text-light-primary focus:ring-light-primary"><span class="font-body text-body-sm text-light-on-surface">40% or more</span></label>
+                <label class="inline-flex items-center gap-2 cursor-pointer"><input type="radio" name="discount" value="50" class="w-4 h-4 border-light-outline-variant text-light-primary focus:ring-light-primary"><span class="font-body text-body-sm text-light-on-surface">50% or more</span></label>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Right Product Listing Column -->
+          <div class="lg:col-span-9 flex flex-col gap-gutter-md">
+
+            <!-- Sorting & Result Count Bar -->
+            <div class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 px-gutter-md py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-gutter-sm shadow-sm">
+              <div class="flex items-center gap-2">
+                <span data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface">Fashion</span>
+                <span id="product-count-label" data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant">(9 products)</span>
+              </div>
+
+              <div class="flex items-center gap-gutter-sm flex-wrap">
+                <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface-variant">Sort by:</span>
+                <select id="sort-select" aria-label="Sort fashion products" class="rounded border-light-outline-variant bg-light-surface-container-lowest text-light-on-surface font-body text-body-sm py-1.5 pl-3 pr-8 focus:border-light-primary focus:ring-light-primary">
+                  <option value="popularity">Popularity</option>
+                  <option value="price-asc">Price: Low to High</option>
+                  <option value="price-desc">Price: High to Low</option>
+                  <option value="newest">Newest First</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- 3-Column Desktop Product Grid -->
+            <div id="fashion-grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-gutter-md items-stretch">
+
+              <!-- 1. T-shirt -->
+              <article data-product data-gender="Men" data-category="T-shirts" data-brand="Roadster" data-price="699" data-discount="46" data-pop="98" data-newest="8" data-color="Blue" class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex flex-col justify-between gap-gutter-md shadow-sm h-full">
+                <div class="flex flex-col gap-2">
+                  <div class="relative rounded p-2 flex items-center justify-center">
+                    <img src="https://lh3.googleusercontent.com/aida/ALJJyrAoZWBcAifVo5TyyuaagK3vx9IvQydQZuQv9CPEBXW5Y8WFvu8vpcI8vuzaV8T72ILrFdNT24AQkd_9gVS61dZDj7RFSBhaJTwJ3ENYlrJqCfu7i1aUbdXoNvTAS8HQoDgGiOKA-f3iteJ5xpbdvad71YL3XXoRPQUa7taeORsJOMNFsb9ihia_hXzCVz0wgaeJ-uWvKvL0LxQ-J8gS-Z39C4F7sJZOFUHvML-6oPFokCEe-kE4MmfBPg" alt="Roadster Pure Cotton Crew T-Shirt" class="w-full h-44 object-contain" data-stitch-original-src="dd797034f5e63ddf===../../images/fashion_tshirt.jpg">
+                    <button type="button" data-wishlist-toggle aria-label="Add to wishlist" class="absolute top-1 right-1 w-8 h-8 rounded-full bg-light-surface-container-low text-light-on-surface-variant hover:text-light-error flex items-center justify-center">
+                      <span class="material-symbols-outlined text-[18px]" aria-hidden="true">favorite</span>
+                    </button>
+                  </div>
+                  <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant uppercase">Roadster</span>
+                  <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface">Cotton Crew Neck T-Shirt</h3>
+                  <div class="flex items-center gap-1.5">
+                    <span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-sm bg-success text-on-success font-label text-label-sm tabular-nums">4.4 <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">star</span></span>
+                    <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant tabular-nums">(1,520)</span>
+                  </div>
+                  <div class="flex items-baseline gap-gutter-sm flex-wrap">
+                    <span data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface tabular-nums">₹699</span>
+                    <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant line-through tabular-nums">₹1,299</span>
+                    <span data-design-text-token="label-md" class="font-label text-label-md text-success tabular-nums">46% off</span>
+                  </div>
+                </div>
+                <button type="button" data-add-cart="Cotton Crew Neck T-Shirt" class="w-full py-2.5 px-gutter-md rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container font-label text-label-md transition-colors">Add to Cart</button>
+              </article>
+
+              <!-- 2. Linen Shirt -->
+              <article data-product data-gender="Men" data-category="T-shirts" data-brand="Allen Solly" data-price="1499" data-discount="40" data-pop="90" data-newest="9" data-color="Blue" class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex flex-col justify-between gap-gutter-md shadow-sm h-full">
+                <div class="flex flex-col gap-2">
+                  <div class="relative rounded p-2 flex items-center justify-center">
+                    <img src="https://lh3.googleusercontent.com/aida/ALJJyrD95-8CkoZi-e54uo434Y8eqzaUPdpARKA2wO1ooY770KipmrAQHhvRkRpDXypUy2xVhlXEEaJvEN6Mt2lkXcY1jhm_bfbU4OAreo7mVB6jUc32vl2QimKrfcxqFPUZX0U2vUZ60QAdOT_nfvbll0nV7_OyOFny0PXA3AQ4476q0hMt__5CZiWxcgtyEm_P4hBZ5nRgRgfdKU1589Dd9aJIAO7NmpIxi6U4lHGqOphW8cbB4Bcd2GIG" alt="Allen Solly Slim Fit Linen Shirt" class="w-full h-44 object-contain" data-stitch-original-src="6f02ff434bb87325===../../images/fashion_shirt.jpg">
+                    <button type="button" data-wishlist-toggle aria-label="Add to wishlist" class="absolute top-1 right-1 w-8 h-8 rounded-full bg-light-surface-container-low text-light-on-surface-variant hover:text-light-error flex items-center justify-center">
+                      <span class="material-symbols-outlined text-[18px]" aria-hidden="true">favorite</span>
+                    </button>
+                  </div>
+                  <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant uppercase">Allen Solly</span>
+                  <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface">Slim Fit Linen Shirt</h3>
+                  <div class="flex items-center gap-1.5">
+                    <span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-sm bg-success text-on-success font-label text-label-sm tabular-nums">4.5 <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">star</span></span>
+                    <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant tabular-nums">(840)</span>
+                  </div>
+                  <div class="flex items-baseline gap-gutter-sm flex-wrap">
+                    <span data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface tabular-nums">₹1,499</span>
+                    <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant line-through tabular-nums">₹2,499</span>
+                    <span data-design-text-token="label-md" class="font-label text-label-md text-success tabular-nums">40% off</span>
+                  </div>
+                </div>
+                <button type="button" data-add-cart="Slim Fit Linen Shirt" class="w-full py-2.5 px-gutter-md rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container font-label text-label-md transition-colors">Add to Cart</button>
+              </article>
+
+              <!-- 3. Indigo Jeans -->
+              <article data-product data-gender="Men" data-category="Jeans" data-brand="Roadster" data-price="1299" data-discount="48" data-pop="94" data-newest="6" data-color="Navy" class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex flex-col justify-between gap-gutter-md shadow-sm h-full">
+                <div class="flex flex-col gap-2">
+                  <div class="relative rounded p-2 flex items-center justify-center">
+                    <img src="https://lh3.googleusercontent.com/aida/ALJJyrC2KDXnbGZhg16wQriDwsNk62V05t3qhRuqPlWdXrBa1qK7A6tmT0OZ0SLrQrGh3HRJFQMKoGYXVyPV7piz-KO3NTEC6eMvgSQAx0h9qr7cMvfHF1iQw5OjSvOQyupBcVhshjOFxixGmIj6w_eU4I3EOm16BrLDtDVeyndRZ0v8fqEqZ7BbAsLXZJJ2q0VB6v2BYEZbjMy2QKLLyMzm-_E2PZG0CWfs5KNxASzZCD0-_HS_nWo6wPKG" alt="Roadster Tapered Indigo Jeans" class="w-full h-44 object-contain" data-stitch-original-src="cf6b706a177887bb===../../images/fashion_jeans.jpg">
+                    <button type="button" data-wishlist-toggle aria-label="Add to wishlist" class="absolute top-1 right-1 w-8 h-8 rounded-full bg-light-surface-container-low text-light-on-surface-variant hover:text-light-error flex items-center justify-center">
+                      <span class="material-symbols-outlined text-[18px]" aria-hidden="true">favorite</span>
+                    </button>
+                  </div>
+                  <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant uppercase">Roadster</span>
+                  <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface">Tapered Indigo Denim Jeans</h3>
+                  <div class="flex items-center gap-1.5">
+                    <span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-sm bg-success text-on-success font-label text-label-sm tabular-nums">4.3 <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">star</span></span>
+                    <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant tabular-nums">(2,110)</span>
+                  </div>
+                  <div class="flex items-baseline gap-gutter-sm flex-wrap">
+                    <span data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface tabular-nums">₹1,299</span>
+                    <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant line-through tabular-nums">₹2,499</span>
+                    <span data-design-text-token="label-md" class="font-label text-label-md text-success tabular-nums">48% off</span>
+                  </div>
+                </div>
+                <button type="button" data-add-cart="Tapered Indigo Denim Jeans" class="w-full py-2.5 px-gutter-md rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container font-label text-label-md transition-colors">Add to Cart</button>
+              </article>
+
+              <!-- 4. Midi Dress -->
+              <article data-product data-gender="Women" data-category="Ethnic" data-brand="Allen Solly" data-price="1799" data-discount="36" data-pop="88" data-newest="10" data-color="Yellow" class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex flex-col justify-between gap-gutter-md shadow-sm h-full">
+                <div class="flex flex-col gap-2">
+                  <div class="relative rounded p-2 flex items-center justify-center">
+                    <img src="https://lh3.googleusercontent.com/aida/ALJJyrCEHlFkOCSkEUhjNfqPSJw1b4NgVuIcsk5U7M5tw6kqpZaPMZDWnX-5riuXSYvloERB1Oi-Svf_kH6Kxa6BcZEon-mEZNT4wV17YYRZhIIwHjNeDP1EY0qbdSw0XEYlDEdURcVerOUvIwBVWaE4bVQM2bsBzDw6vB_64P7fnx04XLD4ZI99s0YkGq95luGdtljQ_z-Y7h3cXsTm5CZtb19gBie6gfNSy_aZHx9BT27ReOOH9Jjhf09q" alt="A-Line Cotton Midi Dress" class="w-full h-44 object-contain" data-stitch-original-src="e588705c297ac3ed===../../images/fashion_dress.jpg">
+                    <button type="button" data-wishlist-toggle aria-label="Add to wishlist" class="absolute top-1 right-1 w-8 h-8 rounded-full bg-light-surface-container-low text-light-on-surface-variant hover:text-light-error flex items-center justify-center">
+                      <span class="material-symbols-outlined text-[18px]" aria-hidden="true">favorite</span>
+                    </button>
+                  </div>
+                  <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant uppercase">Allen Solly</span>
+                  <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface">A-Line Cotton Midi Dress</h3>
+                  <div class="flex items-center gap-1.5">
+                    <span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-sm bg-success text-on-success font-label text-label-sm tabular-nums">4.6 <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">star</span></span>
+                    <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant tabular-nums">(635)</span>
+                  </div>
+                  <div class="flex items-baseline gap-gutter-sm flex-wrap">
+                    <span data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface tabular-nums">₹1,799</span>
+                    <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant line-through tabular-nums">₹2,799</span>
+                    <span data-design-text-token="label-md" class="font-label text-label-md text-success tabular-nums">36% off</span>
+                  </div>
+                </div>
+                <button type="button" data-add-cart="A-Line Cotton Midi Dress" class="w-full py-2.5 px-gutter-md rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container font-label text-label-md transition-colors">Add to Cart</button>
+              </article>
+
+              <!-- 5. Kurta -->
+              <article data-product data-gender="Women" data-category="Ethnic" data-brand="Fabindia" data-price="1599" data-discount="30" data-pop="92" data-newest="7" data-color="Navy" class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex flex-col justify-between gap-gutter-md shadow-sm h-full">
+                <div class="flex flex-col gap-2">
+                  <div class="relative rounded p-2 flex items-center justify-center">
+                    <img src="https://lh3.googleusercontent.com/aida/ALJJyrCe1l4JpFNOAKtHbAUPBwwvcLmRrOlSxeQmkceSJR_OthoT3T47qSVBTO8GoJQnhSUH7A0_TffGY2x0vscMx1HbqeYbJakwh0WSTzFMbaof0je2PStkbfkZUDdATFk6Qs1YVr-L28rO0zJHPqy6jmbWJOjDa0AtFf5VipiS7OXRM5cf3iW9xaQTP7Hg-VVTzg0azcxIi7WIIdeIFo2ebh_FM7g6j6sG8-xdKaXWiWIEXi3ve0tCWqCZ" alt="Fabindia Embroidered Cotton Kurta" class="w-full h-44 object-contain" data-stitch-original-src="aa1a950d5e15a797===../../images/fashion_kurta.jpg">
+                    <button type="button" data-wishlist-toggle aria-label="Add to wishlist" class="absolute top-1 right-1 w-8 h-8 rounded-full bg-light-surface-container-low text-light-on-surface-variant hover:text-light-error flex items-center justify-center">
+                      <span class="material-symbols-outlined text-[18px]" aria-hidden="true">favorite</span>
+                    </button>
+                  </div>
+                  <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant uppercase">Fabindia</span>
+                  <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface">Embroidered Straight Kurta</h3>
+                  <div class="flex items-center gap-1.5">
+                    <span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-sm bg-success text-on-success font-label text-label-sm tabular-nums">4.7 <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">star</span></span>
+                    <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant tabular-nums">(1,290)</span>
+                  </div>
+                  <div class="flex items-baseline gap-gutter-sm flex-wrap">
+                    <span data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface tabular-nums">₹1,599</span>
+                    <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant line-through tabular-nums">₹2,299</span>
+                    <span data-design-text-token="label-md" class="font-label text-label-md text-success tabular-nums">30% off</span>
+                  </div>
+                </div>
+                <button type="button" data-add-cart="Embroidered Straight Kurta" class="w-full py-2.5 px-gutter-md rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container font-label text-label-md transition-colors">Add to Cart</button>
+              </article>
+
+              <!-- 6. Sneakers -->
+              <article data-product data-gender="Men" data-category="Footwear" data-brand="Roadster" data-price="1799" data-discount="40" data-pop="95" data-newest="5" data-color="Blue" class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex flex-col justify-between gap-gutter-md shadow-sm h-full">
+                <div class="flex flex-col gap-2">
+                  <div class="relative rounded p-2 flex items-center justify-center">
+                    <img src="https://lh3.googleusercontent.com/aida/ALJJyrCHmiyN7RvfohJiuik2NVg_fHl-w_oaGW1WEZbipfdB7ti7ojqepCeTxNnzJRTXDHBuNfm0Jlw_jqQlt3oRKUhSw-bZnim9pX1v0XFmqBUEHBV4yLBXI0bfCEt80z-QXaH591mETgMrXhtRPVpatn1KHxA9iYlPN3HduqahpNnLcEml3wRDIg_R9b9kkNDOsVAOYAVVw8Csd7eVQb10o_rMpNDT3FMDSJCTQbxTokTXGKtO7i_VeZk" alt="StrideX Mesh Cushion Sneakers" class="w-full h-44 object-contain" data-stitch-original-src="357d7695c9dd6f63===../../images/prod_sneakers.jpg">
+                    <button type="button" data-wishlist-toggle aria-label="Add to wishlist" class="absolute top-1 right-1 w-8 h-8 rounded-full bg-light-surface-container-low text-light-on-surface-variant hover:text-light-error flex items-center justify-center">
+                      <span class="material-symbols-outlined text-[18px]" aria-hidden="true">favorite</span>
+                    </button>
+                  </div>
+                  <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant uppercase">StrideX</span>
+                  <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface">Mesh Cushion Sneakers</h3>
+                  <div class="flex items-center gap-1.5">
+                    <span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-sm bg-success text-on-success font-label text-label-sm tabular-nums">4.5 <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">star</span></span>
+                    <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant tabular-nums">(964)</span>
+                  </div>
+                  <div class="flex items-baseline gap-gutter-sm flex-wrap">
+                    <span data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface tabular-nums">₹1,799</span>
+                    <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant line-through tabular-nums">₹2,999</span>
+                    <span data-design-text-token="label-md" class="font-label text-label-md text-success tabular-nums">40% off</span>
+                  </div>
+                </div>
+                <button type="button" data-add-cart="Mesh Cushion Sneakers" class="w-full py-2.5 px-gutter-md rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container font-label text-label-md transition-colors">Add to Cart</button>
+              </article>
+
+              <!-- 7. Handbag -->
+              <article data-product data-gender="Women" data-category="Accessories" data-brand="Lavie" data-price="1899" data-discount="52" data-pop="89" data-newest="8" data-color="Tan" class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex flex-col justify-between gap-gutter-md shadow-sm h-full">
+                <div class="flex flex-col gap-2">
+                  <div class="relative rounded p-2 flex items-center justify-center">
+                    <img src="https://lh3.googleusercontent.com/aida/ALJJyrCWlTVrrJw97CNvtSg1lNIguJX1S0Eh1hG-LRWdzvKbG_DrUfY8YWm6ffWFR7UVAKaeKICJT10IsXgJTZ8Ho-Pi3I94UBoKa7d-0Bm2L83LCcKmVlzD9Xi5xmNnENERwncPjHXnrDHXP55gQHa2rqTljqBwGFsL48WBhVMD-j7Gg-tUV0BNnZKNY1ok19XaTg1uJU-acQYbk2Rm9YndQfV2sc3dyU178ZNZGVSXpbKXsnLtniSTmmdJeK0" alt="Lavie Structured Tan Tote Handbag" class="w-full h-44 object-contain" data-stitch-original-src="30cb117cb512a0b1===../../images/fashion_handbag.jpg">
+                    <button type="button" data-wishlist-toggle aria-label="Add to wishlist" class="absolute top-1 right-1 w-8 h-8 rounded-full bg-light-surface-container-low text-light-on-surface-variant hover:text-light-error flex items-center justify-center">
+                      <span class="material-symbols-outlined text-[18px]" aria-hidden="true">favorite</span>
+                    </button>
+                  </div>
+                  <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant uppercase">Lavie</span>
+                  <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface">Structured Tan Tote Bag</h3>
+                  <div class="flex items-center gap-1.5">
+                    <span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-sm bg-success text-on-success font-label text-label-sm tabular-nums">4.4 <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">star</span></span>
+                    <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant tabular-nums">(780)</span>
+                  </div>
+                  <div class="flex items-baseline gap-gutter-sm flex-wrap">
+                    <span data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface tabular-nums">₹1,899</span>
+                    <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant line-through tabular-nums">₹3,999</span>
+                    <span data-design-text-token="label-md" class="font-label text-label-md text-success tabular-nums">52% off</span>
+                  </div>
+                </div>
+                <button type="button" data-add-cart="Structured Tan Tote Bag" class="w-full py-2.5 px-gutter-md rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container font-label text-label-md transition-colors">Add to Cart</button>
+              </article>
+
+              <!-- 8. Watch -->
+              <article data-product data-gender="Men" data-category="Accessories" data-brand="Fossil" data-price="4999" data-discount="38" data-pop="91" data-newest="9" data-color="Navy" class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex flex-col justify-between gap-gutter-md shadow-sm h-full">
+                <div class="flex flex-col gap-2">
+                  <div class="relative rounded p-2 flex items-center justify-center">
+                    <img src="https://lh3.googleusercontent.com/aida/ALJJyrA3IIsJtdIvCXLH7VO5zIfJQqKGil1NVHmiGgDzvfjN66JMUkDjlG_58ZgmYRleM1auIqyFbgB9fUWfjnvTcRd2YFc7z5HFlVFnSo0Mjk-SgVY7FKOPKgJnJnh-IlW74WXNXZP2sTbLIpbik11UQFGByr3akzlGeXRSoXLfQsWR5egpUpz60HxmuSfRNw8Oa-6Jv7U78-B-vXPDATfaIA6DDjqkMiYXeeGQTaDRrIfDvyVdLT92eJTy" alt="Fossil Analog Leather Strap Watch" class="w-full h-44 object-contain" data-stitch-original-src="e3ea803a36f53661===../../images/fashion_watch.jpg">
+                    <button type="button" data-wishlist-toggle aria-label="Add to wishlist" class="absolute top-1 right-1 w-8 h-8 rounded-full bg-light-surface-container-low text-light-on-surface-variant hover:text-light-error flex items-center justify-center">
+                      <span class="material-symbols-outlined text-[18px]" aria-hidden="true">favorite</span>
+                    </button>
+                  </div>
+                  <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant uppercase">Fossil</span>
+                  <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface">Classic Analog Leather Watch</h3>
+                  <div class="flex items-center gap-1.5">
+                    <span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-sm bg-success text-on-success font-label text-label-sm tabular-nums">4.7 <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">star</span></span>
+                    <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant tabular-nums">(1,410)</span>
+                  </div>
+                  <div class="flex items-baseline gap-gutter-sm flex-wrap">
+                    <span data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface tabular-nums">₹4,999</span>
+                    <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant line-through tabular-nums">₹7,999</span>
+                    <span data-design-text-token="label-md" class="font-label text-label-md text-success tabular-nums">38% off</span>
+                  </div>
+                </div>
+                <button type="button" data-add-cart="Classic Analog Leather Watch" class="w-full py-2.5 px-gutter-md rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container font-label text-label-md transition-colors">Add to Cart</button>
+              </article>
+
+              <!-- 9. Cotton Jacket -->
+              <article data-product data-gender="Kids" data-category="T-shirts" data-brand="Allen Solly" data-price="1599" data-discount="47" data-pop="85" data-newest="4" data-color="Navy" class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex flex-col justify-between gap-gutter-md shadow-sm h-full">
+                <div class="flex flex-col gap-2">
+                  <div class="relative rounded p-2 flex items-center justify-center">
+                    <img src="https://lh3.googleusercontent.com/aida/ALJJyrDSRmvfPChsySURbdpmnfA92yRgS9hQ7BDsyIeXX6mCWnGc12ngMGXYfPpEXeJyYaLzxna85OvBsMQ_P3BqWPcUDSzNfwUQxWgpI_ruwfju7YIKnlrDt1vHOuGs_1vPipiBQWA9-hTwpflhs3XcOzE9mFjN3s0mwYSv8CG7uOsVI_sgiysTVsNl1qJovv01vmtK-wNdO8Q8Q2V-pUuMf1KKrgfNF_NlnsjxYy60BVw9ItQwz3B4" alt="Classic Navy Cotton Casual Jacket" class="w-full h-44 object-contain" data-stitch-original-src="1b0a8892a50c3265===../../images/prod_jacket.jpg">
+                    <button type="button" data-wishlist-toggle aria-label="Add to wishlist" class="absolute top-1 right-1 w-8 h-8 rounded-full bg-light-surface-container-low text-light-on-surface-variant hover:text-light-error flex items-center justify-center">
+                      <span class="material-symbols-outlined text-[18px]" aria-hidden="true">favorite</span>
+                    </button>
+                  </div>
+                  <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant uppercase">Allen Solly</span>
+                  <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface">Navy Cotton Casual Jacket</h3>
+                  <div class="flex items-center gap-1.5">
+                    <span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-sm bg-success text-on-success font-label text-label-sm tabular-nums">4.3 <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">star</span></span>
+                    <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant tabular-nums">(540)</span>
+                  </div>
+                  <div class="flex items-baseline gap-gutter-sm flex-wrap">
+                    <span data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface tabular-nums">₹1,599</span>
+                    <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant line-through tabular-nums">₹2,999</span>
+                    <span data-design-text-token="label-md" class="font-label text-label-md text-success tabular-nums">47% off</span>
+                  </div>
+                </div>
+                <button type="button" data-add-cart="Navy Cotton Casual Jacket" class="w-full py-2.5 px-gutter-md rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container font-label text-label-md transition-colors">Add to Cart</button>
+              </article>
+
+            </div>
+          </div>
+
+        </section>
+      </div>
+    </main>
+
+    <!-- Consistent FindKart Footer -->
+    <footer class="bg-light-inverse-surface text-light-inverse-on-surface py-section">
+      <div class="max-w-7xl mx-auto px-gutter-lg grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter-xl">
+        <div class="flex flex-col gap-gutter-sm">
+          <span data-design-text-token="title-lg" class="font-headline text-title-lg text-light-on-primary">About FindKart</span>
+          <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-outline-variant">FindKart Fashion brings everyday Indian and global apparel, footwear, and accessories with Cash on Delivery.</p>
+        </div>
+        <div class="flex flex-col gap-gutter-sm">
+          <span data-design-text-token="label-lg" class="font-label text-label-lg text-light-on-primary">Customer Support</span>
+          <a href="#help" class="font-body text-body-sm text-light-outline-variant hover:text-light-on-primary">Help Center</a>
+          <a href="#returns" class="font-body text-body-sm text-light-outline-variant hover:text-light-on-primary">7-Day Easy Returns</a>
+        </div>
+        <div class="flex flex-col gap-gutter-sm">
+          <span data-design-text-token="label-lg" class="font-label text-label-lg text-light-on-primary">Policies</span>
+          <a href="#privacy" class="font-body text-body-sm text-light-outline-variant hover:text-light-on-primary">Privacy Policy</a>
+          <a href="#terms" class="font-body text-body-sm text-light-outline-variant hover:text-light-on-primary">Terms of Use</a>
+        </div>
+        <div class="flex flex-col gap-gutter-sm">
+          <span data-design-text-token="label-lg" class="font-label text-label-lg text-light-on-primary">Contact Us</span>
+          <span class="font-body text-body-sm text-light-outline-variant">support@findkart.in • 1800-120-4500</span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    (function () {
+      const grid = document.getElementById('fashion-grid');
+      const cards = Array.from(grid.querySelectorAll('[data-product]'));
+      const countLabel = document.getElementById('product-count-label');
+      const sortSelect = document.getElementById('sort-select');
+      const searchInput = document.getElementById('fashion-search-input');
+      const cartBadge = document.getElementById('cart-count');
+      const wishlistBadge = document.getElementById('wishlist-count');
+      let cartCount = 0;
+      let wishlistCount = 0;
+      let activeNavFilter = 'All';
+
+      function applyFiltersAndSort() {
+        const query = searchInput.value.trim().toLowerCase();
+        const selectedGenders = Array.from(document.querySelectorAll('input[name="gender"]:checked')).map(i => i.value);
+        const selectedCats = Array.from(document.querySelectorAll('input[name="category"]:checked')).map(i => i.value);
+        const selectedBrands = Array.from(document.querySelectorAll('input[name="brand"]:checked')).map(i => i.value);
+        const priceRange = document.querySelector('input[name="price"]:checked').value;
+        const minDiscount = parseInt(document.querySelector('input[name="discount"]:checked').value, 10);
+
+        let visibleCount = 0;
+        cards.forEach(function (card) {
+          const text = card.textContent.toLowerCase();
+          const gender = card.getAttribute('data-gender');
+          const cat = card.getAttribute('data-category');
+          const brand = card.getAttribute('data-brand');
+          const price = parseInt(card.getAttribute('data-price'), 10);
+          const discount = parseInt(card.getAttribute('data-discount'), 10);
+
+          let show = true;
+          if (query && !text.includes(query)) show = false;
+          if (activeNavFilter !== 'All' && !text.includes(activeNavFilter.toLowerCase()) && gender !== activeNavFilter && cat !== activeNavFilter) show = false;
+          if (selectedGenders.length && !selectedGenders.includes(gender)) show = false;
+          if (selectedCats.length && !selectedCats.includes(cat)) show = false;
+          if (selectedBrands.length && !selectedBrands.includes(brand)) show = false;
+          if (priceRange === 'under1000' && price >= 1000) show = false;
+          if (priceRange === '1000to2500' && (price < 1000 || price > 2500)) show = false;
+          if (priceRange === 'above2500' && price <= 2500) show = false;
+          if (discount < minDiscount) show = false;
+
+          card.classList.toggle('hidden', !show);
+          if (show) visibleCount += 1;
+        });
+
+        const sortMode = sortSelect.value;
+        const sorted = cards.slice().sort(function (a, b) {
+          if (sortMode === 'price-asc') return parseInt(a.getAttribute('data-price'), 10) - parseInt(b.getAttribute('data-price'), 10);
+          if (sortMode === 'price-desc') return parseInt(b.getAttribute('data-price'), 10) - parseInt(a.getAttribute('data-price'), 10);
+          if (sortMode === 'newest') return parseInt(b.getAttribute('data-newest'), 10) - parseInt(a.getAttribute('data-newest'), 10);
+          return parseInt(b.getAttribute('data-pop'), 10) - parseInt(a.getAttribute('data-pop'), 10);
+        });
+        sorted.forEach(function (card) { grid.appendChild(card); });
+        countLabel.textContent = '(' + visibleCount + ' products)';
+      }
+
+      document.querySelectorAll('aside input').forEach(function (el) {
+        el.addEventListener('change', applyFiltersAndSort);
+      });
+      sortSelect.addEventListener('change', applyFiltersAndSort);
+      searchInput.addEventListener('input', applyFiltersAndSort);
+      document.getElementById('fashion-search-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        applyFiltersAndSort();
+      });
+
+      document.querySelectorAll('[data-nav-filter]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          activeNavFilter = btn.getAttribute('data-nav-filter');
+          document.querySelectorAll('[data-nav-filter]').forEach(function (b) {
+            b.className = 'px-3 py-1 rounded-sm text-light-on-surface hover:bg-light-surface-container-low hover:text-light-primary font-label text-label-md shrink-0 transition-colors';
+          });
+          btn.className = 'px-3 py-1 rounded-sm bg-light-primary text-light-on-primary font-label text-label-md shrink-0';
+          applyFiltersAndSort();
+        });
+      });
+
+      document.getElementById('clear-filters-btn').addEventListener('click', function () {
+        document.querySelectorAll('aside input[type="checkbox"]').forEach(function (cb) { cb.checked = false; });
+        document.querySelector('input[name="price"][value="all"]').checked = true;
+        document.querySelector('input[name="discount"][value="0"]').checked = true;
+        searchInput.value = '';
+        activeNavFilter = 'All';
+        applyFiltersAndSort();
+      });
+
+      document.querySelectorAll('[data-add-cart]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          cartCount += 1;
+          cartBadge.textContent = String(cartCount);
+          const orig = btn.textContent;
+          btn.textContent = 'Added to Cart';
+          setTimeout(function () { btn.textContent = orig; }, 900);
+        });
+      });
+
+      document.querySelectorAll('[data-wishlist-toggle]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const active = btn.classList.toggle('text-light-error');
+          wishlistCount += active ? 1 : -1;
+          if (wishlistCount < 0) wishlistCount = 0;
+          wishlistBadge.textContent = String(wishlistCount);
+          wishlistBadge.classList.toggle('hidden', wishlistCount === 0);
+          wishlistBadge.classList.toggle('inline-flex', wishlistCount > 0);
+        });
+      });
+    })();
+  </script>
+
+
+</body></html>

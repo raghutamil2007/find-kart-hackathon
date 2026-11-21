@@ -1,0 +1,6 @@
+{
+  "name": "FindKart",
+  "description": "FindKart — Online Shopping for Electronics, Fashion, Beauty, Home & More across India with Cash on Delivery.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,396 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FindKart — Online Shopping (Mobile)</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config" data-stitch-original-src="3b80301eec075f3d===../../tailwind.config.js">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'accent-yellow': '#F9BD00',
+        'on-accent-yellow': '#251A00',
+        'success': '#15803D',
+        'on-success': '#FFFFFF',
+        'success-container': '#DCFCE7',
+        'on-success-container': '#14532D',
+        'warning': '#B45309',
+        'on-warning': '#FFFFFF',
+        'warning-container': '#FEF3C7',
+        'on-warning-container': '#78350F',
+        'light-primary': '#00389B',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#164EC4',
+        'light-on-primary-container': '#FFFFFF',
+        'light-secondary': '#785A00',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#F9BD00',
+        'light-on-secondary-container': '#251A00',
+        'light-tertiary': '#752600',
+        'light-on-tertiary': '#FFFFFF',
+        'light-tertiary-container': '#9C3500',
+        'light-on-tertiary-container': '#FFFFFF',
+        'light-error': '#BA1A1A',
+        'light-on-error': '#FFFFFF',
+        'light-error-container': '#FFDAD6',
+        'light-on-error-container': '#93000A',
+        'light-background': '#F3F3FD',
+        'light-on-background': '#191B22',
+        'light-surface': '#FAF8FF',
+        'light-surface-dim': '#D9D9E3',
+        'light-surface-bright': '#FFFFFF',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F3F3FD',
+        'light-surface-container': '#EDEDF7',
+        'light-surface-container-high': '#E8E7F2',
+        'light-surface-container-highest': '#E2E2EC',
+        'light-on-surface': '#191B22',
+        'light-surface-variant': '#E0E1F2',
+        'light-on-surface-variant': '#434654',
+        'light-outline': '#747685',
+        'light-outline-variant': '#C3C6D6',
+        'light-inverse-surface': '#2E3038',
+        'light-inverse-on-surface': '#F0F0FA',
+        'light-inverse-primary': '#B4C5FF',
+        'dark-primary': '#B4C5FF',
+        'dark-on-primary': '#002A78',
+        'dark-primary-container': '#164EC4',
+        'dark-on-primary-container': '#FFFFFF',
+        'dark-secondary': '#FFE5B3',
+        'dark-on-secondary': '#3F2E00',
+        'dark-secondary-container': '#FFC312',
+        'dark-on-secondary-container': '#251A00',
+        'dark-tertiary': '#FFB59A',
+        'dark-on-tertiary': '#5A1B00',
+        'dark-tertiary-container': '#9C3500',
+        'dark-on-tertiary-container': '#FFFFFF',
+        'dark-error': '#FFB4AB',
+        'dark-on-error': '#690005',
+        'dark-error-container': '#93000A',
+        'dark-on-error-container': '#FFDAD6',
+        'dark-background': '#11131A',
+        'dark-on-background': '#E2E2EC',
+        'dark-surface': '#11131A',
+        'dark-surface-dim': '#11131A',
+        'dark-surface-bright': '#373941',
+        'dark-surface-container-lowest': '#0C0E15',
+        'dark-surface-container-low': '#191B22',
+        'dark-surface-container': '#1E1F27',
+        'dark-surface-container-high': '#282A31',
+        'dark-surface-container-highest': '#33343C',
+        'dark-on-surface': '#E2E2EC',
+        'dark-surface-variant': '#434654',
+        'dark-on-surface-variant': '#C3C6D6',
+        'dark-outline': '#8D909F',
+        'dark-outline-variant': '#434654',
+        'dark-inverse-surface': '#E2E2EC',
+        'dark-inverse-on-surface': '#2E3038',
+        'dark-inverse-primary': '#2256CB',
+      },
+      borderRadius: {
+        'sm': '4px',
+        'DEFAULT': '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '20px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '48px',
+        'page-margin': '20px',
+      },
+      fontFamily: {
+        'display': ['"Mulish"', 'sans-serif'],
+        'headline': ['"Mulish"', 'sans-serif'],
+        'title': ['"Radio Canada Big"', 'sans-serif'],
+        'body': ['"Radio Canada Big"', 'sans-serif'],
+        'label': ['"Radio Canada Big"', 'sans-serif'],
+        'mono': ['"Spline Sans Mono"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['40px', { lineHeight: '46px', letterSpacing: '-0.5px', fontWeight: '800' }],
+        'display-lg-mobile': ['28px', { lineHeight: '34px', letterSpacing: '-0.25px', fontWeight: '800' }],
+        'headline-lg': ['32px', { lineHeight: '38px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg-mobile': ['24px', { lineHeight: '30px', letterSpacing: '-0.2px', fontWeight: '700' }],
+        'headline-md': ['24px', { lineHeight: '30px', letterSpacing: '-0.15px', fontWeight: '700' }],
+        'headline-sm': ['20px', { lineHeight: '26px', letterSpacing: '0px', fontWeight: '700' }],
+        'title-lg': ['18px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.1px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0.1px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.2px', fontWeight: '600' }],
+        'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.25px', fontWeight: '600' }],
+        'mono-md': ['13px', { lineHeight: '18px', letterSpacing: '0px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '200ms',
+        'surface-exit': '150ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@600;700;800&amp;family=Radio+Canada+Big:wght@400;500;600;700&amp;family=Spline+Sans+Mono:wght@500&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="bg-light-surface-container-low text-light-on-surface font-body antialiased">
+
+  <div class="min-h-screen flex flex-col">
+
+    <!-- Mobile Sticky Header -->
+    <header class="sticky top-0 z-30 bg-light-primary text-light-on-primary shadow-sm">
+      <div class="px-gutter-md py-3 flex flex-col gap-2.5">
+        <div class="flex items-center justify-between gap-gutter-sm">
+          <a href="#top" class="inline-flex items-center gap-gutter-sm">
+            <div class="w-8 h-8 rounded bg-accent-yellow text-on-accent-yellow flex items-center justify-center">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">shopping_bag</span>
+            </div>
+            <span data-design-text-token="title-lg" class="font-headline text-title-lg text-light-on-primary">FindKart</span>
+          </a>
+
+          <div class="flex items-center gap-gutter-xs">
+            <a href="#login" aria-label="Account" class="inline-flex items-center gap-1 px-2.5 py-1.5 rounded bg-light-primary-container text-light-on-primary">
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">person</span>
+              <span data-design-text-token="label-sm" class="font-label text-label-sm">Login</span>
+            </a>
+            <button type="button" aria-label="Wishlist" class="inline-flex items-center justify-center w-9 h-9 rounded text-light-on-primary">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">favorite</span>
+            </button>
+            <button type="button" id="m-cart-btn" aria-label="Cart" class="relative inline-flex items-center justify-center w-9 h-9 rounded text-light-on-primary">
+              <span class="material-symbols-outlined text-[20px]" aria-hidden="true">shopping_cart</span>
+              <span id="m-cart-count" class="absolute top-0.5 right-0.5 min-w-4 h-4 px-1 rounded-full bg-accent-yellow text-on-accent-yellow font-label text-label-sm flex items-center justify-center tabular-nums">0</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Search Bar -->
+        <form id="m-search-form" role="search" class="relative flex items-center">
+          <span class="material-symbols-outlined text-[18px] text-light-outline absolute left-3 pointer-events-none" aria-hidden="true">search</span>
+          <input type="search" placeholder="Search electronics, fashion, essentials..." aria-label="Search FindKart" class="w-full h-10 pl-10 pr-3 rounded bg-light-surface-container-lowest text-light-on-surface placeholder:text-light-outline font-body text-body-md border-0 focus:ring-2 focus:ring-accent-yellow focus:outline-none">
+        </form>
+
+        <!-- Location Strip -->
+        <div class="flex items-center gap-1.5 text-light-inverse-primary">
+          <span class="material-symbols-outlined text-[16px] text-accent-yellow" aria-hidden="true">location_on</span>
+          <span data-design-text-token="body-sm" class="font-body text-body-sm">Deliver to Bengaluru 560001</span>
+        </div>
+      </div>
+
+      <!-- Scrollable Category Strip -->
+      <nav aria-label="Categories" class="bg-light-surface-container-lowest text-light-on-surface border-b border-light-outline-variant/60 px-gutter-md py-2 flex items-center gap-gutter-md overflow-x-auto">
+        <a href="#fashion" class="flex flex-col items-center gap-1 shrink-0 min-w-14">
+          <span class="material-symbols-outlined text-[20px] text-light-primary" aria-hidden="true">checkroom</span>
+          <span data-design-text-token="label-sm" class="font-label text-label-sm">Fashion</span>
+        </a>
+        <a href="#electronics" class="flex flex-col items-center gap-1 shrink-0 min-w-14">
+          <span class="material-symbols-outlined text-[20px] text-light-primary" aria-hidden="true">devices</span>
+          <span data-design-text-token="label-sm" class="font-label text-label-sm">Electronics</span>
+        </a>
+        <a href="#beauty" class="flex flex-col items-center gap-1 shrink-0 min-w-14">
+          <span class="material-symbols-outlined text-[20px] text-light-primary" aria-hidden="true">spa</span>
+          <span data-design-text-token="label-sm" class="font-label text-label-sm">Beauty</span>
+        </a>
+        <a href="#sports" class="flex flex-col items-center gap-1 shrink-0 min-w-14">
+          <span class="material-symbols-outlined text-[20px] text-light-primary" aria-hidden="true">fitness_center</span>
+          <span data-design-text-token="label-sm" class="font-label text-label-sm">Sports</span>
+        </a>
+        <a href="#home" class="flex flex-col items-center gap-1 shrink-0 min-w-14">
+          <span class="material-symbols-outlined text-[20px] text-light-primary" aria-hidden="true">kitchen</span>
+          <span data-design-text-token="label-sm" class="font-label text-label-sm">Home</span>
+        </a>
+        <a href="#books" class="flex flex-col items-center gap-1 shrink-0 min-w-14">
+          <span class="material-symbols-outlined text-[20px] text-light-primary" aria-hidden="true">menu_book</span>
+          <span data-design-text-token="label-sm" class="font-label text-label-sm">Books</span>
+        </a>
+        <a href="#toys" class="flex flex-col items-center gap-1 shrink-0 min-w-14">
+          <span class="material-symbols-outlined text-[20px] text-light-primary" aria-hidden="true">toys</span>
+          <span data-design-text-token="label-sm" class="font-label text-label-sm">Toys</span>
+        </a>
+        <a href="#accessories" class="flex flex-col items-center gap-1 shrink-0 min-w-14">
+          <span class="material-symbols-outlined text-[20px] text-light-primary" aria-hidden="true">watch</span>
+          <span data-design-text-token="label-sm" class="font-label text-label-sm">Accessories</span>
+        </a>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 px-gutter-md py-gutter-md flex flex-col gap-gutter-lg">
+
+      <!-- Mobile Hero Banner -->
+      <section class="bg-light-primary text-light-on-primary rounded-md overflow-hidden shadow-sm">
+        <img src="https://lh3.googleusercontent.com/aida/ALJJyrCdi1MS9bP6m5MwWAD2hfs3LhCxck6IT3NU4SswVCowWHXVDJ9eXB2BYpxqxijpaP-zHgAlQJcrhAmmRTJXCzDnoNGsE84L_NRLzS-YcMOBpuo6LRgr3WZjYsbDoGN3J99QbpXDnUjRs6nFCQrmz0W5hVgaE6pGBYEJSTHgZdKgwpHFomSkVCmwK8gy4NqOIog2IgRkZdyWm74JWEEAHq6esCO_kgZgpT0D81BjA5n9EU6DRtMxnLaBqLZXjkWL6A" alt="Weekend Electronics Sale" class="w-full h-40 object-cover" data-stitch-original-src="491313163494a2bd===../../images/hero_electronics_sale.jpg">
+        <div class="p-gutter-md flex flex-col gap-2">
+          <span data-design-text-token="label-sm" class="inline-flex w-fit px-2 py-0.5 rounded-sm bg-accent-yellow text-on-accent-yellow font-label text-label-sm">WEEKEND OFFER</span>
+          <h1 data-design-text-token="headline-lg-mobile" class="font-headline text-headline-lg-mobile text-light-on-primary">Upgrade your everyday tech</h1>
+          <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-inverse-primary">Up to 40% off + Cash on Delivery across India.</p>
+          <a href="#m-trending" class="mt-1 inline-flex items-center justify-center gap-1.5 w-full py-2.5 rounded bg-accent-yellow text-on-accent-yellow font-label text-label-md">
+            <span data-design-text-token="label-md">Shop Now</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Trending Products (2-Column Grid) -->
+      <section id="m-trending" class="flex flex-col gap-gutter-sm">
+        <div class="flex items-center justify-between">
+          <h2 data-design-text-token="title-lg" class="font-headline text-title-lg text-light-on-surface">Trending Products</h2>
+          <a href="#m-deals" data-design-text-token="label-md" class="font-label text-label-md text-light-primary">See all</a>
+        </div>
+
+        <div class="grid grid-cols-2 gap-gutter-sm items-stretch">
+          <article class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-3 flex flex-col justify-between gap-2 shadow-sm h-full">
+            <div class="flex flex-col gap-1.5">
+              <img src="https://lh3.googleusercontent.com/aida/ALJJyrCjJzAkdwkIbrzMDatIrgNVl5YoCmiK8R9pKLytK2rvPILD6TomrVPikLheRu9kpNnqIdVFl0lotMed0a1UjROJT-7zZFJPwINngxlvse4H1g0ml5G4hhzVYDnU_U8Bfwf7_u8H1XOG6AwYpsVfEt3GfwxaFBOa1W8JSRskhl5QCC2ZiY4cNvwLSTFzg0JwMTIGPks5Jy3vDOC2NYJzWPBkbqwWldpy3G9Riy93RETmru1y-bjImdL01RE" alt="SoundCore Pro ANC" class="w-full h-28 object-contain" data-stitch-original-src="2b586017d77f1079===../../images/prod_headphones.jpg">
+              <h3 data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface line-clamp-2">SoundCore Pro Headphones</h3>
+              <div class="flex items-center gap-1">
+                <span class="px-1.5 py-0.5 rounded-sm bg-success text-on-success font-label text-label-sm tabular-nums">4.6 ★</span>
+                <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant tabular-nums">(2.4k)</span>
+              </div>
+              <div class="flex items-baseline gap-1.5 flex-wrap">
+                <span data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface tabular-nums">₹2,499</span>
+                <span data-design-text-token="label-sm" class="font-label text-label-sm text-success">50% off</span>
+              </div>
+            </div>
+            <button type="button" data-m-add-cart class="w-full py-2 rounded bg-light-primary text-light-on-primary font-label text-label-sm">Add to Cart</button>
+          </article>
+
+          <article class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-3 flex flex-col justify-between gap-2 shadow-sm h-full">
+            <div class="flex flex-col gap-1.5">
+              <img src="https://lh3.googleusercontent.com/aida/ALJJyrCdlo-it_NLTrCnrmpr8D6e-wbQnY5q8BvlgBBRERoSSug7U4ECRZ0vhmKQNyOkC3ZKxSX-3uny-IiZWEiPMAV3UQanPBCYXLy-wXjcO_QLgP9z5VIo5qhoxUZpEs_96YE9GICyRvR2ss_93CpYAWE1oUbToI9F_zLF6-VqFsvg5cTp_hTky9hZSGE-D_pDDbBXDgEq_MM1_cKEh8cb8KFZiiZcgcitwdXuD9ttx6RC1xGItycXj5gW_g" alt="PulseFit Smartwatch" class="w-full h-28 object-contain" data-stitch-original-src="781fe22278857549===../../images/prod_smartwatch.jpg">
+              <h3 data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface line-clamp-2">PulseFit AMOLED Smartwatch</h3>
+              <div class="flex items-center gap-1">
+                <span class="px-1.5 py-0.5 rounded-sm bg-success text-on-success font-label text-label-sm tabular-nums">4.4 ★</span>
+                <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant tabular-nums">(1.8k)</span>
+              </div>
+              <div class="flex items-baseline gap-1.5 flex-wrap">
+                <span data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface tabular-nums">₹3,299</span>
+                <span data-design-text-token="label-sm" class="font-label text-label-sm text-success">45% off</span>
+              </div>
+            </div>
+            <button type="button" data-m-add-cart class="w-full py-2 rounded bg-light-primary text-light-on-primary font-label text-label-sm">Add to Cart</button>
+          </article>
+        </div>
+      </section>
+
+      <!-- Best Deals -->
+      <section id="m-deals" class="flex flex-col gap-gutter-sm">
+        <div class="flex items-center justify-between">
+          <h2 data-design-text-token="title-lg" class="font-headline text-title-lg text-light-on-surface">Best Deals</h2>
+          <span data-design-text-token="label-sm" class="px-2 py-0.5 rounded-sm bg-accent-yellow text-on-accent-yellow font-label text-label-sm">Up to 55% Off</span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-gutter-sm items-stretch">
+          <article class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-3 flex flex-col justify-between gap-2 shadow-sm h-full">
+            <div class="flex flex-col gap-1.5">
+              <img src="https://lh3.googleusercontent.com/aida/ALJJyrAUWTkZeqfL0GkU2LYiypCJSjs8PZXA232dQmO8qOTYNQ0BmGL_KFhhzxVEU1uL-HAvcSSxobRx84U90ApRE2hh2NiUaTP1wXfYZp4wnguSFIJsPQqud8G5vBcLCWBOsgIIUKvS6klEs9Bp0LW6npN51vkMGCukvtmF2Wj4FjqV4-7Bm6F2nWz8QGUipa5GE0YvMjA5VoPdMcrq-El8FwIUmrmdAT8o5msTuMVbDYOfPGLzBsnT" alt="SwiftBoil Electric Kettle" class="w-full h-28 object-contain" data-stitch-original-src="37b3226a69fef873===../../images/prod_kettle.jpg">
+              <h3 data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface line-clamp-2">SwiftBoil 1.5L Kettle</h3>
+              <div class="flex items-baseline gap-1.5 flex-wrap">
+                <span data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface tabular-nums">₹899</span>
+                <span data-design-text-token="label-sm" class="font-label text-label-sm text-success">47% off</span>
+              </div>
+            </div>
+            <button type="button" data-m-add-cart class="w-full py-2 rounded bg-light-primary text-light-on-primary font-label text-label-sm">Add to Cart</button>
+          </article>
+
+          <article class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-3 flex flex-col justify-between gap-2 shadow-sm h-full">
+            <div class="flex flex-col gap-1.5">
+              <img src="https://lh3.googleusercontent.com/aida/ALJJyrDmJpKtvwm3vVdhV8b5Fm3GJisqqrvYdQQUn_QMCX4tK7nP7oWZ3FdXqEgA1q9dc2EgPuqbinVj6vD9SdeeSUUcqleBNijIA3ZH5O_m0AUiISXxRI2ASebLu_Fa33gifvTZKK3E9uGk43L-f7dwe_NX4PwYmkPuRUJ7BqPpkzZevucAChuNflkJY4GeJSU50extiUua_PyLMJK4TS8dK8thv7oaWiRK7tYLEqgpxMQjgDBFxNm1n1M" alt="UrbanPack Backpack" class="w-full h-28 object-contain" data-stitch-original-src="2f837798090054de===../../images/prod_backpack.jpg">
+              <h3 data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface line-clamp-2">UrbanPack Laptop Bag</h3>
+              <div class="flex items-baseline gap-1.5 flex-wrap">
+                <span data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface tabular-nums">₹1,149</span>
+                <span data-design-text-token="label-sm" class="font-label text-label-sm text-success">54% off</span>
+              </div>
+            </div>
+            <button type="button" data-m-add-cart class="w-full py-2 rounded bg-light-primary text-light-on-primary font-label text-label-sm">Add to Cart</button>
+          </article>
+        </div>
+      </section>
+
+      <!-- Recommended & New Arrivals -->
+      <section class="flex flex-col gap-gutter-sm">
+        <h2 data-design-text-token="title-lg" class="font-headline text-title-lg text-light-on-surface">Recommended &amp; New</h2>
+        <div class="grid grid-cols-2 gap-gutter-sm items-stretch">
+          <article class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-3 flex flex-col justify-between gap-2 shadow-sm h-full">
+            <div class="flex flex-col gap-1.5">
+              <img src="https://lh3.googleusercontent.com/aida/ALJJyrCHmiyN7RvfohJiuik2NVg_fHl-w_oaGW1WEZbipfdB7ti7ojqepCeTxNnzJRTXDHBuNfm0Jlw_jqQlt3oRKUhSw-bZnim9pX1v0XFmqBUEHBV4yLBXI0bfCEt80z-QXaH591mETgMrXhtRPVpatn1KHxA9iYlPN3HduqahpNnLcEml3wRDIg_R9b9kkNDOsVAOYAVVw8Csd7eVQb10o_rMpNDT3FMDSJCTQbxTokTXGKtO7i_VeZk" alt="StrideX Sneakers" class="w-full h-28 object-contain" data-stitch-original-src="357d7695c9dd6f63===../../images/prod_sneakers.jpg">
+              <h3 data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface line-clamp-2">StrideX Running Shoes</h3>
+              <div class="flex items-baseline gap-1.5 flex-wrap">
+                <span data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface tabular-nums">₹1,799</span>
+                <span data-design-text-token="label-sm" class="font-label text-label-sm text-success">40% off</span>
+              </div>
+            </div>
+            <button type="button" data-m-add-cart class="w-full py-2 rounded bg-light-primary text-light-on-primary font-label text-label-sm">Add to Cart</button>
+          </article>
+
+          <article class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-3 flex flex-col justify-between gap-2 shadow-sm h-full">
+            <div class="flex flex-col gap-1.5">
+              <img src="https://lh3.googleusercontent.com/aida/ALJJyrBJi868HAGft_Sa01s-o5FWkikuBQT_K34SS4wWScsRL00joYBOUpXJE4shZgkXQt2iogVDjJuKykcreIqzkiUEN18K658iG8-Eo9fSUQagk_izwJyAwq5y9fwXVKsYYawgbgZGcpBJM-uTXQH4q2DhM-RUXHIh-bbhlJ2adhzhuActafmTXpXpZtw4b1KKh12imryF5fESNoCbrEEjDiUpwO8nZ8BP07FPI2hMfg3XKHDyO23T2tL1" alt="PureGlow Skincare" class="w-full h-28 object-contain" data-stitch-original-src="28bfc0d37e9fd299===../../images/prod_skincare.jpg">
+              <h3 data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface line-clamp-2">PureGlow Vitamin C Combo</h3>
+              <div class="flex items-baseline gap-1.5 flex-wrap">
+                <span data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface tabular-nums">₹649</span>
+                <span data-design-text-token="label-sm" class="font-label text-label-sm text-success">46% off</span>
+              </div>
+            </div>
+            <button type="button" data-m-add-cart class="w-full py-2 rounded bg-light-primary text-light-on-primary font-label text-label-sm">Add to Cart</button>
+          </article>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Mobile Footer -->
+    <footer class="bg-light-inverse-surface text-light-inverse-on-surface px-gutter-md py-gutter-lg flex flex-col gap-gutter-md">
+      <div class="flex flex-col gap-1">
+        <span data-design-text-token="title-md" class="font-headline text-title-md text-light-on-primary">FindKart</span>
+        <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-outline-variant">support@findkart.in • 1800-120-4500</span>
+      </div>
+      <div class="flex flex-wrap gap-gutter-md text-light-outline-variant">
+        <a href="#about" data-design-text-token="body-sm" class="font-body text-body-sm">About</a>
+        <a href="#help" data-design-text-token="body-sm" class="font-body text-body-sm">Support</a>
+        <a href="#privacy" data-design-text-token="body-sm" class="font-body text-body-sm">Privacy</a>
+        <a href="#terms" data-design-text-token="body-sm" class="font-body text-body-sm">Terms</a>
+      </div>
+      <span data-design-text-token="label-sm" class="font-label text-label-sm text-accent-yellow">© 2026 FindKart • Cash on Delivery</span>
+    </footer>
+
+  </div>
+
+  <script>
+    (function () {
+      let count = 0;
+      const badge = document.getElementById('m-cart-count');
+      document.querySelectorAll('[data-m-add-cart]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          count += 1;
+          badge.textContent = String(count);
+          const label = btn.textContent;
+          btn.textContent = 'Added!';
+          setTimeout(function () { btn.textContent = label; }, 900);
+        });
+      });
+    })();
+  </script>
+
+
+</body></html>

@@ -1,0 +1,795 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FindKart — Online Shopping for Electronics, Fashion, Home &amp; More</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config" data-stitch-original-src="3b80301eec075f3d===../../tailwind.config.js">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'accent-yellow': '#F9BD00',
+        'on-accent-yellow': '#251A00',
+        'success': '#15803D',
+        'on-success': '#FFFFFF',
+        'success-container': '#DCFCE7',
+        'on-success-container': '#14532D',
+        'warning': '#B45309',
+        'on-warning': '#FFFFFF',
+        'warning-container': '#FEF3C7',
+        'on-warning-container': '#78350F',
+        'light-primary': '#00389B',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#164EC4',
+        'light-on-primary-container': '#FFFFFF',
+        'light-secondary': '#785A00',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#F9BD00',
+        'light-on-secondary-container': '#251A00',
+        'light-tertiary': '#752600',
+        'light-on-tertiary': '#FFFFFF',
+        'light-tertiary-container': '#9C3500',
+        'light-on-tertiary-container': '#FFFFFF',
+        'light-error': '#BA1A1A',
+        'light-on-error': '#FFFFFF',
+        'light-error-container': '#FFDAD6',
+        'light-on-error-container': '#93000A',
+        'light-background': '#F3F3FD',
+        'light-on-background': '#191B22',
+        'light-surface': '#FAF8FF',
+        'light-surface-dim': '#D9D9E3',
+        'light-surface-bright': '#FFFFFF',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F3F3FD',
+        'light-surface-container': '#EDEDF7',
+        'light-surface-container-high': '#E8E7F2',
+        'light-surface-container-highest': '#E2E2EC',
+        'light-on-surface': '#191B22',
+        'light-surface-variant': '#E0E1F2',
+        'light-on-surface-variant': '#434654',
+        'light-outline': '#747685',
+        'light-outline-variant': '#C3C6D6',
+        'light-inverse-surface': '#2E3038',
+        'light-inverse-on-surface': '#F0F0FA',
+        'light-inverse-primary': '#B4C5FF',
+        'dark-primary': '#B4C5FF',
+        'dark-on-primary': '#002A78',
+        'dark-primary-container': '#164EC4',
+        'dark-on-primary-container': '#FFFFFF',
+        'dark-secondary': '#FFE5B3',
+        'dark-on-secondary': '#3F2E00',
+        'dark-secondary-container': '#FFC312',
+        'dark-on-secondary-container': '#251A00',
+        'dark-tertiary': '#FFB59A',
+        'dark-on-tertiary': '#5A1B00',
+        'dark-tertiary-container': '#9C3500',
+        'dark-on-tertiary-container': '#FFFFFF',
+        'dark-error': '#FFB4AB',
+        'dark-on-error': '#690005',
+        'dark-error-container': '#93000A',
+        'dark-on-error-container': '#FFDAD6',
+        'dark-background': '#11131A',
+        'dark-on-background': '#E2E2EC',
+        'dark-surface': '#11131A',
+        'dark-surface-dim': '#11131A',
+        'dark-surface-bright': '#373941',
+        'dark-surface-container-lowest': '#0C0E15',
+        'dark-surface-container-low': '#191B22',
+        'dark-surface-container': '#1E1F27',
+        'dark-surface-container-high': '#282A31',
+        'dark-surface-container-highest': '#33343C',
+        'dark-on-surface': '#E2E2EC',
+        'dark-surface-variant': '#434654',
+        'dark-on-surface-variant': '#C3C6D6',
+        'dark-outline': '#8D909F',
+        'dark-outline-variant': '#434654',
+        'dark-inverse-surface': '#E2E2EC',
+        'dark-inverse-on-surface': '#2E3038',
+        'dark-inverse-primary': '#2256CB',
+      },
+      borderRadius: {
+        'sm': '4px',
+        'DEFAULT': '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '20px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '48px',
+        'page-margin': '20px',
+      },
+      fontFamily: {
+        'display': ['"Mulish"', 'sans-serif'],
+        'headline': ['"Mulish"', 'sans-serif'],
+        'title': ['"Radio Canada Big"', 'sans-serif'],
+        'body': ['"Radio Canada Big"', 'sans-serif'],
+        'label': ['"Radio Canada Big"', 'sans-serif'],
+        'mono': ['"Spline Sans Mono"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['40px', { lineHeight: '46px', letterSpacing: '-0.5px', fontWeight: '800' }],
+        'display-lg-mobile': ['28px', { lineHeight: '34px', letterSpacing: '-0.25px', fontWeight: '800' }],
+        'headline-lg': ['32px', { lineHeight: '38px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg-mobile': ['24px', { lineHeight: '30px', letterSpacing: '-0.2px', fontWeight: '700' }],
+        'headline-md': ['24px', { lineHeight: '30px', letterSpacing: '-0.15px', fontWeight: '700' }],
+        'headline-sm': ['20px', { lineHeight: '26px', letterSpacing: '0px', fontWeight: '700' }],
+        'title-lg': ['18px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.1px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0.1px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.2px', fontWeight: '600' }],
+        'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.25px', fontWeight: '600' }],
+        'mono-md': ['13px', { lineHeight: '18px', letterSpacing: '0px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '200ms',
+        'surface-exit': '150ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@600;700;800&amp;family=Radio+Canada+Big:wght@400;500;600;700&amp;family=Spline+Sans+Mono:wght@500&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="bg-light-surface-container-lowest text-light-on-surface font-body antialiased">
+
+  <div class="min-h-screen flex flex-col">
+
+    <!-- Sticky Minimalist Shopping Header -->
+    <header class="sticky top-0 z-30 bg-light-primary text-light-on-primary border-b border-light-primary-container shadow-sm">
+      <div class="max-w-7xl mx-auto px-gutter-lg h-16 flex items-center justify-between gap-gutter-lg">
+
+        <!-- Brand Logo + Location -->
+        <div class="flex items-center gap-gutter-lg shrink-0">
+          <a href="#top" class="inline-flex items-center gap-gutter-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-yellow rounded">
+            <div class="w-9 h-9 rounded bg-accent-yellow text-on-accent-yellow flex items-center justify-center">
+              <span class="material-symbols-outlined text-[22px]" aria-hidden="true">shopping_bag</span>
+            </div>
+            <div class="flex flex-col">
+              <span data-design-text-token="title-lg" class="font-headline text-title-lg text-light-on-primary leading-none">FindKart</span>
+              <span data-design-text-token="label-sm" class="font-label text-label-sm text-accent-yellow">INDIA STORE</span>
+            </div>
+          </a>
+
+          <button type="button" id="location-btn" class="hidden xl:flex items-center gap-1.5 px-2.5 py-1.5 rounded hover:bg-light-primary-container transition-colors duration-state-change text-left">
+            <span class="material-symbols-outlined text-[18px] text-accent-yellow" aria-hidden="true">location_on</span>
+            <div class="flex flex-col">
+              <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-inverse-primary leading-none">Deliver to</span>
+              <span id="location-label" data-design-text-token="label-md" class="font-label text-label-md text-light-on-primary leading-tight">Bengaluru 560001</span>
+            </div>
+          </button>
+        </div>
+
+        <!-- Prominent Search Bar -->
+        <form id="search-form" class="flex-1 max-w-2xl" role="search">
+          <div class="relative flex items-center">
+            <span class="material-symbols-outlined text-[20px] text-light-outline absolute left-3.5 pointer-events-none" aria-hidden="true">search</span>
+            <input id="search-input" type="search" placeholder="Search for electronics, fashion, home essentials..." aria-label="Search FindKart products" class="w-full h-10 pl-11 pr-24 rounded bg-light-surface-container-lowest text-light-on-surface placeholder:text-light-outline font-body text-body-md border-0 focus:ring-2 focus:ring-accent-yellow focus:outline-none">
+            <button type="submit" class="absolute right-1 h-8 px-gutter-md rounded-sm bg-accent-yellow text-on-accent-yellow hover:bg-light-secondary-container font-label text-label-md transition-colors duration-state-change">
+              <span data-design-text-token="label-md">Search</span>
+            </button>
+          </div>
+        </form>
+
+        <!-- Account, Wishlist, Cart Actions -->
+        <nav aria-label="Customer actions" class="flex items-center gap-gutter-sm shrink-0">
+          <a href="#login" id="header-login-link" class="inline-flex items-center gap-1.5 px-3 py-2 rounded bg-light-surface-container-lowest text-light-primary hover:bg-light-surface-container transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">person</span>
+            <span id="header-user-label" data-design-text-token="label-md" class="font-label text-label-md">Login</span>
+          </a>
+
+          <button type="button" id="wishlist-btn" aria-label="Wishlist" class="relative inline-flex items-center gap-1.5 px-3 py-2 rounded hover:bg-light-primary-container text-light-on-primary transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">favorite</span>
+            <span data-design-text-token="label-md" class="hidden md:inline font-label text-label-md">Wishlist</span>
+            <span id="wishlist-count" class="hidden min-w-5 h-5 px-1 rounded-full bg-accent-yellow text-on-accent-yellow font-label text-label-sm items-center justify-center tabular-nums">0</span>
+          </button>
+
+          <button type="button" id="cart-btn" aria-label="Shopping cart" class="relative inline-flex items-center gap-1.5 px-3 py-2 rounded hover:bg-light-primary-container text-light-on-primary transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">shopping_cart</span>
+            <span data-design-text-token="label-md" class="hidden md:inline font-label text-label-md">Cart</span>
+            <span id="cart-count" class="inline-flex min-w-5 h-5 px-1 rounded-full bg-accent-yellow text-on-accent-yellow font-label text-label-sm items-center justify-center tabular-nums">0</span>
+          </button>
+        </nav>
+
+      </div>
+
+      <!-- Horizontal Category Navigation Bar -->
+      <div class="bg-light-surface-container-lowest text-light-on-surface border-b border-light-outline-variant/60">
+        <nav aria-label="Product categories" class="max-w-7xl mx-auto px-gutter-lg py-2.5 flex items-center justify-between gap-gutter-md overflow-x-auto">
+          <a href="#category-fashion" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded hover:bg-light-surface-container-low hover:text-light-primary transition-colors shrink-0">
+            <span class="material-symbols-outlined text-[18px] text-light-primary" aria-hidden="true">checkroom</span>
+            <span data-design-text-token="label-md" class="font-label text-label-md">Fashion</span>
+          </a>
+          <a href="#category-electronics" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded hover:bg-light-surface-container-low hover:text-light-primary transition-colors shrink-0">
+            <span class="material-symbols-outlined text-[18px] text-light-primary" aria-hidden="true">devices</span>
+            <span data-design-text-token="label-md" class="font-label text-label-md">Electronics</span>
+          </a>
+          <a href="#category-beauty" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded hover:bg-light-surface-container-low hover:text-light-primary transition-colors shrink-0">
+            <span class="material-symbols-outlined text-[18px] text-light-primary" aria-hidden="true">spa</span>
+            <span data-design-text-token="label-md" class="font-label text-label-md">Beauty</span>
+          </a>
+          <a href="#category-sports" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded hover:bg-light-surface-container-low hover:text-light-primary transition-colors shrink-0">
+            <span class="material-symbols-outlined text-[18px] text-light-primary" aria-hidden="true">fitness_center</span>
+            <span data-design-text-token="label-md" class="font-label text-label-md">Sports</span>
+          </a>
+          <a href="#category-home" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded hover:bg-light-surface-container-low hover:text-light-primary transition-colors shrink-0">
+            <span class="material-symbols-outlined text-[18px] text-light-primary" aria-hidden="true">kitchen</span>
+            <span data-design-text-token="label-md" class="font-label text-label-md">Home &amp; Kitchen</span>
+          </a>
+          <a href="#category-books" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded hover:bg-light-surface-container-low hover:text-light-primary transition-colors shrink-0">
+            <span class="material-symbols-outlined text-[18px] text-light-primary" aria-hidden="true">menu_book</span>
+            <span data-design-text-token="label-md" class="font-label text-label-md">Books</span>
+          </a>
+          <a href="#category-toys" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded hover:bg-light-surface-container-low hover:text-light-primary transition-colors shrink-0">
+            <span class="material-symbols-outlined text-[18px] text-light-primary" aria-hidden="true">toys</span>
+            <span data-design-text-token="label-md" class="font-label text-label-md">Toys</span>
+          </a>
+          <a href="#category-accessories" class="flex items-center gap-1.5 px-2.5 py-1.5 rounded hover:bg-light-surface-container-low hover:text-light-primary transition-colors shrink-0">
+            <span class="material-symbols-outlined text-[18px] text-light-primary" aria-hidden="true">watch</span>
+            <span data-design-text-token="label-md" class="font-label text-label-md">Accessories</span>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Shopping Content -->
+    <main class="flex-1 bg-light-surface-container-low">
+      <div class="max-w-7xl mx-auto px-gutter-lg py-gutter-lg flex flex-col gap-section">
+
+        <!-- Hero Promotional Banner -->
+        <section aria-label="Featured promotion" class="bg-light-primary text-light-on-primary rounded-md overflow-hidden border border-light-primary-container shadow-sm grid grid-cols-1 lg:grid-cols-12 items-center">
+          <div class="lg:col-span-6 p-gutter-xl flex flex-col gap-gutter-md">
+            <span data-design-text-token="label-md" class="inline-flex items-center w-fit px-3 py-1 rounded-sm bg-accent-yellow text-on-accent-yellow font-label text-label-md">
+              WEEKEND RETAIL OFFER
+            </span>
+            <h1 data-design-text-token="display-lg" class="font-display text-display-lg text-light-on-primary text-balance">
+              Upgrade your everyday tech &amp; essentials
+            </h1>
+            <p data-design-text-token="body-lg" class="font-body text-body-lg text-light-inverse-primary text-pretty max-w-lg">
+              Up to 40% off on audio, smartwatches, and home appliances with Cash on Delivery across India.
+            </p>
+            <div class="pt-gutter-sm">
+              <a href="#trending-products" data-component-id="button-primary-yellow" data-component-type="button" data-component-variant="secondary" class="inline-flex items-center gap-gutter-sm px-gutter-lg py-3 rounded bg-accent-yellow text-on-accent-yellow hover:bg-light-secondary-container font-label text-label-lg transition-colors duration-state-change shadow-sm">
+                <span data-design-text-token="label-lg">Shop Now</span>
+                <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+          <div class="lg:col-span-6 h-full">
+            <img src="https://lh3.googleusercontent.com/aida/ALJJyrCdi1MS9bP6m5MwWAD2hfs3LhCxck6IT3NU4SswVCowWHXVDJ9eXB2BYpxqxijpaP-zHgAlQJcrhAmmRTJXCzDnoNGsE84L_NRLzS-YcMOBpuo6LRgr3WZjYsbDoGN3J99QbpXDnUjRs6nFCQrmz0W5hVgaE6pGBYEJSTHgZdKgwpHFomSkVCmwK8gy4NqOIog2IgRkZdyWm74JWEEAHq6esCO_kgZgpT0D81BjA5n9EU6DRtMxnLaBqLZXjkWL6A" alt="FindKart weekend electronics promotion featuring headphones, smartwatch, and smartphone" class="w-full h-72 lg:h-80 object-cover" data-stitch-original-src="491313163494a2bd===../../images/hero_electronics_sale.jpg">
+          </div>
+        </section>
+
+        <!-- Section 1: Trending Products -->
+        <section id="trending-products" class="flex flex-col gap-gutter-md">
+          <div class="flex items-center justify-between">
+            <div class="flex flex-col gap-0.5">
+              <h2 data-design-text-token="headline-md" class="font-headline text-headline-md text-light-on-surface">Trending Products</h2>
+              <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant">Most shopped items across India this week</p>
+            </div>
+            <a href="#best-deals" data-design-text-token="label-lg" class="font-label text-label-lg text-light-primary hover:underline inline-flex items-center gap-1">
+              <span>View all</span>
+              <span class="material-symbols-outlined text-[18px]" aria-hidden="true">chevron_right</span>
+            </a>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter-md items-stretch">
+            <!-- Card 1 -->
+            <article class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex flex-col justify-between gap-gutter-md hover:border-light-primary/40 transition-colors shadow-sm h-full">
+              <div class="flex flex-col gap-gutter-sm">
+                <div class="relative bg-light-surface-container-lowest rounded p-2 flex items-center justify-center">
+                  <img src="https://lh3.googleusercontent.com/aida/ALJJyrCjJzAkdwkIbrzMDatIrgNVl5YoCmiK8R9pKLytK2rvPILD6TomrVPikLheRu9kpNnqIdVFl0lotMed0a1UjROJT-7zZFJPwINngxlvse4H1g0ml5G4hhzVYDnU_U8Bfwf7_u8H1XOG6AwYpsVfEt3GfwxaFBOa1W8JSRskhl5QCC2ZiY4cNvwLSTFzg0JwMTIGPks5Jy3vDOC2NYJzWPBkbqwWldpy3G9Riy93RETmru1y-bjImdL01RE" alt="boAt Rockerz Studio Wireless Headphones" class="w-full h-44 object-contain" data-stitch-original-src="2b586017d77f1079===../../images/prod_headphones.jpg">
+                  <button type="button" data-wishlist-toggle aria-label="Add to wishlist" class="absolute top-1 right-1 w-8 h-8 rounded-full bg-light-surface-container-low text-light-on-surface-variant hover:text-light-error flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[18px]" aria-hidden="true">favorite</span>
+                  </button>
+                </div>
+                <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface">SoundCore ANC Headphones</h3>
+                <div class="flex items-center gap-1.5">
+                  <span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-sm bg-success text-on-success font-label text-label-sm tabular-nums">
+                    4.6 <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">star</span>
+                  </span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant tabular-nums">(2,418)</span>
+                </div>
+                <div class="flex items-baseline gap-gutter-sm flex-wrap">
+                  <span data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface tabular-nums">₹2,499</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant line-through tabular-nums">₹4,999</span>
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-success tabular-nums">50% off</span>
+                </div>
+              </div>
+              <button type="button" data-add-cart="SoundCore ANC Headphones" class="w-full py-2.5 px-gutter-md rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container font-label text-label-md transition-colors duration-state-change">
+                <span data-design-text-token="label-md">Add to Cart</span>
+              </button>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex flex-col justify-between gap-gutter-md hover:border-light-primary/40 transition-colors shadow-sm h-full">
+              <div class="flex flex-col gap-gutter-sm">
+                <div class="relative bg-light-surface-container-lowest rounded p-2 flex items-center justify-center">
+                  <img src="https://lh3.googleusercontent.com/aida/ALJJyrCdlo-it_NLTrCnrmpr8D6e-wbQnY5q8BvlgBBRERoSSug7U4ECRZ0vhmKQNyOkC3ZKxSX-3uny-IiZWEiPMAV3UQanPBCYXLy-wXjcO_QLgP9z5VIo5qhoxUZpEs_96YE9GICyRvR2ss_93CpYAWE1oUbToI9F_zLF6-VqFsvg5cTp_hTky9hZSGE-D_pDDbBXDgEq_MM1_cKEh8cb8KFZiiZcgcitwdXuD9ttx6RC1xGItycXj5gW_g" alt="Amazfit Pulse AMOLED Smartwatch" class="w-full h-44 object-contain" data-stitch-original-src="781fe22278857549===../../images/prod_smartwatch.jpg">
+                  <button type="button" data-wishlist-toggle aria-label="Add to wishlist" class="absolute top-1 right-1 w-8 h-8 rounded-full bg-light-surface-container-low text-light-on-surface-variant hover:text-light-error flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[18px]" aria-hidden="true">favorite</span>
+                  </button>
+                </div>
+                <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface">PulseFit AMOLED Watch</h3>
+                <div class="flex items-center gap-1.5">
+                  <span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-sm bg-success text-on-success font-label text-label-sm tabular-nums">
+                    4.4 <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">star</span>
+                  </span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant tabular-nums">(1,850)</span>
+                </div>
+                <div class="flex items-baseline gap-gutter-sm flex-wrap">
+                  <span data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface tabular-nums">₹3,299</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant line-through tabular-nums">₹5,999</span>
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-success tabular-nums">45% off</span>
+                </div>
+              </div>
+              <button type="button" data-add-cart="PulseFit AMOLED Watch" class="w-full py-2.5 px-gutter-md rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container font-label text-label-md transition-colors duration-state-change">
+                <span data-design-text-token="label-md">Add to Cart</span>
+              </button>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex flex-col justify-between gap-gutter-md hover:border-light-primary/40 transition-colors shadow-sm h-full">
+              <div class="flex flex-col gap-gutter-sm">
+                <div class="relative bg-light-surface-container-lowest rounded p-2 flex items-center justify-center">
+                  <img src="https://lh3.googleusercontent.com/aida/ALJJyrCHmiyN7RvfohJiuik2NVg_fHl-w_oaGW1WEZbipfdB7ti7ojqepCeTxNnzJRTXDHBuNfm0Jlw_jqQlt3oRKUhSw-bZnim9pX1v0XFmqBUEHBV4yLBXI0bfCEt80z-QXaH591mETgMrXhtRPVpatn1KHxA9iYlPN3HduqahpNnLcEml3wRDIg_R9b9kkNDOsVAOYAVVw8Csd7eVQb10o_rMpNDT3FMDSJCTQbxTokTXGKtO7i_VeZk" alt="StrideX Men&#39;s Running Sneakers" class="w-full h-44 object-contain" data-stitch-original-src="357d7695c9dd6f63===../../images/prod_sneakers.jpg">
+                  <button type="button" data-wishlist-toggle aria-label="Add to wishlist" class="absolute top-1 right-1 w-8 h-8 rounded-full bg-light-surface-container-low text-light-on-surface-variant hover:text-light-error flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[18px]" aria-hidden="true">favorite</span>
+                  </button>
+                </div>
+                <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface">StrideX Running Shoes</h3>
+                <div class="flex items-center gap-1.5">
+                  <span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-sm bg-success text-on-success font-label text-label-sm tabular-nums">
+                    4.5 <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">star</span>
+                  </span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant tabular-nums">(964)</span>
+                </div>
+                <div class="flex items-baseline gap-gutter-sm flex-wrap">
+                  <span data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface tabular-nums">₹1,799</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant line-through tabular-nums">₹2,999</span>
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-success tabular-nums">40% off</span>
+                </div>
+              </div>
+              <button type="button" data-add-cart="StrideX Running Shoes" class="w-full py-2.5 px-gutter-md rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container font-label text-label-md transition-colors duration-state-change">
+                <span data-design-text-token="label-md">Add to Cart</span>
+              </button>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex flex-col justify-between gap-gutter-md hover:border-light-primary/40 transition-colors shadow-sm h-full">
+              <div class="flex flex-col gap-gutter-sm">
+                <div class="relative bg-light-surface-container-lowest rounded p-2 flex items-center justify-center">
+                  <img src="https://lh3.googleusercontent.com/aida/ALJJyrBNozDO7AYyKFwmNxoz6w1NrABBgNFLWBIhpiyePCMWQByTpTQKkEsxrJQXzpvJ40dJYZ_bdgCwamR2zEIZxwSDXO50N44tccyXaViy91s5beu0V2ekTh4zfU51wYxtvO9z91ZVFxvJqIujQV39BW_fy06UJ89j7Kej7jzIYugjN2gC_gorl6fY7bZtI6HZGtSkMd6GX5I4k6CUOypUjUiPySdyXsYn6eonIZEV76KKiTf9YNq9Mw" alt="AuraBuds True Wireless Earbuds" class="w-full h-44 object-contain" data-stitch-original-src="3c1a50ecf34238e7===../../images/prod_earbuds.jpg">
+                  <button type="button" data-wishlist-toggle aria-label="Add to wishlist" class="absolute top-1 right-1 w-8 h-8 rounded-full bg-light-surface-container-low text-light-on-surface-variant hover:text-light-error flex items-center justify-center">
+                    <span class="material-symbols-outlined text-[18px]" aria-hidden="true">favorite</span>
+                  </button>
+                </div>
+                <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface">AuraBuds TWS Earbuds</h3>
+                <div class="flex items-center gap-1.5">
+                  <span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-sm bg-success text-on-success font-label text-label-sm tabular-nums">
+                    4.3 <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">star</span>
+                  </span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant tabular-nums">(3,102)</span>
+                </div>
+                <div class="flex items-baseline gap-gutter-sm flex-wrap">
+                  <span data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface tabular-nums">₹1,299</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant line-through tabular-nums">₹2,499</span>
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-success tabular-nums">48% off</span>
+                </div>
+              </div>
+              <button type="button" data-add-cart="AuraBuds 40H Playtime TWS Earbuds" class="w-full py-2.5 px-gutter-md rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container font-label text-label-md transition-colors duration-state-change">
+                <span data-design-text-token="label-md">Add to Cart</span>
+              </button>
+            </article>
+          </div>
+        </section>
+
+        <!-- Section 2: Best Deals -->
+        <section id="best-deals" class="flex flex-col gap-gutter-md">
+          <div class="flex items-center justify-between">
+            <div class="flex flex-col gap-0.5">
+              <h2 data-design-text-token="headline-md" class="font-headline text-headline-md text-light-on-surface">Best Deals</h2>
+              <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant">Limited-time price drops on top-rated products</p>
+            </div>
+            <span data-design-text-token="label-md" class="px-3 py-1 rounded-sm bg-accent-yellow text-on-accent-yellow font-label text-label-md">Up to 55% Off</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter-md items-stretch">
+            <article class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex flex-col justify-between gap-gutter-md shadow-sm h-full">
+              <div class="flex flex-col gap-gutter-sm">
+                <div class="relative rounded p-2 flex items-center justify-center">
+                  <img src="https://lh3.googleusercontent.com/aida/ALJJyrAUWTkZeqfL0GkU2LYiypCJSjs8PZXA232dQmO8qOTYNQ0BmGL_KFhhzxVEU1uL-HAvcSSxobRx84U90ApRE2hh2NiUaTP1wXfYZp4wnguSFIJsPQqud8G5vBcLCWBOsgIIUKvS6klEs9Bp0LW6npN51vkMGCukvtmF2Wj4FjqV4-7Bm6F2nWz8QGUipa5GE0YvMjA5VoPdMcrq-El8FwIUmrmdAT8o5msTuMVbDYOfPGLzBsnT" alt="Prestige Swift 1.5L Electric Kettle" class="w-full h-44 object-contain" data-stitch-original-src="37b3226a69fef873===../../images/prod_kettle.jpg">
+                </div>
+                <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface line-clamp-2">SwiftBoil 1.5L Stainless Steel Kettle</h3>
+                <div class="flex items-center gap-1.5">
+                  <span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-sm bg-success text-on-success font-label text-label-sm tabular-nums">4.5 <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">star</span></span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant tabular-nums">(1,420)</span>
+                </div>
+                <div class="flex items-baseline gap-gutter-sm flex-wrap">
+                  <span data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface tabular-nums">₹899</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant line-through tabular-nums">₹1,695</span>
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-success tabular-nums">47% off</span>
+                </div>
+              </div>
+              <button type="button" data-add-cart="SwiftBoil 1.5L Stainless Steel Kettle" class="w-full py-2.5 px-gutter-md rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container font-label text-label-md transition-colors duration-state-change">
+                <span data-design-text-token="label-md">Add to Cart</span>
+              </button>
+            </article>
+
+            <article class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex flex-col justify-between gap-gutter-md shadow-sm h-full">
+              <div class="flex flex-col gap-gutter-sm">
+                <div class="relative rounded p-2 flex items-center justify-center">
+                  <img src="https://lh3.googleusercontent.com/aida/ALJJyrDmJpKtvwm3vVdhV8b5Fm3GJisqqrvYdQQUn_QMCX4tK7nP7oWZ3FdXqEgA1q9dc2EgPuqbinVj6vD9SdeeSUUcqleBNijIA3ZH5O_m0AUiISXxRI2ASebLu_Fa33gifvTZKK3E9uGk43L-f7dwe_NX4PwYmkPuRUJ7BqPpkzZevucAChuNflkJY4GeJSU50extiUua_PyLMJK4TS8dK8thv7oaWiRK7tYLEqgpxMQjgDBFxNm1n1M" alt="UrbanPack 15.6 inch Laptop Backpack" class="w-full h-44 object-contain" data-stitch-original-src="2f837798090054de===../../images/prod_backpack.jpg">
+                </div>
+                <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface line-clamp-2">UrbanPack Water-Resistant Laptop Backpack</h3>
+                <div class="flex items-center gap-1.5">
+                  <span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-sm bg-success text-on-success font-label text-label-sm tabular-nums">4.4 <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">star</span></span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant tabular-nums">(875)</span>
+                </div>
+                <div class="flex items-baseline gap-gutter-sm flex-wrap">
+                  <span data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface tabular-nums">₹1,149</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant line-through tabular-nums">₹2,499</span>
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-success tabular-nums">54% off</span>
+                </div>
+              </div>
+              <button type="button" data-add-cart="UrbanPack Water-Resistant Laptop Backpack" class="w-full py-2.5 px-gutter-md rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container font-label text-label-md transition-colors duration-state-change">
+                <span data-design-text-token="label-md">Add to Cart</span>
+              </button>
+            </article>
+
+            <article class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex flex-col justify-between gap-gutter-md shadow-sm h-full">
+              <div class="flex flex-col gap-gutter-sm">
+                <div class="relative rounded p-2 flex items-center justify-center">
+                  <img src="https://lh3.googleusercontent.com/aida/ALJJyrDSRmvfPChsySURbdpmnfA92yRgS9hQ7BDsyIeXX6mCWnGc12ngMGXYfPpEXeJyYaLzxna85OvBsMQ_P3BqWPcUDSzNfwUQxWgpI_ruwfju7YIKnlrDt1vHOuGs_1vPipiBQWA9-hTwpflhs3XcOzE9mFjN3s0mwYSv8CG7uOsVI_sgiysTVsNl1qJovv01vmtK-wNdO8Q8Q2V-pUuMf1KKrgfNF_NlnsjxYy60BVw9ItQwz3B4" alt="Classic Navy Cotton Bomber Jacket" class="w-full h-44 object-contain" data-stitch-original-src="1b0a8892a50c3265===../../images/prod_jacket.jpg">
+                </div>
+                <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface line-clamp-2">Classic Navy Cotton Casual Jacket</h3>
+                <div class="flex items-center gap-1.5">
+                  <span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-sm bg-success text-on-success font-label text-label-sm tabular-nums">4.3 <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">star</span></span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant tabular-nums">(540)</span>
+                </div>
+                <div class="flex items-baseline gap-gutter-sm flex-wrap">
+                  <span data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface tabular-nums">₹1,599</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant line-through tabular-nums">₹2,999</span>
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-success tabular-nums">47% off</span>
+                </div>
+              </div>
+              <button type="button" data-add-cart="Classic Navy Cotton Casual Jacket" class="w-full py-2.5 px-gutter-md rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container font-label text-label-md transition-colors duration-state-change">
+                <span data-design-text-token="label-md">Add to Cart</span>
+              </button>
+            </article>
+
+            <article class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex flex-col justify-between gap-gutter-md shadow-sm h-full">
+              <div class="flex flex-col gap-gutter-sm">
+                <div class="relative rounded p-2 flex items-center justify-center">
+                  <img src="https://lh3.googleusercontent.com/aida/ALJJyrBJi868HAGft_Sa01s-o5FWkikuBQT_K34SS4wWScsRL00joYBOUpXJE4shZgkXQt2iogVDjJuKykcreIqzkiUEN18K658iG8-Eo9fSUQagk_izwJyAwq5y9fwXVKsYYawgbgZGcpBJM-uTXQH4q2DhM-RUXHIh-bbhlJ2adhzhuActafmTXpXpZtw4b1KKh12imryF5fESNoCbrEEjDiUpwO8nZ8BP07FPI2hMfg3XKHDyO23T2tL1" alt="PureGlow Vitamin C Serum and Moisturizer Combo" class="w-full h-44 object-contain" data-stitch-original-src="28bfc0d37e9fd299===../../images/prod_skincare.jpg">
+                </div>
+                <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface line-clamp-2">PureGlow Vitamin C Serum &amp; Cream Combo</h3>
+                <div class="flex items-center gap-1.5">
+                  <span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-sm bg-success text-on-success font-label text-label-sm tabular-nums">4.7 <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: &#39;FILL&#39; 1;" aria-hidden="true">star</span></span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant tabular-nums">(2,190)</span>
+                </div>
+                <div class="flex items-baseline gap-gutter-sm flex-wrap">
+                  <span data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface tabular-nums">₹649</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant line-through tabular-nums">₹1,199</span>
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-success tabular-nums">46% off</span>
+                </div>
+              </div>
+              <button type="button" data-add-cart="PureGlow Vitamin C Serum &amp; Cream Combo" class="w-full py-2.5 px-gutter-md rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container font-label text-label-md transition-colors duration-state-change">
+                <span data-design-text-token="label-md">Add to Cart</span>
+              </button>
+            </article>
+          </div>
+        </section>
+
+        <!-- Category Highlights -->
+        <section aria-label="Shop by category" class="flex flex-col gap-gutter-md">
+          <div class="flex flex-col gap-0.5">
+            <h2 data-design-text-token="headline-md" class="font-headline text-headline-md text-light-on-surface">Shop by Category</h2>
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant">Explore curated collections across FindKart</p>
+          </div>
+
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-gutter-md">
+            <a href="#category-electronics" class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex items-center gap-gutter-md hover:border-light-primary transition-colors shadow-sm">
+              <img src="https://lh3.googleusercontent.com/aida/ALJJyrCjJzAkdwkIbrzMDatIrgNVl5YoCmiK8R9pKLytK2rvPILD6TomrVPikLheRu9kpNnqIdVFl0lotMed0a1UjROJT-7zZFJPwINngxlvse4H1g0ml5G4hhzVYDnU_U8Bfwf7_u8H1XOG6AwYpsVfEt3GfwxaFBOa1W8JSRskhl5QCC2ZiY4cNvwLSTFzg0JwMTIGPks5Jy3vDOC2NYJzWPBkbqwWldpy3G9Riy93RETmru1y-bjImdL01RE" alt="Electronics category" class="w-16 h-16 object-contain shrink-0" data-stitch-original-src="2b586017d77f1079===../../images/prod_headphones.jpg">
+              <div class="flex flex-col">
+                <span data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface">Electronics</span>
+                <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-primary">From ₹999</span>
+              </div>
+            </a>
+            <a href="#category-fashion" class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex items-center gap-gutter-md hover:border-light-primary transition-colors shadow-sm">
+              <img src="https://lh3.googleusercontent.com/aida/ALJJyrDSRmvfPChsySURbdpmnfA92yRgS9hQ7BDsyIeXX6mCWnGc12ngMGXYfPpEXeJyYaLzxna85OvBsMQ_P3BqWPcUDSzNfwUQxWgpI_ruwfju7YIKnlrDt1vHOuGs_1vPipiBQWA9-hTwpflhs3XcOzE9mFjN3s0mwYSv8CG7uOsVI_sgiysTVsNl1qJovv01vmtK-wNdO8Q8Q2V-pUuMf1KKrgfNF_NlnsjxYy60BVw9ItQwz3B4" alt="Fashion category" class="w-16 h-16 object-contain shrink-0" data-stitch-original-src="1b0a8892a50c3265===../../images/prod_jacket.jpg">
+              <div class="flex flex-col">
+                <span data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface">Fashion</span>
+                <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-primary">Min. 40% off</span>
+              </div>
+            </a>
+            <a href="#category-home" class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex items-center gap-gutter-md hover:border-light-primary transition-colors shadow-sm">
+              <img src="https://lh3.googleusercontent.com/aida/ALJJyrAUWTkZeqfL0GkU2LYiypCJSjs8PZXA232dQmO8qOTYNQ0BmGL_KFhhzxVEU1uL-HAvcSSxobRx84U90ApRE2hh2NiUaTP1wXfYZp4wnguSFIJsPQqud8G5vBcLCWBOsgIIUKvS6klEs9Bp0LW6npN51vkMGCukvtmF2Wj4FjqV4-7Bm6F2nWz8QGUipa5GE0YvMjA5VoPdMcrq-El8FwIUmrmdAT8o5msTuMVbDYOfPGLzBsnT" alt="Home and Kitchen category" class="w-16 h-16 object-contain shrink-0" data-stitch-original-src="37b3226a69fef873===../../images/prod_kettle.jpg">
+              <div class="flex flex-col">
+                <span data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface">Home &amp; Kitchen</span>
+                <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-primary">Starting ₹499</span>
+              </div>
+            </a>
+            <a href="#category-beauty" class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex items-center gap-gutter-md hover:border-light-primary transition-colors shadow-sm">
+              <img src="https://lh3.googleusercontent.com/aida/ALJJyrBJi868HAGft_Sa01s-o5FWkikuBQT_K34SS4wWScsRL00joYBOUpXJE4shZgkXQt2iogVDjJuKykcreIqzkiUEN18K658iG8-Eo9fSUQagk_izwJyAwq5y9fwXVKsYYawgbgZGcpBJM-uTXQH4q2DhM-RUXHIh-bbhlJ2adhzhuActafmTXpXpZtw4b1KKh12imryF5fESNoCbrEEjDiUpwO8nZ8BP07FPI2hMfg3XKHDyO23T2tL1" alt="Beauty category" class="w-16 h-16 object-contain shrink-0" data-stitch-original-src="28bfc0d37e9fd299===../../images/prod_skincare.jpg">
+              <div class="flex flex-col">
+                <span data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface">Beauty &amp; Care</span>
+                <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-primary">Top rated</span>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <!-- Section 3: Recommended for You -->
+        <section id="recommended-products" class="flex flex-col gap-gutter-md">
+          <div class="flex items-center justify-between">
+            <h2 data-design-text-token="headline-md" class="font-headline text-headline-md text-light-on-surface">Recommended for You</h2>
+            <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant">Based on popular picks</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter-md items-stretch">
+            <article class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex flex-col justify-between gap-gutter-md shadow-sm h-full">
+              <div class="flex flex-col gap-gutter-sm">
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrDmJpKtvwm3vVdhV8b5Fm3GJisqqrvYdQQUn_QMCX4tK7nP7oWZ3FdXqEgA1q9dc2EgPuqbinVj6vD9SdeeSUUcqleBNijIA3ZH5O_m0AUiISXxRI2ASebLu_Fa33gifvTZKK3E9uGk43L-f7dwe_NX4PwYmkPuRUJ7BqPpkzZevucAChuNflkJY4GeJSU50extiUua_PyLMJK4TS8dK8thv7oaWiRK7tYLEqgpxMQjgDBFxNm1n1M" alt="Commute Pro Daypack" class="w-full h-40 object-contain" data-stitch-original-src="2f837798090054de===../../images/prod_backpack.jpg">
+                <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface line-clamp-2">CommutePro 28L Office Backpack</h3>
+                <div class="flex items-baseline gap-gutter-sm">
+                  <span data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface tabular-nums">₹1,399</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant line-through tabular-nums">₹2,299</span>
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-success tabular-nums">39% off</span>
+                </div>
+              </div>
+              <button type="button" data-add-cart="CommutePro 28L Office Backpack" class="w-full py-2.5 px-gutter-md rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container font-label text-label-md transition-colors">
+                <span data-design-text-token="label-md">Add to Cart</span>
+              </button>
+            </article>
+
+            <article class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex flex-col justify-between gap-gutter-md shadow-sm h-full">
+              <div class="flex flex-col gap-gutter-sm">
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrCdlo-it_NLTrCnrmpr8D6e-wbQnY5q8BvlgBBRERoSSug7U4ECRZ0vhmKQNyOkC3ZKxSX-3uny-IiZWEiPMAV3UQanPBCYXLy-wXjcO_QLgP9z5VIo5qhoxUZpEs_96YE9GICyRvR2ss_93CpYAWE1oUbToI9F_zLF6-VqFsvg5cTp_hTky9hZSGE-D_pDDbBXDgEq_MM1_cKEh8cb8KFZiiZcgcitwdXuD9ttx6RC1xGItycXj5gW_g" alt="FitTrack Sport Band" class="w-full h-40 object-contain" data-stitch-original-src="781fe22278857549===../../images/prod_smartwatch.jpg">
+                <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface line-clamp-2">FitTrack Sport Edition Watch</h3>
+                <div class="flex items-baseline gap-gutter-sm">
+                  <span data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface tabular-nums">₹2,899</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant line-through tabular-nums">₹4,499</span>
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-success tabular-nums">36% off</span>
+                </div>
+              </div>
+              <button type="button" data-add-cart="FitTrack Sport Edition Watch" class="w-full py-2.5 px-gutter-md rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container font-label text-label-md transition-colors">
+                <span data-design-text-token="label-md">Add to Cart</span>
+              </button>
+            </article>
+
+            <article class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex flex-col justify-between gap-gutter-md shadow-sm h-full">
+              <div class="flex flex-col gap-gutter-sm">
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrBNozDO7AYyKFwmNxoz6w1NrABBgNFLWBIhpiyePCMWQByTpTQKkEsxrJQXzpvJ40dJYZ_bdgCwamR2zEIZxwSDXO50N44tccyXaViy91s5beu0V2ekTh4zfU51wYxtvO9z91ZVFxvJqIujQV39BW_fy06UJ89j7Kej7jzIYugjN2gC_gorl6fY7bZtI6HZGtSkMd6GX5I4k6CUOypUjUiPySdyXsYn6eonIZEV76KKiTf9YNq9Mw" alt="ClearCall Mini Earbuds" class="w-full h-40 object-contain" data-stitch-original-src="3c1a50ecf34238e7===../../images/prod_earbuds.jpg">
+                <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface line-clamp-2">ClearCall Mini Wireless Earbuds</h3>
+                <div class="flex items-baseline gap-gutter-sm">
+                  <span data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface tabular-nums">₹999</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant line-through tabular-nums">₹1,999</span>
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-success tabular-nums">50% off</span>
+                </div>
+              </div>
+              <button type="button" data-add-cart="ClearCall Mini Wireless Earbuds" class="w-full py-2.5 px-gutter-md rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container font-label text-label-md transition-colors">
+                <span data-design-text-token="label-md">Add to Cart</span>
+              </button>
+            </article>
+
+            <article class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex flex-col justify-between gap-gutter-md shadow-sm h-full">
+              <div class="flex flex-col gap-gutter-sm">
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrCHmiyN7RvfohJiuik2NVg_fHl-w_oaGW1WEZbipfdB7ti7ojqepCeTxNnzJRTXDHBuNfm0Jlw_jqQlt3oRKUhSw-bZnim9pX1v0XFmqBUEHBV4yLBXI0bfCEt80z-QXaH591mETgMrXhtRPVpatn1KHxA9iYlPN3HduqahpNnLcEml3wRDIg_R9b9kkNDOsVAOYAVVw8Csd7eVQb10o_rMpNDT3FMDSJCTQbxTokTXGKtO7i_VeZk" alt="AeroWalk Sneakers" class="w-full h-40 object-contain" data-stitch-original-src="357d7695c9dd6f63===../../images/prod_sneakers.jpg">
+                <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface line-clamp-2">AeroWalk Everyday Knit Sneakers</h3>
+                <div class="flex items-baseline gap-gutter-sm">
+                  <span data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface tabular-nums">₹1,499</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant line-through tabular-nums">₹2,499</span>
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-success tabular-nums">40% off</span>
+                </div>
+              </div>
+              <button type="button" data-add-cart="AeroWalk Everyday Knit Sneakers" class="w-full py-2.5 px-gutter-md rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container font-label text-label-md transition-colors">
+                <span data-design-text-token="label-md">Add to Cart</span>
+              </button>
+            </article>
+          </div>
+        </section>
+
+        <!-- Section 4: New Arrivals -->
+        <section id="new-arrivals" class="flex flex-col gap-gutter-md">
+          <div class="flex items-center justify-between">
+            <h2 data-design-text-token="headline-md" class="font-headline text-headline-md text-light-on-surface">New Arrivals</h2>
+            <span data-design-text-token="label-md" class="font-label text-label-md text-light-primary">Fresh in store</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter-md items-stretch">
+            <article class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex flex-col justify-between gap-gutter-md shadow-sm h-full">
+              <div class="flex flex-col gap-gutter-sm">
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrDSRmvfPChsySURbdpmnfA92yRgS9hQ7BDsyIeXX6mCWnGc12ngMGXYfPpEXeJyYaLzxna85OvBsMQ_P3BqWPcUDSzNfwUQxWgpI_ruwfju7YIKnlrDt1vHOuGs_1vPipiBQWA9-hTwpflhs3XcOzE9mFjN3s0mwYSv8CG7uOsVI_sgiysTVsNl1qJovv01vmtK-wNdO8Q8Q2V-pUuMf1KKrgfNF_NlnsjxYy60BVw9ItQwz3B4" alt="Studio Cotton Overshirt" class="w-full h-40 object-contain" data-stitch-original-src="1b0a8892a50c3265===../../images/prod_jacket.jpg">
+                <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface line-clamp-2">Studio Cotton Utility Jacket</h3>
+                <div class="flex items-baseline gap-gutter-sm">
+                  <span data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface tabular-nums">₹1,899</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant line-through tabular-nums">₹2,799</span>
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-success tabular-nums">32% off</span>
+                </div>
+              </div>
+              <button type="button" data-add-cart="Studio Cotton Utility Jacket" class="w-full py-2.5 px-gutter-md rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container font-label text-label-md transition-colors">
+                <span data-design-text-token="label-md">Add to Cart</span>
+              </button>
+            </article>
+
+            <article class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex flex-col justify-between gap-gutter-md shadow-sm h-full">
+              <div class="flex flex-col gap-gutter-sm">
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrCjJzAkdwkIbrzMDatIrgNVl5YoCmiK8R9pKLytK2rvPILD6TomrVPikLheRu9kpNnqIdVFl0lotMed0a1UjROJT-7zZFJPwINngxlvse4H1g0ml5G4hhzVYDnU_U8Bfwf7_u8H1XOG6AwYpsVfEt3GfwxaFBOa1W8JSRskhl5QCC2ZiY4cNvwLSTFzg0JwMTIGPks5Jy3vDOC2NYJzWPBkbqwWldpy3G9Riy93RETmru1y-bjImdL01RE" alt="BassLine Studio Headphones" class="w-full h-40 object-contain" data-stitch-original-src="2b586017d77f1079===../../images/prod_headphones.jpg">
+                <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface line-clamp-2">BassLine Over-Ear Studio Headset</h3>
+                <div class="flex items-baseline gap-gutter-sm">
+                  <span data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface tabular-nums">₹2,199</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant line-through tabular-nums">₹3,499</span>
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-success tabular-nums">37% off</span>
+                </div>
+              </div>
+              <button type="button" data-add-cart="BassLine Over-Ear Studio Headset" class="w-full py-2.5 px-gutter-md rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container font-label text-label-md transition-colors">
+                <span data-design-text-token="label-md">Add to Cart</span>
+              </button>
+            </article>
+
+            <article class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex flex-col justify-between gap-gutter-md shadow-sm h-full">
+              <div class="flex flex-col gap-gutter-sm">
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrAUWTkZeqfL0GkU2LYiypCJSjs8PZXA232dQmO8qOTYNQ0BmGL_KFhhzxVEU1uL-HAvcSSxobRx84U90ApRE2hh2NiUaTP1wXfYZp4wnguSFIJsPQqud8G5vBcLCWBOsgIIUKvS6klEs9Bp0LW6npN51vkMGCukvtmF2Wj4FjqV4-7Bm6F2nWz8QGUipa5GE0YvMjA5VoPdMcrq-El8FwIUmrmdAT8o5msTuMVbDYOfPGLzBsnT" alt="BrewMate Electric Kettle" class="w-full h-40 object-contain" data-stitch-original-src="37b3226a69fef873===../../images/prod_kettle.jpg">
+                <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface line-clamp-2">BrewMate 1.8L Auto-Shutoff Kettle</h3>
+                <div class="flex items-baseline gap-gutter-sm">
+                  <span data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface tabular-nums">₹1,049</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant line-through tabular-nums">₹1,799</span>
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-success tabular-nums">42% off</span>
+                </div>
+              </div>
+              <button type="button" data-add-cart="BrewMate 1.8L Auto-Shutoff Kettle" class="w-full py-2.5 px-gutter-md rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container font-label text-label-md transition-colors">
+                <span data-design-text-token="label-md">Add to Cart</span>
+              </button>
+            </article>
+
+            <article class="bg-light-surface-container-lowest rounded-md border border-light-outline-variant/60 p-gutter-md flex flex-col justify-between gap-gutter-md shadow-sm h-full">
+              <div class="flex flex-col gap-gutter-sm">
+                <img src="https://lh3.googleusercontent.com/aida/ALJJyrBJi868HAGft_Sa01s-o5FWkikuBQT_K34SS4wWScsRL00joYBOUpXJE4shZgkXQt2iogVDjJuKykcreIqzkiUEN18K658iG8-Eo9fSUQagk_izwJyAwq5y9fwXVKsYYawgbgZGcpBJM-uTXQH4q2DhM-RUXHIh-bbhlJ2adhzhuActafmTXpXpZtw4b1KKh12imryF5fESNoCbrEEjDiUpwO8nZ8BP07FPI2hMfg3XKHDyO23T2tL1" alt="HydraGlow Daily Moisturizer Set" class="w-full h-40 object-contain" data-stitch-original-src="28bfc0d37e9fd299===../../images/prod_skincare.jpg">
+                <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface line-clamp-2">HydraGlow Daily Skincare Duo</h3>
+                <div class="flex items-baseline gap-gutter-sm">
+                  <span data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface tabular-nums">₹799</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant line-through tabular-nums">₹1,299</span>
+                  <span data-design-text-token="label-md" class="font-label text-label-md text-success tabular-nums">38% off</span>
+                </div>
+              </div>
+              <button type="button" data-add-cart="HydraGlow Daily Skincare Duo" class="w-full py-2.5 px-gutter-md rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container font-label text-label-md transition-colors">
+                <span data-design-text-token="label-md">Add to Cart</span>
+              </button>
+            </article>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- Clean Retail Footer -->
+    <footer class="bg-light-inverse-surface text-light-inverse-on-surface py-section">
+      <div class="max-w-7xl mx-auto px-gutter-lg grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter-xl">
+        <div class="flex flex-col gap-gutter-sm">
+          <span data-design-text-token="title-lg" class="font-headline text-title-lg text-light-on-primary">About FindKart</span>
+          <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-outline-variant">
+            FindKart is an Indian online shopping platform offering electronics, fashion, home essentials, and Cash on Delivery across 19,000+ pin codes.
+          </p>
+        </div>
+        <div class="flex flex-col gap-gutter-sm">
+          <span data-design-text-token="label-lg" class="font-label text-label-lg text-light-on-primary">Customer Support</span>
+          <a href="#help" data-design-text-token="body-sm" class="font-body text-body-sm text-light-outline-variant hover:text-light-on-primary">Help Center</a>
+          <a href="#track" data-design-text-token="body-sm" class="font-body text-body-sm text-light-outline-variant hover:text-light-on-primary">Track Your Order</a>
+          <a href="#returns" data-design-text-token="body-sm" class="font-body text-body-sm text-light-outline-variant hover:text-light-on-primary">7-Day Returns &amp; Refunds</a>
+        </div>
+        <div class="flex flex-col gap-gutter-sm">
+          <span data-design-text-token="label-lg" class="font-label text-label-lg text-light-on-primary">Policies</span>
+          <a href="#privacy" data-design-text-token="body-sm" class="font-body text-body-sm text-light-outline-variant hover:text-light-on-primary">Privacy Policy</a>
+          <a href="#terms" data-design-text-token="body-sm" class="font-body text-body-sm text-light-outline-variant hover:text-light-on-primary">Terms of Use</a>
+          <a href="#cod" data-design-text-token="body-sm" class="font-body text-body-sm text-light-outline-variant hover:text-light-on-primary">Cash on Delivery Policy</a>
+        </div>
+        <div class="flex flex-col gap-gutter-sm">
+          <span data-design-text-token="label-lg" class="font-label text-label-lg text-light-on-primary">Contact Us</span>
+          <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-outline-variant">FindKart Retail Pvt. Ltd., Outer Ring Road, Bengaluru 560103</span>
+          <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-outline-variant">support@findkart.in • 1800-120-4500</span>
+        </div>
+      </div>
+      <div class="max-w-7xl mx-auto px-gutter-lg mt-gutter-xl pt-gutter-lg border-t border-light-outline/30 flex flex-col sm:flex-row items-center justify-between gap-gutter-sm">
+        <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-outline-variant">© 2026 FindKart. All rights reserved.</span>
+        <span data-design-text-token="label-sm" class="font-label text-label-sm text-accent-yellow">Cash on Delivery • Verified Sellers</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="home-toast" role="status" class="hidden fixed bottom-6 right-6 z-40 px-gutter-md py-3 rounded bg-light-inverse-surface text-light-inverse-on-surface shadow-md flex items-center gap-gutter-sm">
+    <span class="material-symbols-outlined text-[18px] text-accent-yellow" aria-hidden="true">check_circle</span>
+    <span id="home-toast-text" data-design-text-token="body-md" class="font-body text-body-md">Added to cart</span>
+  </div>
+
+  <script>
+    (function () {
+      let cartCount = 0;
+      let wishlistCount = 0;
+      const cartBadge = document.getElementById('cart-count');
+      const wishlistBadge = document.getElementById('wishlist-count');
+      const toast = document.getElementById('home-toast');
+      const toastText = document.getElementById('home-toast-text');
+      let toastTimer = null;
+
+      try {
+        const savedCount = parseInt(localStorage.getItem('findkart_cart_count') || '0', 10);
+        if (!isNaN(savedCount)) {
+          cartCount = savedCount;
+          cartBadge.textContent = String(cartCount);
+        }
+        const savedUser = localStorage.getItem('findkart_user');
+        if (savedUser) {
+          const parsed = JSON.parse(savedUser);
+          if (parsed && parsed.name) {
+            document.getElementById('header-user-label').textContent = parsed.name.split(' ')[0];
+          }
+        }
+      } catch (err) {}
+
+      function showToast(msg) {
+        toastText.textContent = msg;
+        toast.classList.remove('hidden');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () {
+          toast.classList.add('hidden');
+        }, 2200);
+      }
+
+      document.querySelectorAll('[data-add-cart]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          cartCount += 1;
+          cartBadge.textContent = String(cartCount);
+          try {
+            localStorage.setItem('findkart_cart_count', String(cartCount));
+          } catch (err) {}
+          showToast(btn.getAttribute('data-add-cart') + ' added to cart');
+        });
+      });
+
+      document.querySelectorAll('[data-wishlist-toggle]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const isSaved = btn.classList.toggle('text-light-error');
+          wishlistCount += isSaved ? 1 : -1;
+          if (wishlistCount < 0) wishlistCount = 0;
+          wishlistBadge.textContent = String(wishlistCount);
+          wishlistBadge.classList.toggle('hidden', wishlistCount === 0);
+          wishlistBadge.classList.toggle('inline-flex', wishlistCount > 0);
+          showToast(isSaved ? 'Saved to wishlist' : 'Removed from wishlist');
+        });
+      });
+
+      document.getElementById('search-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const q = document.getElementById('search-input').value.trim();
+        if (q) showToast('Searching FindKart for "' + q + '"');
+      });
+    })();
+  </script>
+
+
+</body></html>

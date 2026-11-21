@@ -1,0 +1,481 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FindKart — Sign In (Mobile)</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config" data-stitch-original-src="3b80301eec075f3d===../../tailwind.config.js">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'accent-yellow': '#F9BD00',
+        'on-accent-yellow': '#251A00',
+        'success': '#15803D',
+        'on-success': '#FFFFFF',
+        'success-container': '#DCFCE7',
+        'on-success-container': '#14532D',
+        'warning': '#B45309',
+        'on-warning': '#FFFFFF',
+        'warning-container': '#FEF3C7',
+        'on-warning-container': '#78350F',
+        'light-primary': '#00389B',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#164EC4',
+        'light-on-primary-container': '#FFFFFF',
+        'light-secondary': '#785A00',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#F9BD00',
+        'light-on-secondary-container': '#251A00',
+        'light-tertiary': '#752600',
+        'light-on-tertiary': '#FFFFFF',
+        'light-tertiary-container': '#9C3500',
+        'light-on-tertiary-container': '#FFFFFF',
+        'light-error': '#BA1A1A',
+        'light-on-error': '#FFFFFF',
+        'light-error-container': '#FFDAD6',
+        'light-on-error-container': '#93000A',
+        'light-background': '#F3F3FD',
+        'light-on-background': '#191B22',
+        'light-surface': '#FAF8FF',
+        'light-surface-dim': '#D9D9E3',
+        'light-surface-bright': '#FFFFFF',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F3F3FD',
+        'light-surface-container': '#EDEDF7',
+        'light-surface-container-high': '#E8E7F2',
+        'light-surface-container-highest': '#E2E2EC',
+        'light-on-surface': '#191B22',
+        'light-surface-variant': '#E0E1F2',
+        'light-on-surface-variant': '#434654',
+        'light-outline': '#747685',
+        'light-outline-variant': '#C3C6D6',
+        'light-inverse-surface': '#2E3038',
+        'light-inverse-on-surface': '#F0F0FA',
+        'light-inverse-primary': '#B4C5FF',
+        'dark-primary': '#B4C5FF',
+        'dark-on-primary': '#002A78',
+        'dark-primary-container': '#164EC4',
+        'dark-on-primary-container': '#FFFFFF',
+        'dark-secondary': '#FFE5B3',
+        'dark-on-secondary': '#3F2E00',
+        'dark-secondary-container': '#FFC312',
+        'dark-on-secondary-container': '#251A00',
+        'dark-tertiary': '#FFB59A',
+        'dark-on-tertiary': '#5A1B00',
+        'dark-tertiary-container': '#9C3500',
+        'dark-on-tertiary-container': '#FFFFFF',
+        'dark-error': '#FFB4AB',
+        'dark-on-error': '#690005',
+        'dark-error-container': '#93000A',
+        'dark-on-error-container': '#FFDAD6',
+        'dark-background': '#11131A',
+        'dark-on-background': '#E2E2EC',
+        'dark-surface': '#11131A',
+        'dark-surface-dim': '#11131A',
+        'dark-surface-bright': '#373941',
+        'dark-surface-container-lowest': '#0C0E15',
+        'dark-surface-container-low': '#191B22',
+        'dark-surface-container': '#1E1F27',
+        'dark-surface-container-high': '#282A31',
+        'dark-surface-container-highest': '#33343C',
+        'dark-on-surface': '#E2E2EC',
+        'dark-surface-variant': '#434654',
+        'dark-on-surface-variant': '#C3C6D6',
+        'dark-outline': '#8D909F',
+        'dark-outline-variant': '#434654',
+        'dark-inverse-surface': '#E2E2EC',
+        'dark-inverse-on-surface': '#2E3038',
+        'dark-inverse-primary': '#2256CB',
+      },
+      borderRadius: {
+        'sm': '4px',
+        'DEFAULT': '8px',
+        'md': '12px',
+        'lg': '16px',
+        'xl': '20px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '48px',
+        'page-margin': '20px',
+      },
+      fontFamily: {
+        'display': ['"Mulish"', 'sans-serif'],
+        'headline': ['"Mulish"', 'sans-serif'],
+        'title': ['"Radio Canada Big"', 'sans-serif'],
+        'body': ['"Radio Canada Big"', 'sans-serif'],
+        'label': ['"Radio Canada Big"', 'sans-serif'],
+        'mono': ['"Spline Sans Mono"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['40px', { lineHeight: '46px', letterSpacing: '-0.5px', fontWeight: '800' }],
+        'display-lg-mobile': ['28px', { lineHeight: '34px', letterSpacing: '-0.25px', fontWeight: '800' }],
+        'headline-lg': ['32px', { lineHeight: '38px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg-mobile': ['24px', { lineHeight: '30px', letterSpacing: '-0.2px', fontWeight: '700' }],
+        'headline-md': ['24px', { lineHeight: '30px', letterSpacing: '-0.15px', fontWeight: '700' }],
+        'headline-sm': ['20px', { lineHeight: '26px', letterSpacing: '0px', fontWeight: '700' }],
+        'title-lg': ['18px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['16px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-sm': ['12px', { lineHeight: '16px', letterSpacing: '0.1px', fontWeight: '400' }],
+        'label-lg': ['14px', { lineHeight: '20px', letterSpacing: '0.1px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.2px', fontWeight: '600' }],
+        'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.25px', fontWeight: '600' }],
+        'mono-md': ['13px', { lineHeight: '18px', letterSpacing: '0px', fontWeight: '500' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '200ms',
+        'surface-exit': '150ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@600;700;800&amp;family=Radio+Canada+Big:wght@400;500;600;700&amp;family=Spline+Sans+Mono:wght@500&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined, .material-symbols-rounded, .material-symbols-sharp, .material-icons { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="bg-light-background text-light-on-background font-body antialiased">
+
+  <div class="min-h-screen flex flex-col">
+
+    <!-- Compact Mobile Brand Header -->
+    <header class="bg-light-primary text-light-on-primary px-page-margin py-gutter-lg flex flex-col gap-gutter-md">
+      <div class="flex items-center justify-between">
+        <a href="#top" class="inline-flex items-center gap-gutter-sm">
+          <div class="w-9 h-9 rounded bg-accent-yellow text-on-accent-yellow flex items-center justify-center shadow-sm">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">shopping_bag</span>
+          </div>
+          <div class="flex flex-col">
+            <span data-design-text-token="title-lg" class="font-headline text-title-lg text-light-on-primary leading-none">FindKart</span>
+            <span data-design-text-token="label-sm" class="font-label text-label-sm text-accent-yellow">INDIA&#39;S TRUSTED STORE</span>
+          </div>
+        </a>
+        <span data-design-text-token="label-sm" class="font-label text-label-sm px-2.5 py-1 rounded-full bg-light-primary-container text-light-on-primary">COD Available</span>
+      </div>
+
+      <div class="flex flex-col gap-1">
+        <h1 data-design-text-token="headline-lg-mobile" class="font-headline text-headline-lg-mobile text-light-on-primary text-balance">
+          Smart everyday shopping across India
+        </h1>
+        <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-inverse-primary text-pretty">
+          Track orders, save delivery addresses, and check out faster.
+        </p>
+      </div>
+    </header>
+
+    <!-- Single-Column Mobile Auth Card -->
+    <main class="flex-1 px-page-margin py-gutter-lg flex flex-col justify-between gap-gutter-lg">
+      <div class="w-full bg-light-surface-container-lowest rounded-md border border-light-outline-variant/80 shadow-sm p-gutter-md flex flex-col gap-gutter-md">
+
+        <!-- Form Heading -->
+        <div class="flex flex-col gap-0.5">
+          <h2 id="mobile-auth-heading" data-design-text-token="headline-sm" class="font-headline text-headline-sm text-light-on-surface">
+            Welcome back to FindKart
+          </h2>
+          <p id="mobile-auth-subheading" data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant">
+            Sign in with your email and password.
+          </p>
+        </div>
+
+        <!-- Mode Tabs -->
+        <div data-component-id="tabs-horizontal" data-component-type="tabs" data-component-variant="horizontal">
+          <div role="tablist" aria-label="Authentication mode" class="grid grid-cols-2 p-1 rounded bg-light-surface-container border border-light-outline-variant/60">
+            <button role="tab" id="m-tab-signin" type="button" aria-selected="true" aria-controls="m-panel-signin" tabindex="0" class="py-2 px-gutter-sm rounded-sm bg-light-surface-container-lowest text-light-primary shadow-sm transition-colors duration-state-change">
+              <span data-design-text-token="label-md" class="font-label text-label-md">Sign in</span>
+            </button>
+            <button role="tab" id="m-tab-register" type="button" aria-selected="false" aria-controls="m-panel-register" tabindex="-1" class="py-2 px-gutter-sm rounded-sm text-light-on-surface-variant hover:text-light-on-surface transition-colors duration-state-change">
+              <span data-design-text-token="label-md" class="font-label text-label-md">Create account</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Alert Container -->
+        <div id="m-auth-alert" class="hidden" aria-live="polite"></div>
+
+        <!-- Mobile Sign In Form -->
+        <div role="tabpanel" id="m-panel-signin" aria-labelledby="m-tab-signin" tabindex="0">
+          <form id="m-login-form" novalidate class="flex flex-col gap-gutter-md">
+            <label data-component-id="input-field-icon" data-component-type="input-field" data-component-variant="with-icon" class="flex flex-col gap-1.5">
+              <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface">Email address</span>
+              <div class="relative flex items-center">
+                <span class="material-symbols-outlined text-[20px] text-light-outline absolute left-3 pointer-events-none" aria-hidden="true">mail</span>
+                <input id="m-login-email" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="aarav.sharma@gmail.com" aria-describedby="m-login-email-error" class="w-full min-h-[44px] pl-10 pr-3.5 py-2.5 rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-on-surface placeholder:text-light-outline font-body text-body-md focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 focus:outline-none">
+              </div>
+              <span id="m-login-email-error" role="alert" data-design-text-token="body-sm" class="hidden font-body text-body-sm text-light-error"></span>
+            </label>
+
+            <label data-component-id="input-field-password" data-component-type="input-field" data-component-variant="password" class="flex flex-col gap-1.5">
+              <div class="flex items-center justify-between">
+                <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface">Password</span>
+                <a href="#forgot-password" id="m-forgot-link" data-design-text-token="label-sm" class="font-label text-label-sm text-light-primary">Forgot password?</a>
+              </div>
+              <div class="relative flex items-center">
+                <span class="material-symbols-outlined text-[20px] text-light-outline absolute left-3 pointer-events-none" aria-hidden="true">lock</span>
+                <input id="m-login-password" name="password" type="password" autocomplete="current-password" required placeholder="Enter your password" aria-describedby="m-login-password-error" class="w-full min-h-[44px] pl-10 pr-11 py-2.5 rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-on-surface placeholder:text-light-outline font-body text-body-md focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 focus:outline-none">
+                <button type="button" data-toggle-password="m-login-password" data-component-id="button-icon" data-component-type="button" data-component-variant="icon" aria-label="Show password" class="absolute right-1.5 inline-flex items-center justify-center w-9 h-9 rounded text-light-on-surface-variant hover:bg-light-surface-container">
+                  <span class="material-symbols-outlined text-[20px]" aria-hidden="true">visibility</span>
+                </button>
+              </div>
+              <span id="m-login-password-error" role="alert" data-design-text-token="body-sm" class="hidden font-body text-body-sm text-light-error"></span>
+            </label>
+
+            <button id="m-login-submit-btn" type="submit" data-component-id="button-primary" data-component-type="button" data-component-variant="primary" class="w-full min-h-12 inline-flex items-center justify-center gap-gutter-sm px-gutter-lg py-3 rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container disabled:opacity-60 transition-colors duration-state-change shadow-sm">
+              <span data-design-text-token="label-lg" class="font-label text-label-lg">Sign in to FindKart</span>
+            </button>
+
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-center text-light-on-surface-variant">
+              New to FindKart?
+              <button type="button" id="m-switch-to-register" class="font-label text-label-md text-light-primary ml-1">Create an account</button>
+            </p>
+          </form>
+        </div>
+
+        <!-- Mobile Registration Form -->
+        <div role="tabpanel" id="m-panel-register" aria-labelledby="m-tab-register" tabindex="0" class="hidden">
+          <form id="m-register-form" novalidate class="flex flex-col gap-gutter-md">
+            <label data-component-id="input-field-text" data-component-type="input-field" data-component-variant="text" class="flex flex-col gap-1.5">
+              <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface">Full name</span>
+              <input id="m-register-name" name="name" type="text" autocomplete="name" required placeholder="Aarav Sharma" class="w-full min-h-[44px] px-3.5 py-2.5 rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-on-surface placeholder:text-light-outline font-body text-body-md focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 focus:outline-none">
+              <span id="m-register-name-error" role="alert" data-design-text-token="body-sm" class="hidden font-body text-body-sm text-light-error"></span>
+            </label>
+
+            <label data-component-id="input-field-icon" data-component-type="input-field" data-component-variant="with-icon" class="flex flex-col gap-1.5">
+              <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface">Email address</span>
+              <input id="m-register-email" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="aarav.sharma@gmail.com" class="w-full min-h-[44px] px-3.5 py-2.5 rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-on-surface placeholder:text-light-outline font-body text-body-md focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 focus:outline-none">
+              <span id="m-register-email-error" role="alert" data-design-text-token="body-sm" class="hidden font-body text-body-sm text-light-error"></span>
+            </label>
+
+            <label data-component-id="input-field-password" data-component-type="input-field" data-component-variant="password" class="flex flex-col gap-1.5">
+              <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface">Create password</span>
+              <div class="relative flex items-center">
+                <input id="m-register-password" name="password" type="password" autocomplete="new-password" required placeholder="Minimum 8 characters" class="w-full min-h-[44px] pl-3.5 pr-11 py-2.5 rounded border border-light-outline-variant bg-light-surface-container-lowest text-light-on-surface placeholder:text-light-outline font-body text-body-md focus:border-light-primary focus:ring-2 focus:ring-light-primary/20 focus:outline-none">
+                <button type="button" data-toggle-password="m-register-password" data-component-id="button-icon" data-component-type="button" data-component-variant="icon" aria-label="Show password" class="absolute right-1.5 inline-flex items-center justify-center w-9 h-9 rounded text-light-on-surface-variant">
+                  <span class="material-symbols-outlined text-[20px]" aria-hidden="true">visibility</span>
+                </button>
+              </div>
+              <span id="m-register-password-error" role="alert" data-design-text-token="body-sm" class="hidden font-body text-body-sm text-light-error"></span>
+            </label>
+
+            <button id="m-register-submit-btn" type="submit" data-component-id="button-primary-yellow" data-component-type="button" data-component-variant="secondary" class="w-full min-h-12 inline-flex items-center justify-center gap-gutter-sm px-gutter-lg py-3 rounded bg-accent-yellow text-on-accent-yellow hover:bg-light-secondary-container disabled:opacity-60 transition-colors duration-state-change shadow-sm">
+              <span data-design-text-token="label-lg" class="font-label text-label-lg">Create FindKart account</span>
+            </button>
+
+            <p data-design-text-token="body-sm" class="font-body text-body-sm text-center text-light-on-surface-variant">
+              Already registered?
+              <button type="button" id="m-switch-to-signin" class="font-label text-label-md text-light-primary ml-1">Sign in</button>
+            </p>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Mobile Trust Footer -->
+      <div class="flex items-center justify-center gap-gutter-md py-gutter-sm text-light-on-surface-variant">
+        <span class="inline-flex items-center gap-1">
+          <span class="material-symbols-outlined text-[16px] text-success" aria-hidden="true">verified_user</span>
+          <span data-design-text-token="body-sm" class="font-body text-body-sm">Secure Sign-In</span>
+        </span>
+        <span class="inline-flex items-center gap-1">
+          <span class="material-symbols-outlined text-[16px] text-light-primary" aria-hidden="true">local_shipping</span>
+          <span data-design-text-token="body-sm" class="font-body text-body-sm">19,000+ Pin Codes</span>
+        </span>
+      </div>
+    </main>
+
+  </div>
+
+  <script>
+    (function () {
+      const tabSignin = document.getElementById('m-tab-signin');
+      const tabRegister = document.getElementById('m-tab-register');
+      const panelSignin = document.getElementById('m-panel-signin');
+      const panelRegister = document.getElementById('m-panel-register');
+      const heading = document.getElementById('mobile-auth-heading');
+      const subheading = document.getElementById('mobile-auth-subheading');
+      const alertBox = document.getElementById('m-auth-alert');
+
+      function showAlert(type, message) {
+        const styles = type === 'success'
+          ? 'bg-success-container border-success/30 text-on-success-container'
+          : type === 'info'
+          ? 'bg-light-surface-container border-light-outline-variant text-light-on-surface'
+          : 'bg-light-error-container border-light-error/30 text-light-on-error-container';
+        const iconColor = type === 'success' ? 'text-success' : type === 'info' ? 'text-light-primary' : 'text-light-error';
+        const iconName = type === 'success' ? 'check_circle' : type === 'info' ? 'info' : 'error';
+
+        alertBox.className = 'flex items-start gap-gutter-sm p-3 rounded border ' + styles;
+        alertBox.setAttribute('role', type === 'success' ? 'status' : 'alert');
+        alertBox.innerHTML =
+          '<span class="material-symbols-outlined text-[18px] ' + iconColor + ' shrink-0 mt-0.5" aria-hidden="true">' + iconName + '</span>' +
+          '<span data-design-text-token="body-sm" class="font-body text-body-sm flex-1"></span>';
+        alertBox.querySelector('span:last-child').textContent = message;
+        alertBox.classList.remove('hidden');
+      }
+
+      function setMode(mode) {
+        alertBox.classList.add('hidden');
+        const isSignin = mode === 'signin';
+        tabSignin.setAttribute('aria-selected', String(isSignin));
+        tabSignin.className = isSignin
+          ? 'py-2 px-gutter-sm rounded-sm bg-light-surface-container-lowest text-light-primary shadow-sm transition-colors duration-state-change'
+          : 'py-2 px-gutter-sm rounded-sm text-light-on-surface-variant transition-colors duration-state-change';
+        tabRegister.setAttribute('aria-selected', String(!isSignin));
+        tabRegister.className = !isSignin
+          ? 'py-2 px-gutter-sm rounded-sm bg-light-surface-container-lowest text-light-primary shadow-sm transition-colors duration-state-change'
+          : 'py-2 px-gutter-sm rounded-sm text-light-on-surface-variant transition-colors duration-state-change';
+        panelSignin.classList.toggle('hidden', !isSignin);
+        panelRegister.classList.toggle('hidden', isSignin);
+        heading.textContent = isSignin ? 'Welcome back to FindKart' : 'Create your FindKart account';
+        subheading.textContent = isSignin ? 'Sign in with your email and password.' : 'Join FindKart for fast checkout across India.';
+      }
+
+      tabSignin.addEventListener('click', function () { setMode('signin'); });
+      tabRegister.addEventListener('click', function () { setMode('register'); });
+      document.getElementById('m-switch-to-register').addEventListener('click', function () { setMode('register'); });
+      document.getElementById('m-switch-to-signin').addEventListener('click', function () { setMode('signin'); });
+      document.getElementById('m-forgot-link').addEventListener('click', function (e) {
+        e.preventDefault();
+        showAlert('info', 'Enter your registered email address and contact FindKart support to reset your password.');
+      });
+
+      document.querySelectorAll('[data-toggle-password]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const input = document.getElementById(btn.getAttribute('data-toggle-password'));
+          const icon = btn.querySelector('.material-symbols-outlined');
+          const isPassword = input.type === 'password';
+          input.type = isPassword ? 'text' : 'password';
+          icon.textContent = isPassword ? 'visibility_off' : 'visibility';
+        });
+      });
+
+      function setFieldError(inputId, errorId, message) {
+        const input = document.getElementById(inputId);
+        const errorEl = document.getElementById(errorId);
+        if (message) {
+          input.setAttribute('aria-invalid', 'true');
+          input.classList.add('border-light-error');
+          errorEl.textContent = message;
+          errorEl.classList.remove('hidden');
+        } else {
+          input.removeAttribute('aria-invalid');
+          input.classList.remove('border-light-error');
+          errorEl.classList.add('hidden');
+        }
+      }
+
+      document.getElementById('m-login-form').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const email = document.getElementById('m-login-email').value.trim();
+        const password = document.getElementById('m-login-password').value;
+        let hasError = false;
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          setFieldError('m-login-email', 'm-login-email-error', 'Enter a valid email address');
+          hasError = true;
+        } else {
+          setFieldError('m-login-email', 'm-login-email-error', '');
+        }
+        if (password.length < 6) {
+          setFieldError('m-login-password', 'm-login-password-error', 'Minimum 6 characters required');
+          hasError = true;
+        } else {
+          setFieldError('m-login-password', 'm-login-password-error', '');
+        }
+        if (hasError) return;
+
+        const btn = document.getElementById('m-login-submit-btn');
+        btn.disabled = true;
+        btn.querySelector('span').textContent = 'Signing in...';
+        try {
+          const res = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email, password: password })
+          });
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.message || 'Invalid email or password.');
+          try {
+            if (data.token) localStorage.setItem('findkart_token', data.token);
+          } catch (err) {}
+          showAlert('success', 'Signed in! Redirecting to FindKart...');
+        } catch (err) {
+          showAlert('error', err.message || 'Unable to connect to authentication server.');
+        } finally {
+          btn.disabled = false;
+          btn.querySelector('span').textContent = 'Sign in to FindKart';
+        }
+      });
+
+      document.getElementById('m-register-form').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const name = document.getElementById('m-register-name').value.trim();
+        const email = document.getElementById('m-register-email').value.trim();
+        const password = document.getElementById('m-register-password').value;
+        let hasError = false;
+        if (name.length < 2) {
+          setFieldError('m-register-name', 'm-register-name-error', 'Enter your full name');
+          hasError = true;
+        } else {
+          setFieldError('m-register-name', 'm-register-name-error', '');
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          setFieldError('m-register-email', 'm-register-email-error', 'Enter a valid email address');
+          hasError = true;
+        } else {
+          setFieldError('m-register-email', 'm-register-email-error', '');
+        }
+        if (password.length < 8) {
+          setFieldError('m-register-password', 'm-register-password-error', 'Password must be at least 8 characters');
+          hasError = true;
+        } else {
+          setFieldError('m-register-password', 'm-register-password-error', '');
+        }
+        if (hasError) return;
+
+        const btn = document.getElementById('m-register-submit-btn');
+        btn.disabled = true;
+        btn.querySelector('span').textContent = 'Creating account...';
+        try {
+          const res = await fetch('/api/auth/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: name, email: email, password: password })
+          });
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.message || 'Registration failed.');
+          try {
+            if (data.token) localStorage.setItem('findkart_token', data.token);
+          } catch (err) {}
+          showAlert('success', 'Account created! Welcome to FindKart.');
+        } catch (err) {
+          showAlert('error', err.message || 'Unable to connect to registration server.');
+        } finally {
+          btn.disabled = false;
+          btn.querySelector('span').textContent = 'Create FindKart account';
+        }
+      });
+    })();
+  </script>
+
+
+</body></html>

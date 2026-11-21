@@ -1,0 +1,213 @@
+@import "tailwindcss";
+
+@theme {
+  --color-accent-yellow: #F9BD00;
+  --color-on-accent-yellow: #251A00;
+  --color-success: #15803D;
+  --color-on-success: #FFFFFF;
+  --color-success-container: #DCFCE7;
+  --color-on-success-container: #14532D;
+  --color-warning: #B45309;
+  --color-on-warning: #FFFFFF;
+  --color-warning-container: #FEF3C7;
+  --color-on-warning-container: #78350F;
+  --color-light-primary: #00389B;
+  --color-light-on-primary: #FFFFFF;
+  --color-light-primary-container: #164EC4;
+  --color-light-on-primary-container: #FFFFFF;
+  --color-light-secondary: #785A00;
+  --color-light-on-secondary: #FFFFFF;
+  --color-light-secondary-container: #F9BD00;
+  --color-light-on-secondary-container: #251A00;
+  --color-light-tertiary: #752600;
+  --color-light-on-tertiary: #FFFFFF;
+  --color-light-tertiary-container: #9C3500;
+  --color-light-on-tertiary-container: #FFFFFF;
+  --color-light-error: #BA1A1A;
+  --color-light-on-error: #FFFFFF;
+  --color-light-error-container: #FFDAD6;
+  --color-light-on-error-container: #93000A;
+  --color-light-background: #F3F3FD;
+  --color-light-on-background: #191B22;
+  --color-light-surface: #FAF8FF;
+  --color-light-surface-dim: #D9D9E3;
+  --color-light-surface-bright: #FFFFFF;
+  --color-light-surface-container-lowest: #FFFFFF;
+  --color-light-surface-container-low: #F3F3FD;
+  --color-light-surface-container: #EDEDF7;
+  --color-light-surface-container-high: #E8E7F2;
+  --color-light-surface-container-highest: #E2E2EC;
+  --color-light-on-surface: #191B22;
+  --color-light-surface-variant: #E0E1F2;
+  --color-light-on-surface-variant: #434654;
+  --color-light-outline: #747685;
+  --color-light-outline-variant: #C3C6D6;
+  --color-light-inverse-surface: #2E3038;
+  --color-light-inverse-on-surface: #F0F0FA;
+  --color-light-inverse-primary: #B4C5FF;
+
+  --font-display: "Mulish", sans-serif;
+  --font-headline: "Mulish", sans-serif;
+  --font-title: "Radio Canada Big", sans-serif;
+  --font-body: "Radio Canada Big", sans-serif;
+  --font-label: "Radio Canada Big", sans-serif;
+  --font-mono: "Spline Sans Mono", monospace;
+
+  --spacing-gutter-xs: 4px;
+  --spacing-gutter-sm: 8px;
+  --spacing-gutter-md: 16px;
+  --spacing-gutter-lg: 24px;
+  --spacing-gutter-xl: 32px;
+  --spacing-section: 48px;
+  --spacing-page-margin: 20px;
+
+  --radius-sm: 4px;
+  --radius-DEFAULT: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+}
+
+@layer utilities {
+  .text-display-lg {
+    font-size: 40px;
+    line-height: 46px;
+    letter-spacing: -0.5px;
+    font-weight: 800;
+  }
+  .text-display-lg-mobile {
+    font-size: 28px;
+    line-height: 34px;
+    letter-spacing: -0.25px;
+    font-weight: 800;
+  }
+  .text-headline-lg {
+    font-size: 32px;
+    line-height: 38px;
+    letter-spacing: -0.25px;
+    font-weight: 700;
+  }
+  .text-headline-lg-mobile {
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: -0.2px;
+    font-weight: 700;
+  }
+  .text-headline-md {
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: -0.15px;
+    font-weight: 700;
+  }
+  .text-headline-sm {
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 0px;
+    font-weight: 700;
+  }
+  .text-title-lg {
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0px;
+    font-weight: 600;
+  }
+  .text-title-md {
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0px;
+    font-weight: 600;
+  }
+  .text-body-lg {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .text-body-md {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .text-body-sm {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.1px;
+    font-weight: 400;
+  }
+  .text-label-lg {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.1px;
+    font-weight: 600;
+  }
+  .text-label-md {
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+    font-weight: 600;
+  }
+  .text-label-sm {
+    font-size: 11px;
+    line-height: 14px;
+    letter-spacing: 0.25px;
+    font-weight: 600;
+  }
+  .text-mono-md {
+    font-size: 13px;
+    line-height: 18px;
+    letter-spacing: 0px;
+    font-weight: 500;
+  }
+}
+
+html {
+  overflow-x: clip;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: clip;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a,
+select,
+input,
+textarea,
+label {
+  touch-action: manipulation;
+}
+
+.material-symbols-outlined {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1 !important;
+  box-sizing: content-box;
+  overflow: hidden;
+  white-space: nowrap;
+  direction: ltr;
+  vertical-align: middle;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
