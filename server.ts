@@ -7,6 +7,13 @@ import dotenv from 'dotenv';
 import { GoogleGenAI, ThinkingLevel } from '@google/genai';
 import { createServer as createViteServer } from 'vite';
 import { CATALOG_PRODUCTS } from './src/data/catalog.ts';
+import {
+  publishOrderPlaced,
+  publishStockUpdate,
+  publishStockNotification,
+  publishChatEvent,
+} from './src/kafka/publishers.ts';
+import { getProducer, disconnectProducer } from './src/kafka/kafka.ts';
 import type {
   CartItem,
   DeliveryLocation,
@@ -827,6 +834,23 @@ async function startServer() {
       }
       await stockRepo.batchUpdateStockOverrides(updates);
       await orderRepo.createOrder(order, claims?.uid);
+
+      // ── Kafka: publish ORDER_PLACED + per-item STOCK_UPDATED events ──
+      const kafkaUserId = claims?.uid ?? 'guest';
+      publishOrderPlaced(order, kafkaUserId).catch((e) =>
+        console.warn('[Kafka] ORDER_PLACED publish failed:', e),
+      );
+      for (const item of orderItems) {
+        const prod = productMap.get(item.productId);
+        if (prod) {
+          const newStock = updates[prod.id] ?? 0;
+          const prevStock = newStock + item.quantity;
+          publishStockUpdate(prod.id, prod.name, prevStock, newStock, `order:${order.orderId}`).catch(
+            (e) => console.warn('[Kafka] STOCK_UPDATED publish failed:', e),
+          );
+        }
+      }
+
       res.status(201).json({ order, stockOverrides: overrides });
       return;
     }
@@ -851,6 +875,22 @@ async function startServer() {
       }
     }
     writeDb(db);
+
+    // ── Kafka: publish ORDER_PLACED + per-item STOCK_UPDATED events ──
+    const kafkaUserId = claims?.uid ?? 'guest';
+    publishOrderPlaced(order, kafkaUserId).catch((e) =>
+      console.warn('[Kafka] ORDER_PLACED publish failed:', e),
+    );
+    for (const item of orderItems) {
+      const prod = productMap.get(item.productId);
+      if (prod) {
+        const prevStock = getProductStock(prod, db.stockOverrides || {}) + item.quantity;
+        const newStock = Math.max(0, prevStock - item.quantity);
+        publishStockUpdate(prod.id, prod.name, prevStock, newStock, `order:${order.orderId}`).catch(
+          (e) => console.warn('[Kafka] STOCK_UPDATED publish failed:', e),
+        );
+      }
+    }
 
     res.status(201).json({ order, stockOverrides: overrides });
   });
@@ -1206,6 +1246,12 @@ async function startServer() {
       };
 
       await stockRepo.createNotification(entry);
+
+      // ── Kafka: publish STOCK_NOTIFICATION_SUBSCRIBED ──
+      publishStockNotification(entry).catch((e) =>
+        console.warn('[Kafka] STOCK_NOTIFICATION publish failed:', e),
+      );
+
       res.status(201).json({
         notification: entry,
         message: `Notification registered! We will email ${email} as soon as ${product.name} is back in stock.`,
@@ -1246,6 +1292,11 @@ async function startServer() {
     db.stockNotifications = [entry, ...notifications].slice(0, 500);
     writeDb(db);
 
+    // ── Kafka: publish STOCK_NOTIFICATION_SUBSCRIBED ──
+    publishStockNotification(entry).catch((e) =>
+      console.warn('[Kafka] STOCK_NOTIFICATION publish failed:', e),
+    );
+
     res.status(201).json({
       notification: entry,
       message: `Notification registered! We will email ${email} as soon as ${product.name} is back in stock.`,
@@ -1263,10 +1314,13 @@ async function startServer() {
       return;
     }
 
+    const chatStart = Date.now();
+    const chatToken = extractToken(req);
+    const chatClaims = chatToken ? verifyToken(chatToken) : null;
+
     const stockOverrides = isPgActive
       ? await stockRepo.getStockOverrides()
       : (readDb().stockOverrides || {});
-
     const deterministic = buildDeterministicStockReply(message, stockOverrides);
     const matches =
       deterministic.matches.length > 0
@@ -1328,6 +1382,18 @@ async function startServer() {
       });
 
       const replyText = aiResponse.text?.trim() || deterministic.reply;
+      const chatDuration = Date.now() - chatStart;
+
+      // ── Kafka: publish CHAT_QUERY event ──
+      publishChatEvent({
+        sessionId: crypto.randomUUID().slice(0, 12),
+        userId: chatClaims?.uid,
+        query: message,
+        reply: replyText,
+        matchCount: matches.length,
+        durationMs: chatDuration,
+      }).catch((e) => console.warn('[Kafka] CHAT_QUERY publish failed:', e));
+
       res.json({
         reply: replyText,
         matches,
@@ -1411,6 +1477,20 @@ async function startServer() {
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`FindKart server running on http://0.0.0.0:${PORT}`);
   });
+
+  // ── Kafka: warm up producer (non-blocking — fails gracefully if broker is down) ──
+  getProducer()
+    .then(() => console.log('[Kafka] Producer ready'))
+    .catch((e) => console.warn('[Kafka] Broker unreachable at startup (events will be skipped):', e?.message));
+
+  // Graceful shutdown
+  const shutdown = async () => {
+    console.log('\n[FindKart] Shutting down…');
+    await disconnectProducer().catch(() => {});
+    process.exit(0);
+  };
+  process.on('SIGINT', shutdown);
+  process.on('SIGTERM', shutdown);
 }
 
 startServer().catch((err) => {

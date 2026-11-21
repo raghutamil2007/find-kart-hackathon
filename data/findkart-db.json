@@ -1,5 +1,21 @@
 {
-  "users": [],
+  "users": [
+    {
+      "id": "usr_da2ad608-b99a-4af7-b7f6-ffbf297628d5",
+      "name": "arjun",
+      "email": "arjunarkmma@gmail.com",
+      "passwordHash": "9767135b7714cc94d39b6fdb5aae6df49954d362be464c06a63c99fe264a788ec4266863b7f5a321914e3daa15d52edb8c38dc7f2d765e21720d67417260b435",
+      "passwordSalt": "a18b12f114d8ce5015da9902b9ee4e06",
+      "createdAt": "2026-11-21T16:16:47.564Z",
+      "location": {
+        "city": "Bengaluru",
+        "pincode": "560001"
+      },
+      "cart": [],
+      "wishlist": [],
+      "orders": []
+    }
+  ],
   "supportTickets": [
     {
       "ticketId": "FK-SUP-4892",
@@ -92,16 +108,6 @@
           "createdAt": "2026-11-12T13:12:00.000Z"
         }
       ]
-    }
-  ],
-  "stockNotifications": [
-    {
-      "id": "notif_98282634",
-      "productId": "home-classic-jacket",
-      "productName": "Classic Navy Cotton Casual Jacket",
-      "email": "test-alert@findkart.in",
-      "createdAt": "2026-11-21T14:49:59.013Z",
-      "status": "Subscribed"
     }
   ]
 }
